@@ -1,0 +1,810 @@
+./examples/sort_list.cl: 0: 0  "(*"
+./examples/sort_list.cl: 1: 3  Type<This>
+./examples/sort_list.cl: 1: 8  Id<file>
+./examples/sort_list.cl: 1:13  Id<presents>
+./examples/sort_list.cl: 1:22  Id<a>
+./examples/sort_list.cl: 1:24  Id<fairly>
+./examples/sort_list.cl: 1:31  Id<large>
+./examples/sort_list.cl: 1:37  Id<example>
+./examples/sort_list.cl: 1:45  "of"
+./examples/sort_list.cl: 1:48  Type<Cool>
+./examples/sort_list.cl: 1:53  Id<programming>
+./examples/sort_list.cl: 1:64  "."
+./examples/sort_list.cl: 1:67  Type<The>
+./examples/sort_list.cl: 2: 0  "class"
+./examples/sort_list.cl: 2: 6  Type<List>
+./examples/sort_list.cl: 2:11  Id<defines>
+./examples/sort_list.cl: 2:19  Id<the>
+./examples/sort_list.cl: 2:23  Id<names>
+./examples/sort_list.cl: 2:29  "of"
+./examples/sort_list.cl: 2:32  Id<standard>
+./examples/sort_list.cl: 2:41  Id<list>
+./examples/sort_list.cl: 2:46  Id<operations>
+./examples/sort_list.cl: 2:57  Id<ala>
+./examples/sort_list.cl: 2:61  Type<Scheme>
+./examples/sort_list.cl: 2:67  ":"
+./examples/sort_list.cl: 3: 0  Id<car>
+./examples/sort_list.cl: 3: 3  ","
+./examples/sort_list.cl: 3: 5  Id<cdr>
+./examples/sort_list.cl: 3: 8  ","
+./examples/sort_list.cl: 3:10  Id<cons>
+./examples/sort_list.cl: 3:14  ","
+./examples/sort_list.cl: 3:16  Id<isNil>
+./examples/sort_list.cl: 3:21  ","
+./examples/sort_list.cl: 3:23  Id<rev>
+./examples/sort_list.cl: 3:26  ","
+./examples/sort_list.cl: 3:28  Id<sort>
+./examples/sort_list.cl: 3:32  ","
+./examples/sort_list.cl: 3:34  Id<rcons>
+./examples/sort_list.cl: 3:40  "("
+./examples/sort_list.cl: 3:41  Id<add>
+./examples/sort_list.cl: 3:45  Id<an>
+./examples/sort_list.cl: 3:48  Id<element>
+./examples/sort_list.cl: 3:56  Id<to>
+./examples/sort_list.cl: 3:59  Id<the>
+./examples/sort_list.cl: 3:63  Id<end>
+./examples/sort_list.cl: 3:67  "of"
+./examples/sort_list.cl: 4: 0  Id<the>
+./examples/sort_list.cl: 4: 4  Id<list>
+./examples/sort_list.cl: 4: 8  ")"
+./examples/sort_list.cl: 4: 9  ","
+./examples/sort_list.cl: 4:11  Id<and>
+./examples/sort_list.cl: 4:15  Id<print_list>
+./examples/sort_list.cl: 4:25  "."
+./examples/sort_list.cl: 4:28  "in"
+./examples/sort_list.cl: 4:31  Id<the>
+./examples/sort_list.cl: 4:35  Type<List>
+./examples/sort_list.cl: 4:40  "class"
+./examples/sort_list.cl: 4:46  Id<most>
+./examples/sort_list.cl: 4:51  "of"
+./examples/sort_list.cl: 4:54  Id<these>
+./examples/sort_list.cl: 4:60  Id<functions>
+./examples/sort_list.cl: 5: 0  Id<are>
+./examples/sort_list.cl: 5: 4  Id<just>
+./examples/sort_list.cl: 5: 9  Id<stubs>
+./examples/sort_list.cl: 5:15  Id<that>
+./examples/sort_list.cl: 5:20  Id<abort>
+./examples/sort_list.cl: 5:26  "if"
+./examples/sort_list.cl: 5:29  Id<ever>
+./examples/sort_list.cl: 5:34  Id<called>
+./examples/sort_list.cl: 5:40  "."
+./examples/sort_list.cl: 5:43  Type<The>
+./examples/sort_list.cl: 5:47  Id<classes>
+./examples/sort_list.cl: 5:55  Type<Nil>
+./examples/sort_list.cl: 5:59  Id<and>
+./examples/sort_list.cl: 5:63  Type<Cons>
+./examples/sort_list.cl: 6: 0  Id<inherit>
+./examples/sort_list.cl: 6: 8  Id<from>
+./examples/sort_list.cl: 6:13  Type<List>
+./examples/sort_list.cl: 6:18  Id<and>
+./examples/sort_list.cl: 6:22  Id<define>
+./examples/sort_list.cl: 6:29  Id<the>
+./examples/sort_list.cl: 6:33  Id<same>
+./examples/sort_list.cl: 6:38  Id<operations>
+./examples/sort_list.cl: 6:48  ","
+./examples/sort_list.cl: 6:50  Id<but>
+./examples/sort_list.cl: 6:54  Id<now>
+./examples/sort_list.cl: 6:58  Id<as>
+./examples/sort_list.cl: 7: 0  Id<appropriate>
+./examples/sort_list.cl: 7:12  Id<to>
+./examples/sort_list.cl: 7:15  Id<the>
+./examples/sort_list.cl: 7:19  Id<empty>
+./examples/sort_list.cl: 7:25  Id<list>
+./examples/sort_list.cl: 7:30  "("
+./examples/sort_list.cl: 7:31  Id<for>
+./examples/sort_list.cl: 7:35  Id<the>
+./examples/sort_list.cl: 7:39  Type<Nil>
+./examples/sort_list.cl: 7:43  "class"
+./examples/sort_list.cl: 7:48  ")"
+./examples/sort_list.cl: 7:50  Id<and>
+./examples/sort_list.cl: 7:54  Id<for>
+./examples/sort_list.cl: 7:58  Id<cons>
+./examples/sort_list.cl: 7:63  Id<cells>
+./examples/sort_list.cl: 7:69  "("
+./examples/sort_list.cl: 7:70  Id<for>
+./examples/sort_list.cl: 8: 0  Id<the>
+./examples/sort_list.cl: 8: 4  Type<Cons>
+./examples/sort_list.cl: 8: 9  "class"
+./examples/sort_list.cl: 8:14  ")"
+./examples/sort_list.cl: 8:15  "."
+./examples/sort_list.cl:10: 0  Type<The>
+./examples/sort_list.cl:10: 4  Type<Main>
+./examples/sort_list.cl:10: 9  "class"
+./examples/sort_list.cl:10:15  Id<puts>
+./examples/sort_list.cl:10:20  Id<all>
+./examples/sort_list.cl:10:24  "of"
+./examples/sort_list.cl:10:27  Id<this>
+./examples/sort_list.cl:10:32  Id<code>
+./examples/sort_list.cl:10:37  Id<through>
+./examples/sort_list.cl:10:45  Id<the>
+./examples/sort_list.cl:10:49  Id<following>
+./examples/sort_list.cl:10:59  Id<silly>
+./examples/sort_list.cl:11: 0  Id<test>
+./examples/sort_list.cl:11: 5  Id<exercise>
+./examples/sort_list.cl:11:13  ":"
+./examples/sort_list.cl:13: 3  Int<1>
+./examples/sort_list.cl:13: 4  "."
+./examples/sort_list.cl:13: 6  Id<prompt>
+./examples/sort_list.cl:13:13  Id<for>
+./examples/sort_list.cl:13:17  Id<a>
+./examples/sort_list.cl:13:19  Id<number>
+./examples/sort_list.cl:13:26  Type<N>
+./examples/sort_list.cl:14: 3  Int<2>
+./examples/sort_list.cl:14: 4  "."
+./examples/sort_list.cl:14: 6  Id<generate>
+./examples/sort_list.cl:14:15  Id<a>
+./examples/sort_list.cl:14:17  Id<list>
+./examples/sort_list.cl:14:22  "of"
+./examples/sort_list.cl:14:25  Id<numbers>
+./examples/sort_list.cl:14:33  Int<0>
+./examples/sort_list.cl:14:34  "."
+./examples/sort_list.cl:14:35  "."
+./examples/sort_list.cl:14:36  Type<N>
+./examples/sort_list.cl:14:37  "-"
+./examples/sort_list.cl:14:38  Int<1>
+./examples/sort_list.cl:15: 3  Int<3>
+./examples/sort_list.cl:15: 4  "."
+./examples/sort_list.cl:15: 6  Id<reverse>
+./examples/sort_list.cl:15:14  Id<the>
+./examples/sort_list.cl:15:18  Id<list>
+./examples/sort_list.cl:16: 3  Int<4>
+./examples/sort_list.cl:16: 4  "."
+./examples/sort_list.cl:16: 6  Id<sort>
+./examples/sort_list.cl:16:11  Id<the>
+./examples/sort_list.cl:16:15  Id<list>
+./examples/sort_list.cl:17: 3  Int<5>
+./examples/sort_list.cl:17: 4  "."
+./examples/sort_list.cl:17: 6  Id<print>
+./examples/sort_list.cl:17:12  Id<the>
+./examples/sort_list.cl:17:16  Id<sorted>
+./examples/sort_list.cl:17:23  Id<list>
+./examples/sort_list.cl:19: 0  Type<Because>
+./examples/sort_list.cl:19: 8  Id<the>
+./examples/sort_list.cl:19:12  Id<sort>
+./examples/sort_list.cl:19:17  Id<used>
+./examples/sort_list.cl:19:22  Id<is>
+./examples/sort_list.cl:19:25  Id<a>
+./examples/sort_list.cl:19:27  Id<quadratic>
+./examples/sort_list.cl:19:37  Id<space>
+./examples/sort_list.cl:19:43  Id<insertion>
+./examples/sort_list.cl:19:53  Id<sort>
+./examples/sort_list.cl:19:57  ","
+./examples/sort_list.cl:19:59  Id<sorting>
+./examples/sort_list.cl:20: 0  Id<moderately>
+./examples/sort_list.cl:20:11  Id<large>
+./examples/sort_list.cl:20:17  Id<lists>
+./examples/sort_list.cl:20:23  Id<will>
+./examples/sort_list.cl:20:28  Id<cause>
+./examples/sort_list.cl:20:34  Id<spim>
+./examples/sort_list.cl:20:39  Id<to>
+./examples/sort_list.cl:20:42  Id<run>
+./examples/sort_list.cl:20:46  Id<out>
+./examples/sort_list.cl:20:50  "of"
+./examples/sort_list.cl:20:53  Id<memory>
+./examples/sort_list.cl:20:59  "."
+./examples/sort_list.cl:21: 0  "*)"
+./examples/sort_list.cl:23: 0  "class"
+./examples/sort_list.cl:23: 6  Type<List>
+./examples/sort_list.cl:23:11  "inherits"
+./examples/sort_list.cl:23:20  Type<IO>
+./examples/sort_list.cl:23:23  "{"
+./examples/sort_list.cl:24: 8  "(*"
+./examples/sort_list.cl:24:11  Type<Since>
+./examples/sort_list.cl:24:17  Id<abort>
+./examples/sort_list.cl:24:22  "("
+./examples/sort_list.cl:24:23  ")"
+./examples/sort_list.cl:24:25  Id<returns>
+./examples/sort_list.cl:24:33  Type<Object>
+./examples/sort_list.cl:24:39  ","
+./examples/sort_list.cl:24:41  Id<we>
+./examples/sort_list.cl:24:44  Id<need>
+./examples/sort_list.cl:24:49  Id<something>
+./examples/sort_list.cl:24:59  "of"
+./examples/sort_list.cl:25: 4  Id<type>
+./examples/sort_list.cl:25: 9  Type<Bool>
+./examples/sort_list.cl:25:14  Id<at>
+./examples/sort_list.cl:25:17  Id<the>
+./examples/sort_list.cl:25:21  Id<end>
+./examples/sort_list.cl:25:25  "of"
+./examples/sort_list.cl:25:28  Id<the>
+./examples/sort_list.cl:25:32  Id<block>
+./examples/sort_list.cl:25:38  Id<to>
+./examples/sort_list.cl:25:41  Id<satisfy>
+./examples/sort_list.cl:25:49  Id<the>
+./examples/sort_list.cl:25:53  Id<typechecker>
+./examples/sort_list.cl:25:64  "."
+./examples/sort_list.cl:26:11  Type<This>
+./examples/sort_list.cl:26:16  Id<code>
+./examples/sort_list.cl:26:21  Id<is>
+./examples/sort_list.cl:26:24  Id<unreachable>
+./examples/sort_list.cl:26:35  ","
+./examples/sort_list.cl:26:37  Id<since>
+./examples/sort_list.cl:26:43  Id<abort>
+./examples/sort_list.cl:26:48  "("
+./examples/sort_list.cl:26:49  ")"
+./examples/sort_list.cl:26:51  Id<halts>
+./examples/sort_list.cl:26:57  Id<the>
+./examples/sort_list.cl:26:61  Id<program>
+./examples/sort_list.cl:26:68  "."
+./examples/sort_list.cl:26:70  "*)"
+./examples/sort_list.cl:27: 1  Id<isNil>
+./examples/sort_list.cl:27: 6  "("
+./examples/sort_list.cl:27: 7  ")"
+./examples/sort_list.cl:27: 9  ":"
+./examples/sort_list.cl:27:11  Type<Bool>
+./examples/sort_list.cl:27:16  "{"
+./examples/sort_list.cl:27:18  "{"
+./examples/sort_list.cl:27:20  Id<abort>
+./examples/sort_list.cl:27:25  "("
+./examples/sort_list.cl:27:26  ")"
+./examples/sort_list.cl:27:27  ";"
+./examples/sort_list.cl:27:29  Boolean<True>
+./examples/sort_list.cl:27:33  ";"
+./examples/sort_list.cl:27:35  "}"
+./examples/sort_list.cl:27:37  "}"
+./examples/sort_list.cl:27:38  ";"
+./examples/sort_list.cl:29: 1  Id<cons>
+./examples/sort_list.cl:29: 5  "("
+./examples/sort_list.cl:29: 6  Id<hd>
+./examples/sort_list.cl:29: 9  ":"
+./examples/sort_list.cl:29:11  Type<Int>
+./examples/sort_list.cl:29:14  ")"
+./examples/sort_list.cl:29:16  ":"
+./examples/sort_list.cl:29:18  Type<Cons>
+./examples/sort_list.cl:29:23  "{"
+./examples/sort_list.cl:30: 3  "("
+./examples/sort_list.cl:30: 4  "let"
+./examples/sort_list.cl:30: 8  Id<new_cell>
+./examples/sort_list.cl:30:17  ":"
+./examples/sort_list.cl:30:19  Type<Cons>
+./examples/sort_list.cl:30:24  "<-"
+./examples/sort_list.cl:30:27  "new"
+./examples/sort_list.cl:30:31  Type<Cons>
+./examples/sort_list.cl:30:36  "in"
+./examples/sort_list.cl:31: 2  Id<new_cell>
+./examples/sort_list.cl:31:10  "."
+./examples/sort_list.cl:31:11  Id<init>
+./examples/sort_list.cl:31:15  "("
+./examples/sort_list.cl:31:16  Id<hd>
+./examples/sort_list.cl:31:18  ","
+./examples/sort_list.cl:31:19  Id<self>
+./examples/sort_list.cl:31:23  ")"
+./examples/sort_list.cl:32: 3  ")"
+./examples/sort_list.cl:33: 1  "}"
+./examples/sort_list.cl:33: 2  ";"
+./examples/sort_list.cl:35: 1  "(*"
+./examples/sort_list.cl:36: 4  Type<Since>
+./examples/sort_list.cl:36:10  Id<abort>
+./examples/sort_list.cl:36:16  String<returns>
+./examples/sort_list.cl:36:26  Id<type>
+./examples/sort_list.cl:36:31  Type<Object>
+./examples/sort_list.cl:36:37  ","
+./examples/sort_list.cl:36:39  Id<we>
+./examples/sort_list.cl:36:42  Id<have>
+./examples/sort_list.cl:36:47  Id<to>
+./examples/sort_list.cl:36:50  Id<add>
+./examples/sort_list.cl:37: 4  Id<an>
+./examples/sort_list.cl:37: 7  Id<expression>
+./examples/sort_list.cl:37:18  "of"
+./examples/sort_list.cl:37:21  Id<type>
+./examples/sort_list.cl:37:26  Type<Int>
+./examples/sort_list.cl:37:30  Id<here>
+./examples/sort_list.cl:37:35  Id<to>
+./examples/sort_list.cl:37:38  Id<satisfy>
+./examples/sort_list.cl:37:46  Id<the>
+./examples/sort_list.cl:37:50  Id<typechecker>
+./examples/sort_list.cl:37:61  "."
+./examples/sort_list.cl:38: 4  Type<This>
+./examples/sort_list.cl:38: 9  Id<code>
+./examples/sort_list.cl:38:14  Id<is>
+./examples/sort_list.cl:38:16  ","
+./examples/sort_list.cl:38:18  "of"
+./examples/sort_list.cl:38:21  Id<course>
+./examples/sort_list.cl:38:27  ","
+./examples/sort_list.cl:38:29  Id<unreachable>
+./examples/sort_list.cl:38:40  "."
+./examples/sort_list.cl:39: 8  "*)"
+./examples/sort_list.cl:40: 1  Id<car>
+./examples/sort_list.cl:40: 4  "("
+./examples/sort_list.cl:40: 5  ")"
+./examples/sort_list.cl:40: 7  ":"
+./examples/sort_list.cl:40: 9  Type<Int>
+./examples/sort_list.cl:40:13  "{"
+./examples/sort_list.cl:40:15  "{"
+./examples/sort_list.cl:40:17  Id<abort>
+./examples/sort_list.cl:40:22  "("
+./examples/sort_list.cl:40:23  ")"
+./examples/sort_list.cl:40:24  ";"
+./examples/sort_list.cl:40:26  "new"
+./examples/sort_list.cl:40:30  Type<Int>
+./examples/sort_list.cl:40:33  ";"
+./examples/sort_list.cl:40:35  "}"
+./examples/sort_list.cl:40:37  "}"
+./examples/sort_list.cl:40:38  ";"
+./examples/sort_list.cl:42: 1  Id<cdr>
+./examples/sort_list.cl:42: 4  "("
+./examples/sort_list.cl:42: 5  ")"
+./examples/sort_list.cl:42: 7  ":"
+./examples/sort_list.cl:42: 9  Type<List>
+./examples/sort_list.cl:42:14  "{"
+./examples/sort_list.cl:42:16  "{"
+./examples/sort_list.cl:42:18  Id<abort>
+./examples/sort_list.cl:42:23  "("
+./examples/sort_list.cl:42:24  ")"
+./examples/sort_list.cl:42:25  ";"
+./examples/sort_list.cl:42:27  "new"
+./examples/sort_list.cl:42:31  Type<List>
+./examples/sort_list.cl:42:35  ";"
+./examples/sort_list.cl:42:37  "}"
+./examples/sort_list.cl:42:39  "}"
+./examples/sort_list.cl:42:40  ";"
+./examples/sort_list.cl:44: 1  Id<rev>
+./examples/sort_list.cl:44: 4  "("
+./examples/sort_list.cl:44: 5  ")"
+./examples/sort_list.cl:44: 7  ":"
+./examples/sort_list.cl:44: 9  Type<List>
+./examples/sort_list.cl:44:14  "{"
+./examples/sort_list.cl:44:16  Id<cdr>
+./examples/sort_list.cl:44:19  "("
+./examples/sort_list.cl:44:20  ")"
+./examples/sort_list.cl:44:22  "}"
+./examples/sort_list.cl:44:23  ";"
+./examples/sort_list.cl:46: 1  Id<sort>
+./examples/sort_list.cl:46: 5  "("
+./examples/sort_list.cl:46: 6  ")"
+./examples/sort_list.cl:46: 8  ":"
+./examples/sort_list.cl:46:10  Type<List>
+./examples/sort_list.cl:46:15  "{"
+./examples/sort_list.cl:46:17  Id<cdr>
+./examples/sort_list.cl:46:20  "("
+./examples/sort_list.cl:46:21  ")"
+./examples/sort_list.cl:46:23  "}"
+./examples/sort_list.cl:46:24  ";"
+./examples/sort_list.cl:48: 1  Id<insert>
+./examples/sort_list.cl:48: 7  "("
+./examples/sort_list.cl:48: 8  Id<i>
+./examples/sort_list.cl:48:10  ":"
+./examples/sort_list.cl:48:12  Type<Int>
+./examples/sort_list.cl:48:15  ")"
+./examples/sort_list.cl:48:17  ":"
+./examples/sort_list.cl:48:19  Type<List>
+./examples/sort_list.cl:48:24  "{"
+./examples/sort_list.cl:48:26  Id<cdr>
+./examples/sort_list.cl:48:29  "("
+./examples/sort_list.cl:48:30  ")"
+./examples/sort_list.cl:48:32  "}"
+./examples/sort_list.cl:48:33  ";"
+./examples/sort_list.cl:50: 1  Id<rcons>
+./examples/sort_list.cl:50: 6  "("
+./examples/sort_list.cl:50: 7  Id<i>
+./examples/sort_list.cl:50: 9  ":"
+./examples/sort_list.cl:50:11  Type<Int>
+./examples/sort_list.cl:50:14  ")"
+./examples/sort_list.cl:50:16  ":"
+./examples/sort_list.cl:50:18  Type<List>
+./examples/sort_list.cl:50:23  "{"
+./examples/sort_list.cl:50:25  Id<cdr>
+./examples/sort_list.cl:50:28  "("
+./examples/sort_list.cl:50:29  ")"
+./examples/sort_list.cl:50:31  "}"
+./examples/sort_list.cl:50:32  ";"
+./examples/sort_list.cl:52: 1  Id<print_list>
+./examples/sort_list.cl:52:11  "("
+./examples/sort_list.cl:52:12  ")"
+./examples/sort_list.cl:52:14  ":"
+./examples/sort_list.cl:52:16  Type<Object>
+./examples/sort_list.cl:52:23  "{"
+./examples/sort_list.cl:52:25  Id<abort>
+./examples/sort_list.cl:52:30  "("
+./examples/sort_list.cl:52:31  ")"
+./examples/sort_list.cl:52:33  "}"
+./examples/sort_list.cl:52:34  ";"
+./examples/sort_list.cl:53: 0  "}"
+./examples/sort_list.cl:53: 1  ";"
+./examples/sort_list.cl:55: 0  "class"
+./examples/sort_list.cl:55: 6  Type<Cons>
+./examples/sort_list.cl:55:11  "inherits"
+./examples/sort_list.cl:55:20  Type<List>
+./examples/sort_list.cl:55:25  "{"
+./examples/sort_list.cl:56: 1  Id<xcar>
+./examples/sort_list.cl:56: 6  ":"
+./examples/sort_list.cl:56: 8  Type<Int>
+./examples/sort_list.cl:56:11  ";"
+./examples/sort_list.cl:57: 1  Id<xcdr>
+./examples/sort_list.cl:57: 6  ":"
+./examples/sort_list.cl:57: 8  Type<List>
+./examples/sort_list.cl:57:12  ";"
+./examples/sort_list.cl:61: 1  Id<isNil>
+./examples/sort_list.cl:61: 6  "("
+./examples/sort_list.cl:61: 7  ")"
+./examples/sort_list.cl:61: 9  ":"
+./examples/sort_list.cl:61:11  Type<Bool>
+./examples/sort_list.cl:61:16  "{"
+./examples/sort_list.cl:61:18  Boolean<False>
+./examples/sort_list.cl:61:24  "}"
+./examples/sort_list.cl:61:25  ";"
+./examples/sort_list.cl:63: 1  Id<init>
+./examples/sort_list.cl:63: 5  "("
+./examples/sort_list.cl:63: 6  Id<hd>
+./examples/sort_list.cl:63: 9  ":"
+./examples/sort_list.cl:63:11  Type<Int>
+./examples/sort_list.cl:63:14  ","
+./examples/sort_list.cl:63:16  Id<tl>
+./examples/sort_list.cl:63:19  ":"
+./examples/sort_list.cl:63:21  Type<List>
+./examples/sort_list.cl:63:25  ")"
+./examples/sort_list.cl:63:27  ":"
+./examples/sort_list.cl:63:29  Type<Cons>
+./examples/sort_list.cl:63:34  "{"
+./examples/sort_list.cl:64: 3  "{"
+./examples/sort_list.cl:65: 5  Id<xcar>
+./examples/sort_list.cl:65:10  "<-"
+./examples/sort_list.cl:65:13  Id<hd>
+./examples/sort_list.cl:65:15  ";"
+./examples/sort_list.cl:66: 5  Id<xcdr>
+./examples/sort_list.cl:66:10  "<-"
+./examples/sort_list.cl:66:13  Id<tl>
+./examples/sort_list.cl:66:15  ";"
+./examples/sort_list.cl:67: 5  Id<self>
+./examples/sort_list.cl:67: 9  ";"
+./examples/sort_list.cl:68: 3  "}"
+./examples/sort_list.cl:69: 1  "}"
+./examples/sort_list.cl:69: 2  ";"
+./examples/sort_list.cl:71: 1  Id<car>
+./examples/sort_list.cl:71: 4  "("
+./examples/sort_list.cl:71: 5  ")"
+./examples/sort_list.cl:71: 7  ":"
+./examples/sort_list.cl:71: 9  Type<Int>
+./examples/sort_list.cl:71:13  "{"
+./examples/sort_list.cl:71:15  Id<xcar>
+./examples/sort_list.cl:71:20  "}"
+./examples/sort_list.cl:71:21  ";"
+./examples/sort_list.cl:73: 1  Id<cdr>
+./examples/sort_list.cl:73: 4  "("
+./examples/sort_list.cl:73: 5  ")"
+./examples/sort_list.cl:73: 7  ":"
+./examples/sort_list.cl:73: 9  Type<List>
+./examples/sort_list.cl:73:14  "{"
+./examples/sort_list.cl:73:16  Id<xcdr>
+./examples/sort_list.cl:73:21  "}"
+./examples/sort_list.cl:73:22  ";"
+./examples/sort_list.cl:75: 1  Id<rev>
+./examples/sort_list.cl:75: 4  "("
+./examples/sort_list.cl:75: 5  ")"
+./examples/sort_list.cl:75: 7  ":"
+./examples/sort_list.cl:75: 9  Type<List>
+./examples/sort_list.cl:75:14  "{"
+./examples/sort_list.cl:75:16  "("
+./examples/sort_list.cl:75:17  Id<xcdr>
+./examples/sort_list.cl:75:21  "."
+./examples/sort_list.cl:75:22  Id<rev>
+./examples/sort_list.cl:75:25  "("
+./examples/sort_list.cl:75:26  ")"
+./examples/sort_list.cl:75:27  ")"
+./examples/sort_list.cl:75:28  "."
+./examples/sort_list.cl:75:29  Id<rcons>
+./examples/sort_list.cl:75:34  "("
+./examples/sort_list.cl:75:35  Id<xcar>
+./examples/sort_list.cl:75:39  ")"
+./examples/sort_list.cl:75:41  "}"
+./examples/sort_list.cl:75:42  ";"
+./examples/sort_list.cl:77: 1  Id<sort>
+./examples/sort_list.cl:77: 5  "("
+./examples/sort_list.cl:77: 6  ")"
+./examples/sort_list.cl:77: 8  ":"
+./examples/sort_list.cl:77:10  Type<List>
+./examples/sort_list.cl:77:15  "{"
+./examples/sort_list.cl:77:17  "("
+./examples/sort_list.cl:77:18  Id<xcdr>
+./examples/sort_list.cl:77:22  "."
+./examples/sort_list.cl:77:23  Id<sort>
+./examples/sort_list.cl:77:27  "("
+./examples/sort_list.cl:77:28  ")"
+./examples/sort_list.cl:77:29  ")"
+./examples/sort_list.cl:77:30  "."
+./examples/sort_list.cl:77:31  Id<insert>
+./examples/sort_list.cl:77:37  "("
+./examples/sort_list.cl:77:38  Id<xcar>
+./examples/sort_list.cl:77:42  ")"
+./examples/sort_list.cl:77:44  "}"
+./examples/sort_list.cl:77:45  ";"
+./examples/sort_list.cl:79: 1  Id<insert>
+./examples/sort_list.cl:79: 7  "("
+./examples/sort_list.cl:79: 8  Id<i>
+./examples/sort_list.cl:79:10  ":"
+./examples/sort_list.cl:79:12  Type<Int>
+./examples/sort_list.cl:79:15  ")"
+./examples/sort_list.cl:79:17  ":"
+./examples/sort_list.cl:79:19  Type<List>
+./examples/sort_list.cl:79:24  "{"
+./examples/sort_list.cl:80: 2  "if"
+./examples/sort_list.cl:80: 5  Id<i>
+./examples/sort_list.cl:80: 7  "<"
+./examples/sort_list.cl:80: 9  Id<xcar>
+./examples/sort_list.cl:80:14  "then"
+./examples/sort_list.cl:81: 3  "("
+./examples/sort_list.cl:81: 4  "new"
+./examples/sort_list.cl:81: 8  Type<Cons>
+./examples/sort_list.cl:81:12  ")"
+./examples/sort_list.cl:81:13  "."
+./examples/sort_list.cl:81:14  Id<init>
+./examples/sort_list.cl:81:18  "("
+./examples/sort_list.cl:81:19  Id<i>
+./examples/sort_list.cl:81:20  ","
+./examples/sort_list.cl:81:21  Id<self>
+./examples/sort_list.cl:81:25  ")"
+./examples/sort_list.cl:82: 2  "else"
+./examples/sort_list.cl:83: 3  "("
+./examples/sort_list.cl:83: 4  "new"
+./examples/sort_list.cl:83: 8  Type<Cons>
+./examples/sort_list.cl:83:12  ")"
+./examples/sort_list.cl:83:13  "."
+./examples/sort_list.cl:83:14  Id<init>
+./examples/sort_list.cl:83:18  "("
+./examples/sort_list.cl:83:19  Id<xcar>
+./examples/sort_list.cl:83:23  ","
+./examples/sort_list.cl:83:24  Id<xcdr>
+./examples/sort_list.cl:83:28  "."
+./examples/sort_list.cl:83:29  Id<insert>
+./examples/sort_list.cl:83:35  "("
+./examples/sort_list.cl:83:36  Id<i>
+./examples/sort_list.cl:83:37  ")"
+./examples/sort_list.cl:83:38  ")"
+./examples/sort_list.cl:84: 2  "fi"
+./examples/sort_list.cl:85: 1  "}"
+./examples/sort_list.cl:85: 2  ";"
+./examples/sort_list.cl:88: 1  Id<rcons>
+./examples/sort_list.cl:88: 6  "("
+./examples/sort_list.cl:88: 7  Id<i>
+./examples/sort_list.cl:88: 9  ":"
+./examples/sort_list.cl:88:11  Type<Int>
+./examples/sort_list.cl:88:14  ")"
+./examples/sort_list.cl:88:16  ":"
+./examples/sort_list.cl:88:18  Type<List>
+./examples/sort_list.cl:88:23  "{"
+./examples/sort_list.cl:88:25  "("
+./examples/sort_list.cl:88:26  "new"
+./examples/sort_list.cl:88:30  Type<Cons>
+./examples/sort_list.cl:88:34  ")"
+./examples/sort_list.cl:88:35  "."
+./examples/sort_list.cl:88:36  Id<init>
+./examples/sort_list.cl:88:40  "("
+./examples/sort_list.cl:88:41  Id<xcar>
+./examples/sort_list.cl:88:45  ","
+./examples/sort_list.cl:88:47  Id<xcdr>
+./examples/sort_list.cl:88:51  "."
+./examples/sort_list.cl:88:52  Id<rcons>
+./examples/sort_list.cl:88:57  "("
+./examples/sort_list.cl:88:58  Id<i>
+./examples/sort_list.cl:88:59  ")"
+./examples/sort_list.cl:88:60  ")"
+./examples/sort_list.cl:88:62  "}"
+./examples/sort_list.cl:88:63  ";"
+./examples/sort_list.cl:90: 1  Id<print_list>
+./examples/sort_list.cl:90:11  "("
+./examples/sort_list.cl:90:12  ")"
+./examples/sort_list.cl:90:14  ":"
+./examples/sort_list.cl:90:16  Type<Object>
+./examples/sort_list.cl:90:23  "{"
+./examples/sort_list.cl:91: 2  "{"
+./examples/sort_list.cl:92: 7  Id<out_int>
+./examples/sort_list.cl:92:14  "("
+./examples/sort_list.cl:92:15  Id<xcar>
+./examples/sort_list.cl:92:19  ")"
+./examples/sort_list.cl:92:20  ";"
+./examples/sort_list.cl:93: 7  Id<out_string>
+./examples/sort_list.cl:93:17  "("
+./examples/sort_list.cl:93:18  String<>
+./examples/sort_list.cl:93:22  ")"
+./examples/sort_list.cl:93:23  ";"
+./examples/sort_list.cl:94: 7  Id<xcdr>
+./examples/sort_list.cl:94:11  "."
+./examples/sort_list.cl:94:12  Id<print_list>
+./examples/sort_list.cl:94:22  "("
+./examples/sort_list.cl:94:23  ")"
+./examples/sort_list.cl:94:24  ";"
+./examples/sort_list.cl:95: 2  "}"
+./examples/sort_list.cl:96: 1  "}"
+./examples/sort_list.cl:96: 2  ";"
+./examples/sort_list.cl:97: 0  "}"
+./examples/sort_list.cl:97: 1  ";"
+./examples/sort_list.cl:99: 0  "class"
+./examples/sort_list.cl:99: 6  Type<Nil>
+./examples/sort_list.cl:99:10  "inherits"
+./examples/sort_list.cl:99:19  Type<List>
+./examples/sort_list.cl:99:24  "{"
+./examples/sort_list.cl:100: 1  Id<isNil>
+./examples/sort_list.cl:100: 6  "("
+./examples/sort_list.cl:100: 7  ")"
+./examples/sort_list.cl:100: 9  ":"
+./examples/sort_list.cl:100:11  Type<Bool>
+./examples/sort_list.cl:100:16  "{"
+./examples/sort_list.cl:100:18  Boolean<True>
+./examples/sort_list.cl:100:23  "}"
+./examples/sort_list.cl:100:24  ";"
+./examples/sort_list.cl:102: 8  Id<rev>
+./examples/sort_list.cl:102:11  "("
+./examples/sort_list.cl:102:12  ")"
+./examples/sort_list.cl:102:14  ":"
+./examples/sort_list.cl:102:16  Type<List>
+./examples/sort_list.cl:102:21  "{"
+./examples/sort_list.cl:102:23  Id<self>
+./examples/sort_list.cl:102:28  "}"
+./examples/sort_list.cl:102:29  ";"
+./examples/sort_list.cl:104: 1  Id<sort>
+./examples/sort_list.cl:104: 5  "("
+./examples/sort_list.cl:104: 6  ")"
+./examples/sort_list.cl:104: 8  ":"
+./examples/sort_list.cl:104:10  Type<List>
+./examples/sort_list.cl:104:15  "{"
+./examples/sort_list.cl:104:17  Id<self>
+./examples/sort_list.cl:104:22  "}"
+./examples/sort_list.cl:104:23  ";"
+./examples/sort_list.cl:106: 1  Id<insert>
+./examples/sort_list.cl:106: 7  "("
+./examples/sort_list.cl:106: 8  Id<i>
+./examples/sort_list.cl:106:10  ":"
+./examples/sort_list.cl:106:12  Type<Int>
+./examples/sort_list.cl:106:15  ")"
+./examples/sort_list.cl:106:17  ":"
+./examples/sort_list.cl:106:19  Type<List>
+./examples/sort_list.cl:106:24  "{"
+./examples/sort_list.cl:106:26  Id<rcons>
+./examples/sort_list.cl:106:31  "("
+./examples/sort_list.cl:106:32  Id<i>
+./examples/sort_list.cl:106:33  ")"
+./examples/sort_list.cl:106:35  "}"
+./examples/sort_list.cl:106:36  ";"
+./examples/sort_list.cl:108: 1  Id<rcons>
+./examples/sort_list.cl:108: 6  "("
+./examples/sort_list.cl:108: 7  Id<i>
+./examples/sort_list.cl:108: 9  ":"
+./examples/sort_list.cl:108:11  Type<Int>
+./examples/sort_list.cl:108:14  ")"
+./examples/sort_list.cl:108:16  ":"
+./examples/sort_list.cl:108:18  Type<List>
+./examples/sort_list.cl:108:23  "{"
+./examples/sort_list.cl:108:25  "("
+./examples/sort_list.cl:108:26  "new"
+./examples/sort_list.cl:108:30  Type<Cons>
+./examples/sort_list.cl:108:34  ")"
+./examples/sort_list.cl:108:35  "."
+./examples/sort_list.cl:108:36  Id<init>
+./examples/sort_list.cl:108:40  "("
+./examples/sort_list.cl:108:41  Id<i>
+./examples/sort_list.cl:108:42  ","
+./examples/sort_list.cl:108:43  Id<self>
+./examples/sort_list.cl:108:47  ")"
+./examples/sort_list.cl:108:49  "}"
+./examples/sort_list.cl:108:50  ";"
+./examples/sort_list.cl:110: 1  Id<print_list>
+./examples/sort_list.cl:110:11  "("
+./examples/sort_list.cl:110:12  ")"
+./examples/sort_list.cl:110:14  ":"
+./examples/sort_list.cl:110:16  Type<Object>
+./examples/sort_list.cl:110:23  "{"
+./examples/sort_list.cl:110:25  Boolean<True>
+./examples/sort_list.cl:110:30  "}"
+./examples/sort_list.cl:110:31  ";"
+./examples/sort_list.cl:112: 0  "}"
+./examples/sort_list.cl:112: 1  ";"
+./examples/sort_list.cl:115: 0  "class"
+./examples/sort_list.cl:115: 6  Type<Main>
+./examples/sort_list.cl:115:11  "inherits"
+./examples/sort_list.cl:115:20  Type<IO>
+./examples/sort_list.cl:115:23  "{"
+./examples/sort_list.cl:117: 1  Id<l>
+./examples/sort_list.cl:117: 3  ":"
+./examples/sort_list.cl:117: 5  Type<List>
+./examples/sort_list.cl:117: 9  ";"
+./examples/sort_list.cl:119: 1  "(*"
+./examples/sort_list.cl:119: 4  Id<iota>
+./examples/sort_list.cl:119: 9  Id<maps>
+./examples/sort_list.cl:119:14  Id<its>
+./examples/sort_list.cl:119:18  Id<integer>
+./examples/sort_list.cl:119:26  Id<argument>
+./examples/sort_list.cl:119:35  Id<n>
+./examples/sort_list.cl:119:37  Id<into>
+./examples/sort_list.cl:119:42  Id<the>
+./examples/sort_list.cl:119:46  Id<list>
+./examples/sort_list.cl:119:51  Int<0>
+./examples/sort_list.cl:119:52  "."
+./examples/sort_list.cl:119:53  "."
+./examples/sort_list.cl:119:54  Id<n>
+./examples/sort_list.cl:119:55  "-"
+./examples/sort_list.cl:119:56  Int<1>
+./examples/sort_list.cl:119:58  "*)"
+./examples/sort_list.cl:120: 1  Id<iota>
+./examples/sort_list.cl:120: 5  "("
+./examples/sort_list.cl:120: 6  Id<i>
+./examples/sort_list.cl:120: 8  ":"
+./examples/sort_list.cl:120:10  Type<Int>
+./examples/sort_list.cl:120:13  ")"
+./examples/sort_list.cl:120:15  ":"
+./examples/sort_list.cl:120:17  Type<List>
+./examples/sort_list.cl:120:22  "{"
+./examples/sort_list.cl:121: 5  "{"
+./examples/sort_list.cl:122: 2  Id<l>
+./examples/sort_list.cl:122: 4  "<-"
+./examples/sort_list.cl:122: 7  "new"
+./examples/sort_list.cl:122:11  Type<Nil>
+./examples/sort_list.cl:122:14  ";"
+./examples/sort_list.cl:123: 2  "("
+./examples/sort_list.cl:123: 3  "let"
+./examples/sort_list.cl:123: 7  Id<j>
+./examples/sort_list.cl:123: 9  ":"
+./examples/sort_list.cl:123:11  Type<Int>
+./examples/sort_list.cl:123:15  "<-"
+./examples/sort_list.cl:123:18  Int<0>
+./examples/sort_list.cl:123:20  "in"
+./examples/sort_list.cl:124: 5  Id<while>
+./examples/sort_list.cl:124:11  Id<j>
+./examples/sort_list.cl:124:13  "<"
+./examples/sort_list.cl:124:15  Id<i>
+./examples/sort_list.cl:125: 5  "loop"
+./examples/sort_list.cl:126: 7  "{"
+./examples/sort_list.cl:127: 9  Id<l>
+./examples/sort_list.cl:127:11  "<-"
+./examples/sort_list.cl:127:14  "("
+./examples/sort_list.cl:127:15  "new"
+./examples/sort_list.cl:127:19  Type<Cons>
+./examples/sort_list.cl:127:23  ")"
+./examples/sort_list.cl:127:24  "."
+./examples/sort_list.cl:127:25  Id<init>
+./examples/sort_list.cl:127:29  "("
+./examples/sort_list.cl:127:30  Id<j>
+./examples/sort_list.cl:127:31  ","
+./examples/sort_list.cl:127:32  Id<l>
+./examples/sort_list.cl:127:33  ")"
+./examples/sort_list.cl:127:34  ";"
+./examples/sort_list.cl:128: 9  Id<j>
+./examples/sort_list.cl:128:11  "<-"
+./examples/sort_list.cl:128:14  Id<j>
+./examples/sort_list.cl:128:16  "+"
+./examples/sort_list.cl:128:18  Int<1>
+./examples/sort_list.cl:128:19  ";"
+./examples/sort_list.cl:129: 7  "}"
+./examples/sort_list.cl:130: 5  "pool"
+./examples/sort_list.cl:131: 2  ")"
+./examples/sort_list.cl:131: 3  ";"
+./examples/sort_list.cl:132: 2  Id<l>
+./examples/sort_list.cl:132: 3  ";"
+./examples/sort_list.cl:133: 5  "}"
+./examples/sort_list.cl:134: 1  "}"
+./examples/sort_list.cl:134: 2  ";"
+./examples/sort_list.cl:136: 1  Id<main>
+./examples/sort_list.cl:136: 5  "("
+./examples/sort_list.cl:136: 6  ")"
+./examples/sort_list.cl:136: 8  ":"
+./examples/sort_list.cl:136:10  Type<Object>
+./examples/sort_list.cl:136:17  "{"
+./examples/sort_list.cl:137: 4  "{"
+./examples/sort_list.cl:138: 6  Id<out_string>
+./examples/sort_list.cl:138:16  "("
+./examples/sort_list.cl:138:17  String<How many numbers to sort?>
+./examples/sort_list.cl:138:44  ")"
+./examples/sort_list.cl:138:45  ";"
+./examples/sort_list.cl:139: 6  Id<iota>
+./examples/sort_list.cl:139:10  "("
+./examples/sort_list.cl:139:11  Id<in_int>
+./examples/sort_list.cl:139:17  "("
+./examples/sort_list.cl:139:18  ")"
+./examples/sort_list.cl:139:19  ")"
+./examples/sort_list.cl:139:20  "."
+./examples/sort_list.cl:139:21  Id<rev>
+./examples/sort_list.cl:139:24  "("
+./examples/sort_list.cl:139:25  ")"
+./examples/sort_list.cl:139:26  "."
+./examples/sort_list.cl:139:27  Id<sort>
+./examples/sort_list.cl:139:31  "("
+./examples/sort_list.cl:139:32  ")"
+./examples/sort_list.cl:139:33  "."
+./examples/sort_list.cl:139:34  Id<print_list>
+./examples/sort_list.cl:139:44  "("
+./examples/sort_list.cl:139:45  ")"
+./examples/sort_list.cl:139:46  ";"
+./examples/sort_list.cl:140: 4  "}"
+./examples/sort_list.cl:141: 1  "}"
+./examples/sort_list.cl:141: 2  ";"
+./examples/sort_list.cl:142: 0  "}"
+./examples/sort_list.cl:142: 1  ";"

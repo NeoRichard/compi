@@ -1,0 +1,130 @@
+examples/palindrome.cl: 0: 0  "class"
+examples/palindrome.cl: 0: 6  Type<Main>
+examples/palindrome.cl: 0:11  "inherits"
+examples/palindrome.cl: 0:20  Type<IO>
+examples/palindrome.cl: 0:23  "{"
+examples/palindrome.cl: 1: 4  Id<pal>
+examples/palindrome.cl: 1: 7  "("
+examples/palindrome.cl: 1: 8  Id<s>
+examples/palindrome.cl: 1:10  ":"
+examples/palindrome.cl: 1:12  Type<String>
+examples/palindrome.cl: 1:18  ")"
+examples/palindrome.cl: 1:20  ":"
+examples/palindrome.cl: 1:22  Type<Bool>
+examples/palindrome.cl: 1:27  "{"
+examples/palindrome.cl: 2: 1  "if"
+examples/palindrome.cl: 2: 4  Id<s>
+examples/palindrome.cl: 2: 5  "."
+examples/palindrome.cl: 2: 6  Id<length>
+examples/palindrome.cl: 2:12  "("
+examples/palindrome.cl: 2:13  ")"
+examples/palindrome.cl: 2:15  "="
+examples/palindrome.cl: 2:17  Int<0>
+examples/palindrome.cl: 3: 1  "then"
+examples/palindrome.cl: 3: 6  Boolean<True>
+examples/palindrome.cl: 4: 1  "else"
+examples/palindrome.cl: 4: 6  "if"
+examples/palindrome.cl: 4: 9  Id<s>
+examples/palindrome.cl: 4:10  "."
+examples/palindrome.cl: 4:11  Id<length>
+examples/palindrome.cl: 4:17  "("
+examples/palindrome.cl: 4:18  ")"
+examples/palindrome.cl: 4:20  "="
+examples/palindrome.cl: 4:22  Int<1>
+examples/palindrome.cl: 5: 1  "then"
+examples/palindrome.cl: 5: 6  Boolean<True>
+examples/palindrome.cl: 6: 1  "else"
+examples/palindrome.cl: 6: 6  "if"
+examples/palindrome.cl: 6: 9  Id<s>
+examples/palindrome.cl: 6:10  "."
+examples/palindrome.cl: 6:11  Id<substr>
+examples/palindrome.cl: 6:17  "("
+examples/palindrome.cl: 6:18  Int<0>
+examples/palindrome.cl: 6:19  ","
+examples/palindrome.cl: 6:21  Int<1>
+examples/palindrome.cl: 6:22  ")"
+examples/palindrome.cl: 6:24  "="
+examples/palindrome.cl: 6:26  Id<s>
+examples/palindrome.cl: 6:27  "."
+examples/palindrome.cl: 6:28  Id<substr>
+examples/palindrome.cl: 6:34  "("
+examples/palindrome.cl: 6:35  Id<s>
+examples/palindrome.cl: 6:36  "."
+examples/palindrome.cl: 6:37  Id<length>
+examples/palindrome.cl: 6:43  "("
+examples/palindrome.cl: 6:44  ")"
+examples/palindrome.cl: 6:46  "-"
+examples/palindrome.cl: 6:48  Int<1>
+examples/palindrome.cl: 6:49  ","
+examples/palindrome.cl: 6:51  Int<1>
+examples/palindrome.cl: 6:52  ")"
+examples/palindrome.cl: 7: 1  "then"
+examples/palindrome.cl: 7: 6  Id<pal>
+examples/palindrome.cl: 7: 9  "("
+examples/palindrome.cl: 7:10  Id<s>
+examples/palindrome.cl: 7:11  "."
+examples/palindrome.cl: 7:12  Id<substr>
+examples/palindrome.cl: 7:18  "("
+examples/palindrome.cl: 7:19  Int<1>
+examples/palindrome.cl: 7:20  ","
+examples/palindrome.cl: 7:22  Id<s>
+examples/palindrome.cl: 7:23  "."
+examples/palindrome.cl: 7:24  Id<length>
+examples/palindrome.cl: 7:30  "("
+examples/palindrome.cl: 7:31  ")"
+examples/palindrome.cl: 7:33  "-"
+examples/palindrome.cl: 7:34  Int<2>
+examples/palindrome.cl: 7:35  ")"
+examples/palindrome.cl: 7:36  ")"
+examples/palindrome.cl: 8: 1  "else"
+examples/palindrome.cl: 8: 6  Boolean<False>
+examples/palindrome.cl: 9: 1  "fi"
+examples/palindrome.cl: 9: 4  "fi"
+examples/palindrome.cl: 9: 7  "fi"
+examples/palindrome.cl:10: 4  "}"
+examples/palindrome.cl:10: 5  ";"
+examples/palindrome.cl:12: 4  Id<i>
+examples/palindrome.cl:12: 6  ":"
+examples/palindrome.cl:12: 8  Type<Int>
+examples/palindrome.cl:12:11  ";"
+examples/palindrome.cl:14: 4  Id<main>
+examples/palindrome.cl:14: 8  "("
+examples/palindrome.cl:14: 9  ")"
+examples/palindrome.cl:14:11  ":"
+examples/palindrome.cl:14:13  Type<SELF_TYPE>
+examples/palindrome.cl:14:23  "{"
+examples/palindrome.cl:15: 1  "{"
+examples/palindrome.cl:16:12  Id<i>
+examples/palindrome.cl:16:14  "<-"
+examples/palindrome.cl:16:17  "~"
+examples/palindrome.cl:16:18  Int<1>
+examples/palindrome.cl:16:19  ";"
+examples/palindrome.cl:17: 5  Id<out_string>
+examples/palindrome.cl:17:15  "("
+examples/palindrome.cl:17:33  String<enter a string>
+examples/palindrome.cl:17:34  ")"
+examples/palindrome.cl:17:35  ";"
+examples/palindrome.cl:18: 5  "if"
+examples/palindrome.cl:18: 8  Id<pal>
+examples/palindrome.cl:18:11  "("
+examples/palindrome.cl:18:12  Id<in_string>
+examples/palindrome.cl:18:21  "("
+examples/palindrome.cl:18:22  ")"
+examples/palindrome.cl:18:23  ")"
+examples/palindrome.cl:19: 5  "then"
+examples/palindrome.cl:19:10  Id<out_string>
+examples/palindrome.cl:19:20  "("
+examples/palindrome.cl:19:45  String<that was a palindrom>
+examples/palindrome.cl:19:46  ")"
+examples/palindrome.cl:20: 5  "else"
+examples/palindrome.cl:20:10  Id<out_string>
+examples/palindrome.cl:20:20  "("
+examples/palindrome.cl:20:49  String<that was not a palin>
+examples/palindrome.cl:20:50  ")"
+examples/palindrome.cl:21: 5  "fi"
+examples/palindrome.cl:21: 7  ";"
+examples/palindrome.cl:22: 1  "}"
+examples/palindrome.cl:23: 4  "}"
+examples/palindrome.cl:23: 5  ";"
+examples/palindrome.cl:24: 0  "}"
+examples/palindrome.cl:24: 1  ";"

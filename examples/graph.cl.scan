@@ -1,0 +1,1295 @@
+examples/graph.cl:37: 0  "class"
+examples/graph.cl:37: 6  Type<Graph>
+examples/graph.cl:37:12  "{"
+examples/graph.cl:39: 3  Id<vertices>
+examples/graph.cl:39:12  ":"
+examples/graph.cl:39:14  Type<VList>
+examples/graph.cl:39:20  "<-"
+examples/graph.cl:39:23  "new"
+examples/graph.cl:39:27  Type<VList>
+examples/graph.cl:39:32  ";"
+examples/graph.cl:40: 3  Id<edges>
+examples/graph.cl:40:12  ":"
+examples/graph.cl:40:14  Type<EList>
+examples/graph.cl:40:20  "<-"
+examples/graph.cl:40:23  "new"
+examples/graph.cl:40:27  Type<EList>
+examples/graph.cl:40:32  ";"
+examples/graph.cl:42: 3  Id<add_vertice>
+examples/graph.cl:42:14  "("
+examples/graph.cl:42:15  Id<v>
+examples/graph.cl:42:17  ":"
+examples/graph.cl:42:19  Type<Vertice>
+examples/graph.cl:42:26  ")"
+examples/graph.cl:42:28  ":"
+examples/graph.cl:42:30  Type<Object>
+examples/graph.cl:42:37  "{"
+examples/graph.cl:42:39  "{"
+examples/graph.cl:43: 6  Id<edges>
+examples/graph.cl:43:12  "<-"
+examples/graph.cl:43:15  Id<v>
+examples/graph.cl:43:16  "."
+examples/graph.cl:43:17  Id<outgoing>
+examples/graph.cl:43:25  "("
+examples/graph.cl:43:26  ")"
+examples/graph.cl:43:27  "."
+examples/graph.cl:43:28  Id<append>
+examples/graph.cl:43:34  "("
+examples/graph.cl:43:35  Id<edges>
+examples/graph.cl:43:40  ")"
+examples/graph.cl:43:41  ";"
+examples/graph.cl:44: 6  Id<vertices>
+examples/graph.cl:44:15  "<-"
+examples/graph.cl:44:18  Id<vertices>
+examples/graph.cl:44:26  "."
+examples/graph.cl:44:27  Id<cons>
+examples/graph.cl:44:31  "("
+examples/graph.cl:44:32  Id<v>
+examples/graph.cl:44:33  ")"
+examples/graph.cl:44:34  ";"
+examples/graph.cl:45: 3  "}"
+examples/graph.cl:45: 5  "}"
+examples/graph.cl:45: 6  ";"
+examples/graph.cl:47: 3  Id<print_E>
+examples/graph.cl:47:10  "("
+examples/graph.cl:47:11  ")"
+examples/graph.cl:47:13  ":"
+examples/graph.cl:47:15  Type<Object>
+examples/graph.cl:47:22  "{"
+examples/graph.cl:47:24  Id<edges>
+examples/graph.cl:47:29  "."
+examples/graph.cl:47:30  Id<print>
+examples/graph.cl:47:35  "("
+examples/graph.cl:47:36  ")"
+examples/graph.cl:47:38  "}"
+examples/graph.cl:47:39  ";"
+examples/graph.cl:48: 3  Id<print_V>
+examples/graph.cl:48:10  "("
+examples/graph.cl:48:11  ")"
+examples/graph.cl:48:13  ":"
+examples/graph.cl:48:15  Type<Object>
+examples/graph.cl:48:22  "{"
+examples/graph.cl:48:24  Id<vertices>
+examples/graph.cl:48:32  "."
+examples/graph.cl:48:33  Id<print>
+examples/graph.cl:48:38  "("
+examples/graph.cl:48:39  ")"
+examples/graph.cl:48:41  "}"
+examples/graph.cl:48:42  ";"
+examples/graph.cl:50: 0  "}"
+examples/graph.cl:50: 1  ";"
+examples/graph.cl:52: 0  "class"
+examples/graph.cl:52: 6  Type<Vertice>
+examples/graph.cl:52:14  "inherits"
+examples/graph.cl:52:23  Type<IO>
+examples/graph.cl:52:26  "{"
+examples/graph.cl:54: 3  Id<num>
+examples/graph.cl:54: 8  ":"
+examples/graph.cl:54:10  Type<Int>
+examples/graph.cl:54:13  ";"
+examples/graph.cl:55: 3  Id<out>
+examples/graph.cl:55: 8  ":"
+examples/graph.cl:55:10  Type<EList>
+examples/graph.cl:55:16  "<-"
+examples/graph.cl:55:19  "new"
+examples/graph.cl:55:23  Type<EList>
+examples/graph.cl:55:28  ";"
+examples/graph.cl:57: 3  Id<outgoing>
+examples/graph.cl:57:11  "("
+examples/graph.cl:57:12  ")"
+examples/graph.cl:57:14  ":"
+examples/graph.cl:57:16  Type<EList>
+examples/graph.cl:57:22  "{"
+examples/graph.cl:57:24  Id<out>
+examples/graph.cl:57:28  "}"
+examples/graph.cl:57:29  ";"
+examples/graph.cl:59: 3  Id<number>
+examples/graph.cl:59: 9  "("
+examples/graph.cl:59:10  ")"
+examples/graph.cl:59:12  ":"
+examples/graph.cl:59:14  Type<Int>
+examples/graph.cl:59:18  "{"
+examples/graph.cl:59:20  Id<num>
+examples/graph.cl:59:24  "}"
+examples/graph.cl:59:25  ";"
+examples/graph.cl:61: 3  Id<init>
+examples/graph.cl:61: 7  "("
+examples/graph.cl:61: 8  Id<n>
+examples/graph.cl:61:10  ":"
+examples/graph.cl:61:12  Type<Int>
+examples/graph.cl:61:15  ")"
+examples/graph.cl:61:17  ":"
+examples/graph.cl:61:19  Type<SELF_TYPE>
+examples/graph.cl:61:29  "{"
+examples/graph.cl:62: 6  "{"
+examples/graph.cl:63: 9  Id<num>
+examples/graph.cl:63:13  "<-"
+examples/graph.cl:63:16  Id<n>
+examples/graph.cl:63:17  ";"
+examples/graph.cl:64: 9  Id<self>
+examples/graph.cl:64:13  ";"
+examples/graph.cl:65: 6  "}"
+examples/graph.cl:66: 3  "}"
+examples/graph.cl:66: 4  ";"
+examples/graph.cl:69: 3  Id<add_out>
+examples/graph.cl:69:10  "("
+examples/graph.cl:69:11  Id<s>
+examples/graph.cl:69:13  ":"
+examples/graph.cl:69:15  Type<Edge>
+examples/graph.cl:69:19  ")"
+examples/graph.cl:69:21  ":"
+examples/graph.cl:69:23  Type<SELF_TYPE>
+examples/graph.cl:69:33  "{"
+examples/graph.cl:70: 6  "{"
+examples/graph.cl:71: 2  Id<out>
+examples/graph.cl:71: 6  "<-"
+examples/graph.cl:71: 9  Id<out>
+examples/graph.cl:71:12  "."
+examples/graph.cl:71:13  Id<cons>
+examples/graph.cl:71:17  "("
+examples/graph.cl:71:18  Id<s>
+examples/graph.cl:71:19  ")"
+examples/graph.cl:71:20  ";"
+examples/graph.cl:72: 9  Id<self>
+examples/graph.cl:72:13  ";"
+examples/graph.cl:73: 6  "}"
+examples/graph.cl:74: 3  "}"
+examples/graph.cl:74: 4  ";"
+examples/graph.cl:76: 3  Id<print>
+examples/graph.cl:76: 8  "("
+examples/graph.cl:76: 9  ")"
+examples/graph.cl:76:11  ":"
+examples/graph.cl:76:13  Type<Object>
+examples/graph.cl:76:20  "{"
+examples/graph.cl:77: 6  "{"
+examples/graph.cl:78: 9  Id<out_int>
+examples/graph.cl:78:16  "("
+examples/graph.cl:78:17  Id<num>
+examples/graph.cl:78:20  ")"
+examples/graph.cl:78:21  ";"
+examples/graph.cl:79: 2  Id<out>
+examples/graph.cl:79: 5  "."
+examples/graph.cl:79: 6  Id<print>
+examples/graph.cl:79:11  "("
+examples/graph.cl:79:12  ")"
+examples/graph.cl:79:13  ";"
+examples/graph.cl:80: 6  "}"
+examples/graph.cl:81: 3  "}"
+examples/graph.cl:81: 4  ";"
+examples/graph.cl:83: 0  "}"
+examples/graph.cl:83: 1  ";"
+examples/graph.cl:85: 0  "class"
+examples/graph.cl:85: 6  Type<Edge>
+examples/graph.cl:85:11  "inherits"
+examples/graph.cl:85:20  Type<IO>
+examples/graph.cl:85:23  "{"
+examples/graph.cl:87: 3  Id<from>
+examples/graph.cl:87:10  ":"
+examples/graph.cl:87:12  Type<Int>
+examples/graph.cl:87:15  ";"
+examples/graph.cl:88: 3  Id<to>
+examples/graph.cl:88:10  ":"
+examples/graph.cl:88:12  Type<Int>
+examples/graph.cl:88:15  ";"
+examples/graph.cl:89: 3  Id<weight>
+examples/graph.cl:89:10  ":"
+examples/graph.cl:89:12  Type<Int>
+examples/graph.cl:89:15  ";"
+examples/graph.cl:91: 3  Id<init>
+examples/graph.cl:91: 7  "("
+examples/graph.cl:91: 8  Id<f>
+examples/graph.cl:91:10  ":"
+examples/graph.cl:91:12  Type<Int>
+examples/graph.cl:91:15  ","
+examples/graph.cl:91:17  Id<t>
+examples/graph.cl:91:19  ":"
+examples/graph.cl:91:21  Type<Int>
+examples/graph.cl:91:24  ","
+examples/graph.cl:91:26  Id<w>
+examples/graph.cl:91:28  ":"
+examples/graph.cl:91:30  Type<Int>
+examples/graph.cl:91:33  ")"
+examples/graph.cl:91:35  ":"
+examples/graph.cl:91:37  Type<SELF_TYPE>
+examples/graph.cl:91:47  "{"
+examples/graph.cl:92: 6  "{"
+examples/graph.cl:93: 9  Id<from>
+examples/graph.cl:93:14  "<-"
+examples/graph.cl:93:17  Id<f>
+examples/graph.cl:93:18  ";"
+examples/graph.cl:94: 2  Id<to>
+examples/graph.cl:94: 5  "<-"
+examples/graph.cl:94: 8  Id<t>
+examples/graph.cl:94: 9  ";"
+examples/graph.cl:95: 2  Id<weight>
+examples/graph.cl:95: 9  "<-"
+examples/graph.cl:95:12  Id<w>
+examples/graph.cl:95:13  ";"
+examples/graph.cl:96: 2  Id<self>
+examples/graph.cl:96: 6  ";"
+examples/graph.cl:97: 6  "}"
+examples/graph.cl:98: 3  "}"
+examples/graph.cl:98: 4  ";"
+examples/graph.cl:100: 3  Id<print>
+examples/graph.cl:100: 8  "("
+examples/graph.cl:100: 9  ")"
+examples/graph.cl:100:11  ":"
+examples/graph.cl:100:13  Type<Object>
+examples/graph.cl:100:20  "{"
+examples/graph.cl:101: 6  "{"
+examples/graph.cl:102: 9  Id<out_string>
+examples/graph.cl:102:19  "("
+examples/graph.cl:102:23  String< (>
+examples/graph.cl:102:24  ")"
+examples/graph.cl:102:25  ";"
+examples/graph.cl:103: 2  Id<out_int>
+examples/graph.cl:103: 9  "("
+examples/graph.cl:103:10  Id<from>
+examples/graph.cl:103:14  ")"
+examples/graph.cl:103:15  ";"
+examples/graph.cl:104: 2  Id<out_string>
+examples/graph.cl:104:12  "("
+examples/graph.cl:104:15  String<,>
+examples/graph.cl:104:16  ")"
+examples/graph.cl:104:17  ";"
+examples/graph.cl:105: 2  Id<out_int>
+examples/graph.cl:105: 9  "("
+examples/graph.cl:105:10  Id<to>
+examples/graph.cl:105:12  ")"
+examples/graph.cl:105:13  ";"
+examples/graph.cl:106: 2  Id<out_string>
+examples/graph.cl:106:12  "("
+examples/graph.cl:106:15  String<)>
+examples/graph.cl:106:16  ")"
+examples/graph.cl:106:17  ";"
+examples/graph.cl:107: 2  Id<out_int>
+examples/graph.cl:107: 9  "("
+examples/graph.cl:107:10  Id<weight>
+examples/graph.cl:107:16  ")"
+examples/graph.cl:107:17  ";"
+examples/graph.cl:108: 6  "}"
+examples/graph.cl:109: 3  "}"
+examples/graph.cl:109: 4  ";"
+examples/graph.cl:111: 0  "}"
+examples/graph.cl:111: 1  ";"
+examples/graph.cl:115: 0  "class"
+examples/graph.cl:115: 6  Type<EList>
+examples/graph.cl:115:12  "inherits"
+examples/graph.cl:115:21  Type<IO>
+examples/graph.cl:115:24  "{"
+examples/graph.cl:118: 3  Id<car>
+examples/graph.cl:118: 7  ":"
+examples/graph.cl:118: 9  Type<Edge>
+examples/graph.cl:118:13  ";"
+examples/graph.cl:120: 3  Id<isNil>
+examples/graph.cl:120: 8  "("
+examples/graph.cl:120: 9  ")"
+examples/graph.cl:120:11  ":"
+examples/graph.cl:120:13  Type<Bool>
+examples/graph.cl:120:18  "{"
+examples/graph.cl:120:20  Boolean<True>
+examples/graph.cl:120:25  "}"
+examples/graph.cl:120:26  ";"
+examples/graph.cl:122: 3  Id<head>
+examples/graph.cl:122: 7  "("
+examples/graph.cl:122: 8  ")"
+examples/graph.cl:122:11  ":"
+examples/graph.cl:122:13  Type<Edge>
+examples/graph.cl:122:18  "{"
+examples/graph.cl:122:20  "{"
+examples/graph.cl:122:22  Id<abort>
+examples/graph.cl:122:27  "("
+examples/graph.cl:122:28  ")"
+examples/graph.cl:122:29  ";"
+examples/graph.cl:122:31  Id<car>
+examples/graph.cl:122:34  ";"
+examples/graph.cl:122:36  "}"
+examples/graph.cl:122:38  "}"
+examples/graph.cl:122:39  ";"
+examples/graph.cl:124: 3  Id<tail>
+examples/graph.cl:124: 7  "("
+examples/graph.cl:124: 8  ")"
+examples/graph.cl:124:11  ":"
+examples/graph.cl:124:13  Type<EList>
+examples/graph.cl:124:19  "{"
+examples/graph.cl:124:21  "{"
+examples/graph.cl:124:23  Id<abort>
+examples/graph.cl:124:28  "("
+examples/graph.cl:124:29  ")"
+examples/graph.cl:124:30  ";"
+examples/graph.cl:124:32  Id<self>
+examples/graph.cl:124:36  ";"
+examples/graph.cl:124:38  "}"
+examples/graph.cl:124:40  "}"
+examples/graph.cl:124:41  ";"
+examples/graph.cl:133: 3  Id<cons>
+examples/graph.cl:133: 7  "("
+examples/graph.cl:133: 8  Id<e>
+examples/graph.cl:133:10  ":"
+examples/graph.cl:133:12  Type<Edge>
+examples/graph.cl:133:16  ")"
+examples/graph.cl:133:18  ":"
+examples/graph.cl:133:20  Type<EList>
+examples/graph.cl:133:26  "{"
+examples/graph.cl:134: 6  "("
+examples/graph.cl:134: 7  "new"
+examples/graph.cl:134:11  Type<ECons>
+examples/graph.cl:134:16  ")"
+examples/graph.cl:134:17  "."
+examples/graph.cl:134:18  Id<init>
+examples/graph.cl:134:22  "("
+examples/graph.cl:134:23  Id<e>
+examples/graph.cl:134:24  ","
+examples/graph.cl:134:26  Id<self>
+examples/graph.cl:134:30  ")"
+examples/graph.cl:135: 3  "}"
+examples/graph.cl:135: 4  ";"
+examples/graph.cl:137: 3  Id<append>
+examples/graph.cl:137: 9  "("
+examples/graph.cl:137:10  Id<l>
+examples/graph.cl:137:12  ":"
+examples/graph.cl:137:14  Type<EList>
+examples/graph.cl:137:19  ")"
+examples/graph.cl:137:21  ":"
+examples/graph.cl:137:23  Type<EList>
+examples/graph.cl:137:29  "{"
+examples/graph.cl:138: 5  "if"
+examples/graph.cl:138: 8  Id<self>
+examples/graph.cl:138:12  "."
+examples/graph.cl:138:13  Id<isNil>
+examples/graph.cl:138:18  "("
+examples/graph.cl:138:19  ")"
+examples/graph.cl:138:21  "then"
+examples/graph.cl:138:26  Id<l>
+examples/graph.cl:139: 5  "else"
+examples/graph.cl:139:10  Id<tail>
+examples/graph.cl:139:14  "("
+examples/graph.cl:139:15  ")"
+examples/graph.cl:139:16  "."
+examples/graph.cl:139:17  Id<append>
+examples/graph.cl:139:23  "("
+examples/graph.cl:139:24  Id<l>
+examples/graph.cl:139:25  ")"
+examples/graph.cl:139:26  "."
+examples/graph.cl:139:27  Id<cons>
+examples/graph.cl:139:31  "("
+examples/graph.cl:139:32  Id<head>
+examples/graph.cl:139:36  "("
+examples/graph.cl:139:37  ")"
+examples/graph.cl:139:38  ")"
+examples/graph.cl:140: 5  "fi"
+examples/graph.cl:141: 3  "}"
+examples/graph.cl:141: 4  ";"
+examples/graph.cl:143: 3  Id<print>
+examples/graph.cl:143: 8  "("
+examples/graph.cl:143: 9  ")"
+examples/graph.cl:143:11  ":"
+examples/graph.cl:143:13  Type<Object>
+examples/graph.cl:143:20  "{"
+examples/graph.cl:144: 5  Id<out_string>
+examples/graph.cl:144:15  "("
+examples/graph.cl:144:19  String<>
+examples/graph.cl:144:20  ")"
+examples/graph.cl:145: 3  "}"
+examples/graph.cl:145: 4  ";"
+examples/graph.cl:147: 0  "}"
+examples/graph.cl:147: 1  ";"
+examples/graph.cl:163: 0  "class"
+examples/graph.cl:163: 6  Type<ECons>
+examples/graph.cl:163:12  "inherits"
+examples/graph.cl:163:21  Type<EList>
+examples/graph.cl:163:27  "{"
+examples/graph.cl:165: 3  Id<cdr>
+examples/graph.cl:165: 7  ":"
+examples/graph.cl:165: 9  Type<EList>
+examples/graph.cl:165:14  ";"
+examples/graph.cl:167: 3  Id<isNil>
+examples/graph.cl:167: 8  "("
+examples/graph.cl:167: 9  ")"
+examples/graph.cl:167:11  ":"
+examples/graph.cl:167:13  Type<Bool>
+examples/graph.cl:167:18  "{"
+examples/graph.cl:167:20  Boolean<False>
+examples/graph.cl:167:26  "}"
+examples/graph.cl:167:27  ";"
+examples/graph.cl:169: 3  Id<head>
+examples/graph.cl:169: 7  "("
+examples/graph.cl:169: 8  ")"
+examples/graph.cl:169:11  ":"
+examples/graph.cl:169:13  Type<Edge>
+examples/graph.cl:169:18  "{"
+examples/graph.cl:169:20  Id<car>
+examples/graph.cl:169:24  "}"
+examples/graph.cl:169:25  ";"
+examples/graph.cl:171: 3  Id<tail>
+examples/graph.cl:171: 7  "("
+examples/graph.cl:171: 8  ")"
+examples/graph.cl:171:11  ":"
+examples/graph.cl:171:13  Type<EList>
+examples/graph.cl:171:19  "{"
+examples/graph.cl:171:21  Id<cdr>
+examples/graph.cl:171:25  "}"
+examples/graph.cl:171:26  ";"
+examples/graph.cl:173: 3  Id<init>
+examples/graph.cl:173: 7  "("
+examples/graph.cl:173: 8  Id<e>
+examples/graph.cl:173:10  ":"
+examples/graph.cl:173:12  Type<Edge>
+examples/graph.cl:173:16  ","
+examples/graph.cl:173:18  Id<rest>
+examples/graph.cl:173:23  ":"
+examples/graph.cl:173:25  Type<EList>
+examples/graph.cl:173:30  ")"
+examples/graph.cl:173:32  ":"
+examples/graph.cl:173:34  Type<EList>
+examples/graph.cl:173:40  "{"
+examples/graph.cl:174: 6  "{"
+examples/graph.cl:175: 2  Id<car>
+examples/graph.cl:175: 6  "<-"
+examples/graph.cl:175: 9  Id<e>
+examples/graph.cl:175:10  ";"
+examples/graph.cl:176: 2  Id<cdr>
+examples/graph.cl:176: 6  "<-"
+examples/graph.cl:176: 9  Id<rest>
+examples/graph.cl:176:13  ";"
+examples/graph.cl:177: 2  Id<self>
+examples/graph.cl:177: 6  ";"
+examples/graph.cl:178: 6  "}"
+examples/graph.cl:179: 3  "}"
+examples/graph.cl:179: 4  ";"
+examples/graph.cl:181: 3  Id<print>
+examples/graph.cl:181: 8  "("
+examples/graph.cl:181: 9  ")"
+examples/graph.cl:181:11  ":"
+examples/graph.cl:181:13  Type<Object>
+examples/graph.cl:181:20  "{"
+examples/graph.cl:182: 5  "{"
+examples/graph.cl:183: 7  Id<car>
+examples/graph.cl:183:10  "."
+examples/graph.cl:183:11  Id<print>
+examples/graph.cl:183:16  "("
+examples/graph.cl:183:17  ")"
+examples/graph.cl:183:18  ";"
+examples/graph.cl:184: 7  Id<cdr>
+examples/graph.cl:184:10  "."
+examples/graph.cl:184:11  Id<print>
+examples/graph.cl:184:16  "("
+examples/graph.cl:184:17  ")"
+examples/graph.cl:184:18  ";"
+examples/graph.cl:185: 5  "}"
+examples/graph.cl:186: 3  "}"
+examples/graph.cl:186: 4  ";"
+examples/graph.cl:188: 0  "}"
+examples/graph.cl:188: 1  ";"
+examples/graph.cl:193: 0  "class"
+examples/graph.cl:193: 6  Type<VList>
+examples/graph.cl:193:12  "inherits"
+examples/graph.cl:193:21  Type<IO>
+examples/graph.cl:193:24  "{"
+examples/graph.cl:196: 3  Id<car>
+examples/graph.cl:196: 7  ":"
+examples/graph.cl:196: 9  Type<Vertice>
+examples/graph.cl:196:16  ";"
+examples/graph.cl:198: 3  Id<isNil>
+examples/graph.cl:198: 8  "("
+examples/graph.cl:198: 9  ")"
+examples/graph.cl:198:11  ":"
+examples/graph.cl:198:13  Type<Bool>
+examples/graph.cl:198:18  "{"
+examples/graph.cl:198:20  Boolean<True>
+examples/graph.cl:198:25  "}"
+examples/graph.cl:198:26  ";"
+examples/graph.cl:200: 3  Id<head>
+examples/graph.cl:200: 7  "("
+examples/graph.cl:200: 8  ")"
+examples/graph.cl:200:11  ":"
+examples/graph.cl:200:13  Type<Vertice>
+examples/graph.cl:200:21  "{"
+examples/graph.cl:200:23  "{"
+examples/graph.cl:200:25  Id<abort>
+examples/graph.cl:200:30  "("
+examples/graph.cl:200:31  ")"
+examples/graph.cl:200:32  ";"
+examples/graph.cl:200:34  Id<car>
+examples/graph.cl:200:37  ";"
+examples/graph.cl:200:39  "}"
+examples/graph.cl:200:41  "}"
+examples/graph.cl:200:42  ";"
+examples/graph.cl:202: 3  Id<tail>
+examples/graph.cl:202: 7  "("
+examples/graph.cl:202: 8  ")"
+examples/graph.cl:202:11  ":"
+examples/graph.cl:202:13  Type<VList>
+examples/graph.cl:202:19  "{"
+examples/graph.cl:202:21  "{"
+examples/graph.cl:202:23  Id<abort>
+examples/graph.cl:202:28  "("
+examples/graph.cl:202:29  ")"
+examples/graph.cl:202:30  ";"
+examples/graph.cl:202:32  Id<self>
+examples/graph.cl:202:36  ";"
+examples/graph.cl:202:38  "}"
+examples/graph.cl:202:40  "}"
+examples/graph.cl:202:41  ";"
+examples/graph.cl:211: 3  Id<cons>
+examples/graph.cl:211: 7  "("
+examples/graph.cl:211: 8  Id<v>
+examples/graph.cl:211:10  ":"
+examples/graph.cl:211:12  Type<Vertice>
+examples/graph.cl:211:19  ")"
+examples/graph.cl:211:21  ":"
+examples/graph.cl:211:23  Type<VList>
+examples/graph.cl:211:29  "{"
+examples/graph.cl:212: 6  "("
+examples/graph.cl:212: 7  "new"
+examples/graph.cl:212:11  Type<VCons>
+examples/graph.cl:212:16  ")"
+examples/graph.cl:212:17  "."
+examples/graph.cl:212:18  Id<init>
+examples/graph.cl:212:22  "("
+examples/graph.cl:212:23  Id<v>
+examples/graph.cl:212:24  ","
+examples/graph.cl:212:26  Id<self>
+examples/graph.cl:212:30  ")"
+examples/graph.cl:213: 3  "}"
+examples/graph.cl:213: 4  ";"
+examples/graph.cl:215: 3  Id<print>
+examples/graph.cl:215: 8  "("
+examples/graph.cl:215: 9  ")"
+examples/graph.cl:215:11  ":"
+examples/graph.cl:215:13  Type<Object>
+examples/graph.cl:215:20  "{"
+examples/graph.cl:215:22  Id<out_string>
+examples/graph.cl:215:32  "("
+examples/graph.cl:215:36  String<>
+examples/graph.cl:215:37  ")"
+examples/graph.cl:215:39  "}"
+examples/graph.cl:215:40  ";"
+examples/graph.cl:217: 0  "}"
+examples/graph.cl:217: 1  ";"
+examples/graph.cl:220: 0  "class"
+examples/graph.cl:220: 6  Type<VCons>
+examples/graph.cl:220:12  "inherits"
+examples/graph.cl:220:21  Type<VList>
+examples/graph.cl:220:27  "{"
+examples/graph.cl:222: 3  Id<cdr>
+examples/graph.cl:222: 7  ":"
+examples/graph.cl:222: 9  Type<VList>
+examples/graph.cl:222:14  ";"
+examples/graph.cl:224: 3  Id<isNil>
+examples/graph.cl:224: 8  "("
+examples/graph.cl:224: 9  ")"
+examples/graph.cl:224:11  ":"
+examples/graph.cl:224:13  Type<Bool>
+examples/graph.cl:224:18  "{"
+examples/graph.cl:224:20  Boolean<False>
+examples/graph.cl:224:26  "}"
+examples/graph.cl:224:27  ";"
+examples/graph.cl:226: 3  Id<head>
+examples/graph.cl:226: 7  "("
+examples/graph.cl:226: 8  ")"
+examples/graph.cl:226:11  ":"
+examples/graph.cl:226:13  Type<Vertice>
+examples/graph.cl:226:21  "{"
+examples/graph.cl:226:23  Id<car>
+examples/graph.cl:226:27  "}"
+examples/graph.cl:226:28  ";"
+examples/graph.cl:228: 3  Id<tail>
+examples/graph.cl:228: 7  "("
+examples/graph.cl:228: 8  ")"
+examples/graph.cl:228:11  ":"
+examples/graph.cl:228:13  Type<VList>
+examples/graph.cl:228:19  "{"
+examples/graph.cl:228:21  Id<cdr>
+examples/graph.cl:228:25  "}"
+examples/graph.cl:228:26  ";"
+examples/graph.cl:230: 3  Id<init>
+examples/graph.cl:230: 7  "("
+examples/graph.cl:230: 8  Id<v>
+examples/graph.cl:230:10  ":"
+examples/graph.cl:230:12  Type<Vertice>
+examples/graph.cl:230:19  ","
+examples/graph.cl:230:21  Id<rest>
+examples/graph.cl:230:26  ":"
+examples/graph.cl:230:28  Type<VList>
+examples/graph.cl:230:33  ")"
+examples/graph.cl:230:35  ":"
+examples/graph.cl:230:37  Type<VList>
+examples/graph.cl:230:43  "{"
+examples/graph.cl:231: 6  "{"
+examples/graph.cl:232: 2  Id<car>
+examples/graph.cl:232: 6  "<-"
+examples/graph.cl:232: 9  Id<v>
+examples/graph.cl:232:10  ";"
+examples/graph.cl:233: 2  Id<cdr>
+examples/graph.cl:233: 6  "<-"
+examples/graph.cl:233: 9  Id<rest>
+examples/graph.cl:233:13  ";"
+examples/graph.cl:234: 2  Id<self>
+examples/graph.cl:234: 6  ";"
+examples/graph.cl:235: 6  "}"
+examples/graph.cl:236: 3  "}"
+examples/graph.cl:236: 4  ";"
+examples/graph.cl:238: 3  Id<print>
+examples/graph.cl:238: 8  "("
+examples/graph.cl:238: 9  ")"
+examples/graph.cl:238:11  ":"
+examples/graph.cl:238:13  Type<Object>
+examples/graph.cl:238:20  "{"
+examples/graph.cl:239: 5  "{"
+examples/graph.cl:240: 7  Id<car>
+examples/graph.cl:240:10  "."
+examples/graph.cl:240:11  Id<print>
+examples/graph.cl:240:16  "("
+examples/graph.cl:240:17  ")"
+examples/graph.cl:240:18  ";"
+examples/graph.cl:241: 7  Id<cdr>
+examples/graph.cl:241:10  "."
+examples/graph.cl:241:11  Id<print>
+examples/graph.cl:241:16  "("
+examples/graph.cl:241:17  ")"
+examples/graph.cl:241:18  ";"
+examples/graph.cl:242: 5  "}"
+examples/graph.cl:243: 3  "}"
+examples/graph.cl:243: 4  ";"
+examples/graph.cl:245: 0  "}"
+examples/graph.cl:245: 1  ";"
+examples/graph.cl:248: 0  "class"
+examples/graph.cl:248: 6  Type<Parse>
+examples/graph.cl:248:12  "inherits"
+examples/graph.cl:248:21  Type<IO>
+examples/graph.cl:248:24  "{"
+examples/graph.cl:251: 3  Id<boolop>
+examples/graph.cl:251:10  ":"
+examples/graph.cl:251:12  Type<BoolOp>
+examples/graph.cl:251:19  "<-"
+examples/graph.cl:251:22  "new"
+examples/graph.cl:251:26  Type<BoolOp>
+examples/graph.cl:251:32  ";"
+examples/graph.cl:255: 3  Id<read_input>
+examples/graph.cl:255:13  "("
+examples/graph.cl:255:14  ")"
+examples/graph.cl:255:16  ":"
+examples/graph.cl:255:18  Type<Graph>
+examples/graph.cl:255:24  "{"
+examples/graph.cl:257: 6  "("
+examples/graph.cl:257: 7  "let"
+examples/graph.cl:257:11  Id<g>
+examples/graph.cl:257:13  ":"
+examples/graph.cl:257:15  Type<Graph>
+examples/graph.cl:257:21  "<-"
+examples/graph.cl:257:24  "new"
+examples/graph.cl:257:28  Type<Graph>
+examples/graph.cl:257:34  "in"
+examples/graph.cl:257:37  "{"
+examples/graph.cl:258: 9  "("
+examples/graph.cl:258:10  "let"
+examples/graph.cl:258:14  Id<line>
+examples/graph.cl:258:19  ":"
+examples/graph.cl:258:21  Type<String>
+examples/graph.cl:258:28  "<-"
+examples/graph.cl:258:31  Id<in_string>
+examples/graph.cl:258:40  "("
+examples/graph.cl:258:41  ")"
+examples/graph.cl:258:43  "in"
+examples/graph.cl:259:12  "while"
+examples/graph.cl:259:18  "("
+examples/graph.cl:259:19  Id<boolop>
+examples/graph.cl:259:25  "."
+examples/graph.cl:259:26  Id<and>
+examples/graph.cl:259:29  "("
+examples/graph.cl:259:30  "not"
+examples/graph.cl:259:34  Id<line>
+examples/graph.cl:259:38  "="
+examples/graph.cl:259:42  String<>
+examples/graph.cl:259:43  ","
+examples/graph.cl:259:45  "not"
+examples/graph.cl:259:49  Id<line>
+examples/graph.cl:259:53  "="
+examples/graph.cl:259:55  String<>
+examples/graph.cl:259:56  ")"
+examples/graph.cl:259:57  ")"
+examples/graph.cl:259:59  "loop"
+examples/graph.cl:259:64  "{"
+examples/graph.cl:262: 2  Id<g>
+examples/graph.cl:262: 3  "."
+examples/graph.cl:262: 4  Id<add_vertice>
+examples/graph.cl:262:15  "("
+examples/graph.cl:262:16  Id<parse_line>
+examples/graph.cl:262:26  "("
+examples/graph.cl:262:27  Id<line>
+examples/graph.cl:262:31  ")"
+examples/graph.cl:262:32  ")"
+examples/graph.cl:262:33  ";"
+examples/graph.cl:263: 2  Id<line>
+examples/graph.cl:263: 7  "<-"
+examples/graph.cl:263:10  Id<in_string>
+examples/graph.cl:263:19  "("
+examples/graph.cl:263:20  ")"
+examples/graph.cl:263:21  ";"
+examples/graph.cl:264: 5  "}"
+examples/graph.cl:264: 7  "pool"
+examples/graph.cl:265: 9  ")"
+examples/graph.cl:265:10  ";"
+examples/graph.cl:266: 2  Id<g>
+examples/graph.cl:266: 3  ";"
+examples/graph.cl:267: 6  "}"
+examples/graph.cl:267: 8  ")"
+examples/graph.cl:268: 3  "}"
+examples/graph.cl:268: 4  ";"
+examples/graph.cl:271: 3  Id<parse_line>
+examples/graph.cl:271:13  "("
+examples/graph.cl:271:14  Id<s>
+examples/graph.cl:271:16  ":"
+examples/graph.cl:271:18  Type<String>
+examples/graph.cl:271:24  ")"
+examples/graph.cl:271:26  ":"
+examples/graph.cl:271:28  Type<Vertice>
+examples/graph.cl:271:36  "{"
+examples/graph.cl:272: 6  "("
+examples/graph.cl:272: 7  "let"
+examples/graph.cl:272:11  Id<v>
+examples/graph.cl:272:13  ":"
+examples/graph.cl:272:15  Type<Vertice>
+examples/graph.cl:272:23  "<-"
+examples/graph.cl:272:26  "("
+examples/graph.cl:272:27  "new"
+examples/graph.cl:272:31  Type<Vertice>
+examples/graph.cl:272:38  ")"
+examples/graph.cl:272:39  "."
+examples/graph.cl:272:40  Id<init>
+examples/graph.cl:272:44  "("
+examples/graph.cl:272:45  Id<a2i>
+examples/graph.cl:272:48  "("
+examples/graph.cl:272:49  Id<s>
+examples/graph.cl:272:50  ")"
+examples/graph.cl:272:51  ")"
+examples/graph.cl:272:53  "in"
+examples/graph.cl:272:56  "{"
+examples/graph.cl:273: 2  "while"
+examples/graph.cl:273: 8  "("
+examples/graph.cl:273: 9  "not"
+examples/graph.cl:273:13  Id<rest>
+examples/graph.cl:273:17  "."
+examples/graph.cl:273:18  Id<length>
+examples/graph.cl:273:24  "("
+examples/graph.cl:273:25  ")"
+examples/graph.cl:273:27  "="
+examples/graph.cl:273:29  Int<0>
+examples/graph.cl:273:30  ")"
+examples/graph.cl:273:32  "loop"
+examples/graph.cl:273:37  "{"
+examples/graph.cl:276: 8  "("
+examples/graph.cl:276: 9  "let"
+examples/graph.cl:276:13  Id<succ>
+examples/graph.cl:276:18  ":"
+examples/graph.cl:276:20  Type<Int>
+examples/graph.cl:276:24  "<-"
+examples/graph.cl:276:27  Id<a2i>
+examples/graph.cl:276:30  "("
+examples/graph.cl:276:31  Id<rest>
+examples/graph.cl:276:35  ")"
+examples/graph.cl:276:37  "in"
+examples/graph.cl:276:40  "("
+examples/graph.cl:276:41  "let"
+examples/graph.cl:277:12  Id<weight>
+examples/graph.cl:277:19  ":"
+examples/graph.cl:277:21  Type<Int>
+examples/graph.cl:277:25  "<-"
+examples/graph.cl:277:28  Id<a2i>
+examples/graph.cl:277:31  "("
+examples/graph.cl:277:32  Id<rest>
+examples/graph.cl:277:36  ")"
+examples/graph.cl:278:15  "in"
+examples/graph.cl:279:11  Id<v>
+examples/graph.cl:279:12  "."
+examples/graph.cl:279:13  Id<add_out>
+examples/graph.cl:279:20  "("
+examples/graph.cl:279:21  "new"
+examples/graph.cl:279:25  Type<Edge>
+examples/graph.cl:279:29  "."
+examples/graph.cl:279:30  Id<init>
+examples/graph.cl:279:34  "("
+examples/graph.cl:279:35  Id<v>
+examples/graph.cl:279:36  "."
+examples/graph.cl:279:37  Id<number>
+examples/graph.cl:279:43  "("
+examples/graph.cl:279:44  ")"
+examples/graph.cl:279:45  ","
+examples/graph.cl:280:42  Id<succ>
+examples/graph.cl:280:46  ","
+examples/graph.cl:281: 7  Id<weight>
+examples/graph.cl:281:13  ")"
+examples/graph.cl:281:14  ")"
+examples/graph.cl:282: 8  ")"
+examples/graph.cl:282:10  ")"
+examples/graph.cl:282:11  ";"
+examples/graph.cl:283: 2  "}"
+examples/graph.cl:283: 4  "pool"
+examples/graph.cl:283: 8  ";"
+examples/graph.cl:284: 2  Id<v>
+examples/graph.cl:284: 3  ";"
+examples/graph.cl:285: 9  "}"
+examples/graph.cl:286: 6  ")"
+examples/graph.cl:287: 3  "}"
+examples/graph.cl:287: 4  ";"
+examples/graph.cl:289: 5  Id<c2i>
+examples/graph.cl:289: 8  "("
+examples/graph.cl:289: 9  Id<char>
+examples/graph.cl:289:14  ":"
+examples/graph.cl:289:16  Type<String>
+examples/graph.cl:289:22  ")"
+examples/graph.cl:289:24  ":"
+examples/graph.cl:289:26  Type<Int>
+examples/graph.cl:289:30  "{"
+examples/graph.cl:290: 1  "if"
+examples/graph.cl:290: 4  Id<char>
+examples/graph.cl:290: 9  "="
+examples/graph.cl:290:13  String<0>
+examples/graph.cl:290:15  "then"
+examples/graph.cl:290:20  Int<0>
+examples/graph.cl:290:22  "else"
+examples/graph.cl:291: 1  "if"
+examples/graph.cl:291: 4  Id<char>
+examples/graph.cl:291: 9  "="
+examples/graph.cl:291:13  String<1>
+examples/graph.cl:291:15  "then"
+examples/graph.cl:291:20  Int<1>
+examples/graph.cl:291:22  "else"
+examples/graph.cl:292: 1  "if"
+examples/graph.cl:292: 4  Id<char>
+examples/graph.cl:292: 9  "="
+examples/graph.cl:292:13  String<2>
+examples/graph.cl:292:15  "then"
+examples/graph.cl:292:20  Int<2>
+examples/graph.cl:292:22  "else"
+examples/graph.cl:293: 8  "if"
+examples/graph.cl:293:11  Id<char>
+examples/graph.cl:293:16  "="
+examples/graph.cl:293:20  String<3>
+examples/graph.cl:293:22  "then"
+examples/graph.cl:293:27  Int<3>
+examples/graph.cl:293:29  "else"
+examples/graph.cl:294: 8  "if"
+examples/graph.cl:294:11  Id<char>
+examples/graph.cl:294:16  "="
+examples/graph.cl:294:20  String<4>
+examples/graph.cl:294:22  "then"
+examples/graph.cl:294:27  Int<4>
+examples/graph.cl:294:29  "else"
+examples/graph.cl:295: 8  "if"
+examples/graph.cl:295:11  Id<char>
+examples/graph.cl:295:16  "="
+examples/graph.cl:295:20  String<5>
+examples/graph.cl:295:22  "then"
+examples/graph.cl:295:27  Int<5>
+examples/graph.cl:295:29  "else"
+examples/graph.cl:296: 8  "if"
+examples/graph.cl:296:11  Id<char>
+examples/graph.cl:296:16  "="
+examples/graph.cl:296:20  String<6>
+examples/graph.cl:296:22  "then"
+examples/graph.cl:296:27  Int<6>
+examples/graph.cl:296:29  "else"
+examples/graph.cl:297: 8  "if"
+examples/graph.cl:297:11  Id<char>
+examples/graph.cl:297:16  "="
+examples/graph.cl:297:20  String<7>
+examples/graph.cl:297:22  "then"
+examples/graph.cl:297:27  Int<7>
+examples/graph.cl:297:29  "else"
+examples/graph.cl:298: 8  "if"
+examples/graph.cl:298:11  Id<char>
+examples/graph.cl:298:16  "="
+examples/graph.cl:298:20  String<8>
+examples/graph.cl:298:22  "then"
+examples/graph.cl:298:27  Int<8>
+examples/graph.cl:298:29  "else"
+examples/graph.cl:299: 8  "if"
+examples/graph.cl:299:11  Id<char>
+examples/graph.cl:299:16  "="
+examples/graph.cl:299:20  String<9>
+examples/graph.cl:299:22  "then"
+examples/graph.cl:299:27  Int<9>
+examples/graph.cl:299:29  "else"
+examples/graph.cl:300: 8  "{"
+examples/graph.cl:300:10  Id<abort>
+examples/graph.cl:300:15  "("
+examples/graph.cl:300:16  ")"
+examples/graph.cl:300:17  ";"
+examples/graph.cl:300:19  Int<0>
+examples/graph.cl:300:20  ";"
+examples/graph.cl:300:22  "}"
+examples/graph.cl:301: 8  "fi"
+examples/graph.cl:301:11  "fi"
+examples/graph.cl:301:14  "fi"
+examples/graph.cl:301:17  "fi"
+examples/graph.cl:301:20  "fi"
+examples/graph.cl:301:23  "fi"
+examples/graph.cl:301:26  "fi"
+examples/graph.cl:301:29  "fi"
+examples/graph.cl:301:32  "fi"
+examples/graph.cl:301:35  "fi"
+examples/graph.cl:302: 5  "}"
+examples/graph.cl:302: 6  ";"
+examples/graph.cl:304: 5  Id<rest>
+examples/graph.cl:304:10  ":"
+examples/graph.cl:304:12  Type<String>
+examples/graph.cl:304:18  ";"
+examples/graph.cl:306: 5  Id<a2i>
+examples/graph.cl:306: 8  "("
+examples/graph.cl:306: 9  Id<s>
+examples/graph.cl:306:11  ":"
+examples/graph.cl:306:13  Type<String>
+examples/graph.cl:306:19  ")"
+examples/graph.cl:306:21  ":"
+examples/graph.cl:306:23  Type<Int>
+examples/graph.cl:306:27  "{"
+examples/graph.cl:307: 8  "if"
+examples/graph.cl:307:11  Id<s>
+examples/graph.cl:307:12  "."
+examples/graph.cl:307:13  Id<length>
+examples/graph.cl:307:19  "("
+examples/graph.cl:307:20  ")"
+examples/graph.cl:307:22  "="
+examples/graph.cl:307:24  Int<0>
+examples/graph.cl:307:26  "then"
+examples/graph.cl:307:31  Int<0>
+examples/graph.cl:307:33  "else"
+examples/graph.cl:308: 1  "if"
+examples/graph.cl:308: 4  Id<s>
+examples/graph.cl:308: 5  "."
+examples/graph.cl:308: 6  Id<substr>
+examples/graph.cl:308:12  "("
+examples/graph.cl:308:13  Int<0>
+examples/graph.cl:308:14  ","
+examples/graph.cl:308:15  Int<1>
+examples/graph.cl:308:16  ")"
+examples/graph.cl:308:18  "="
+examples/graph.cl:308:22  String<->
+examples/graph.cl:308:24  "then"
+examples/graph.cl:308:29  "~"
+examples/graph.cl:308:30  Id<a2i_aux>
+examples/graph.cl:308:37  "("
+examples/graph.cl:308:38  Id<s>
+examples/graph.cl:308:39  "."
+examples/graph.cl:308:40  Id<substr>
+examples/graph.cl:308:46  "("
+examples/graph.cl:308:47  Int<1>
+examples/graph.cl:308:48  ","
+examples/graph.cl:308:49  Id<s>
+examples/graph.cl:308:50  "."
+examples/graph.cl:308:51  Id<length>
+examples/graph.cl:308:57  "("
+examples/graph.cl:308:58  ")"
+examples/graph.cl:308:59  "-"
+examples/graph.cl:308:60  Int<1>
+examples/graph.cl:308:61  ")"
+examples/graph.cl:308:62  ")"
+examples/graph.cl:308:64  "else"
+examples/graph.cl:309: 8  "if"
+examples/graph.cl:309:11  Id<s>
+examples/graph.cl:309:12  "."
+examples/graph.cl:309:13  Id<substr>
+examples/graph.cl:309:19  "("
+examples/graph.cl:309:20  Int<0>
+examples/graph.cl:309:21  ","
+examples/graph.cl:309:22  Int<1>
+examples/graph.cl:309:23  ")"
+examples/graph.cl:309:25  "="
+examples/graph.cl:309:29  String< >
+examples/graph.cl:309:31  "then"
+examples/graph.cl:309:36  Id<a2i>
+examples/graph.cl:309:39  "("
+examples/graph.cl:309:40  Id<s>
+examples/graph.cl:309:41  "."
+examples/graph.cl:309:42  Id<substr>
+examples/graph.cl:309:48  "("
+examples/graph.cl:309:49  Int<1>
+examples/graph.cl:309:50  ","
+examples/graph.cl:309:51  Id<s>
+examples/graph.cl:309:52  "."
+examples/graph.cl:309:53  Id<length>
+examples/graph.cl:309:59  "("
+examples/graph.cl:309:60  ")"
+examples/graph.cl:309:61  "-"
+examples/graph.cl:309:62  Int<1>
+examples/graph.cl:309:63  ")"
+examples/graph.cl:309:64  ")"
+examples/graph.cl:309:66  "else"
+examples/graph.cl:310:11  Id<a2i_aux>
+examples/graph.cl:310:18  "("
+examples/graph.cl:310:19  Id<s>
+examples/graph.cl:310:20  ")"
+examples/graph.cl:311: 8  "fi"
+examples/graph.cl:311:11  "fi"
+examples/graph.cl:311:14  "fi"
+examples/graph.cl:312: 5  "}"
+examples/graph.cl:312: 6  ";"
+examples/graph.cl:320: 5  Id<a2i_aux>
+examples/graph.cl:320:12  "("
+examples/graph.cl:320:13  Id<s>
+examples/graph.cl:320:15  ":"
+examples/graph.cl:320:17  Type<String>
+examples/graph.cl:320:23  ")"
+examples/graph.cl:320:25  ":"
+examples/graph.cl:320:27  Type<Int>
+examples/graph.cl:320:31  "{"
+examples/graph.cl:321: 1  "("
+examples/graph.cl:321: 2  "let"
+examples/graph.cl:321: 6  Id<int>
+examples/graph.cl:321:10  ":"
+examples/graph.cl:321:12  Type<Int>
+examples/graph.cl:321:16  "<-"
+examples/graph.cl:321:19  Int<0>
+examples/graph.cl:321:21  "in"
+examples/graph.cl:322:11  "{"
+examples/graph.cl:323:15  "("
+examples/graph.cl:323:16  "let"
+examples/graph.cl:323:20  Id<j>
+examples/graph.cl:323:22  ":"
+examples/graph.cl:323:24  Type<Int>
+examples/graph.cl:323:28  "<-"
+examples/graph.cl:323:31  Id<s>
+examples/graph.cl:323:32  "."
+examples/graph.cl:323:33  Id<length>
+examples/graph.cl:323:39  "("
+examples/graph.cl:323:40  ")"
+examples/graph.cl:323:42  "in"
+examples/graph.cl:324:11  "("
+examples/graph.cl:324:12  "let"
+examples/graph.cl:324:16  Id<i>
+examples/graph.cl:324:18  ":"
+examples/graph.cl:324:20  Type<Int>
+examples/graph.cl:324:24  "<-"
+examples/graph.cl:324:27  Int<0>
+examples/graph.cl:324:29  "in"
+examples/graph.cl:325: 6  "while"
+examples/graph.cl:325:12  Id<i>
+examples/graph.cl:325:14  "<"
+examples/graph.cl:325:16  Id<j>
+examples/graph.cl:325:18  "loop"
+examples/graph.cl:326: 3  "("
+examples/graph.cl:326: 4  "let"
+examples/graph.cl:326: 8  Id<c>
+examples/graph.cl:326:10  ":"
+examples/graph.cl:326:12  Type<String>
+examples/graph.cl:326:19  "<-"
+examples/graph.cl:326:22  Id<s>
+examples/graph.cl:326:23  "."
+examples/graph.cl:326:24  Id<substr>
+examples/graph.cl:326:30  "("
+examples/graph.cl:326:31  Id<i>
+examples/graph.cl:326:32  ","
+examples/graph.cl:326:33  Int<1>
+examples/graph.cl:326:34  ")"
+examples/graph.cl:326:36  "in"
+examples/graph.cl:327: 7  "if"
+examples/graph.cl:327:10  "("
+examples/graph.cl:327:11  Id<c>
+examples/graph.cl:327:13  "="
+examples/graph.cl:327:17  String< >
+examples/graph.cl:327:18  ")"
+examples/graph.cl:327:20  "then"
+examples/graph.cl:328:10  "{"
+examples/graph.cl:329: 6  Id<rest>
+examples/graph.cl:329:11  "<-"
+examples/graph.cl:329:14  Id<s>
+examples/graph.cl:329:15  "."
+examples/graph.cl:329:16  Id<substr>
+examples/graph.cl:329:22  "("
+examples/graph.cl:329:23  Id<i>
+examples/graph.cl:329:24  "+"
+examples/graph.cl:329:25  Int<1>
+examples/graph.cl:329:26  ","
+examples/graph.cl:329:27  Id<s>
+examples/graph.cl:329:28  "."
+examples/graph.cl:329:29  Id<length>
+examples/graph.cl:329:35  "("
+examples/graph.cl:329:36  ")"
+examples/graph.cl:329:37  "-"
+examples/graph.cl:329:38  Id<i>
+examples/graph.cl:329:39  "-"
+examples/graph.cl:329:40  Int<1>
+examples/graph.cl:329:41  ")"
+examples/graph.cl:329:42  ";"
+examples/graph.cl:330: 6  Id<i>
+examples/graph.cl:330: 8  "<-"
+examples/graph.cl:330:11  Id<j>
+examples/graph.cl:330:12  ";"
+examples/graph.cl:331:10  "}"
+examples/graph.cl:332: 7  "else"
+examples/graph.cl:332:12  "if"
+examples/graph.cl:332:15  "("
+examples/graph.cl:332:16  Id<c>
+examples/graph.cl:332:18  "="
+examples/graph.cl:332:22  String<,>
+examples/graph.cl:332:23  ")"
+examples/graph.cl:332:25  "then"
+examples/graph.cl:333:17  "{"
+examples/graph.cl:334: 6  Id<rest>
+examples/graph.cl:334:11  "<-"
+examples/graph.cl:334:14  Id<s>
+examples/graph.cl:334:15  "."
+examples/graph.cl:334:16  Id<substr>
+examples/graph.cl:334:22  "("
+examples/graph.cl:334:23  Id<i>
+examples/graph.cl:334:24  "+"
+examples/graph.cl:334:25  Int<1>
+examples/graph.cl:334:26  ","
+examples/graph.cl:334:28  Id<s>
+examples/graph.cl:334:29  "."
+examples/graph.cl:334:30  Id<length>
+examples/graph.cl:334:36  "("
+examples/graph.cl:334:37  ")"
+examples/graph.cl:334:38  "-"
+examples/graph.cl:334:39  Id<i>
+examples/graph.cl:334:40  "-"
+examples/graph.cl:334:41  Int<1>
+examples/graph.cl:334:42  ")"
+examples/graph.cl:334:43  ";"
+examples/graph.cl:335: 6  Id<i>
+examples/graph.cl:335: 8  "<-"
+examples/graph.cl:335:11  Id<j>
+examples/graph.cl:335:12  ";"
+examples/graph.cl:336:17  "}"
+examples/graph.cl:337: 7  "else"
+examples/graph.cl:338:10  "{"
+examples/graph.cl:339: 5  Id<int>
+examples/graph.cl:339: 9  "<-"
+examples/graph.cl:339:12  Id<int>
+examples/graph.cl:339:16  "*"
+examples/graph.cl:339:18  Int<10>
+examples/graph.cl:339:21  "+"
+examples/graph.cl:339:23  Id<c2i>
+examples/graph.cl:339:26  "("
+examples/graph.cl:339:27  Id<s>
+examples/graph.cl:339:28  "."
+examples/graph.cl:339:29  Id<substr>
+examples/graph.cl:339:35  "("
+examples/graph.cl:339:36  Id<i>
+examples/graph.cl:339:37  ","
+examples/graph.cl:339:38  Int<1>
+examples/graph.cl:339:39  ")"
+examples/graph.cl:339:40  ")"
+examples/graph.cl:339:41  ";"
+examples/graph.cl:340: 5  Id<i>
+examples/graph.cl:340: 7  "<-"
+examples/graph.cl:340:10  Id<i>
+examples/graph.cl:340:12  "+"
+examples/graph.cl:340:14  Int<1>
+examples/graph.cl:340:15  ";"
+examples/graph.cl:341: 5  "if"
+examples/graph.cl:341: 8  Id<i>
+examples/graph.cl:341: 9  "="
+examples/graph.cl:341:10  Id<j>
+examples/graph.cl:341:12  "then"
+examples/graph.cl:341:17  Id<rest>
+examples/graph.cl:341:22  "<-"
+examples/graph.cl:341:26  String<>
+examples/graph.cl:341:28  "else"
+examples/graph.cl:341:34  String<>
+examples/graph.cl:341:36  "fi"
+examples/graph.cl:341:38  ";"
+examples/graph.cl:342:10  "}"
+examples/graph.cl:343: 7  "fi"
+examples/graph.cl:343:10  "fi"
+examples/graph.cl:344: 3  ")"
+examples/graph.cl:345: 6  "pool"
+examples/graph.cl:346: 4  ")"
+examples/graph.cl:347: 8  ")"
+examples/graph.cl:347: 9  ";"
+examples/graph.cl:348:14  Id<int>
+examples/graph.cl:348:17  ";"
+examples/graph.cl:349: 5  "}"
+examples/graph.cl:350: 8  ")"
+examples/graph.cl:351: 5  "}"
+examples/graph.cl:351: 6  ";"
+examples/graph.cl:353: 0  "}"
+examples/graph.cl:353: 1  ";"
+examples/graph.cl:356: 0  "class"
+examples/graph.cl:356: 6  Type<Main>
+examples/graph.cl:356:11  "inherits"
+examples/graph.cl:356:20  Type<Parse>
+examples/graph.cl:356:26  "{"
+examples/graph.cl:358: 3  Id<g>
+examples/graph.cl:358: 5  ":"
+examples/graph.cl:358: 7  Type<Graph>
+examples/graph.cl:358:13  "<-"
+examples/graph.cl:358:16  Id<read_input>
+examples/graph.cl:358:26  "("
+examples/graph.cl:358:27  ")"
+examples/graph.cl:358:28  ";"
+examples/graph.cl:360: 3  Id<main>
+examples/graph.cl:360: 7  "("
+examples/graph.cl:360: 8  ")"
+examples/graph.cl:360:10  ":"
+examples/graph.cl:360:12  Type<Object>
+examples/graph.cl:360:19  "{"
+examples/graph.cl:361: 6  "{"
+examples/graph.cl:362: 2  Id<g>
+examples/graph.cl:362: 3  "."
+examples/graph.cl:362: 4  Id<print_V>
+examples/graph.cl:362:11  "("
+examples/graph.cl:362:12  ")"
+examples/graph.cl:362:13  ";"
+examples/graph.cl:363: 9  Id<g>
+examples/graph.cl:363:10  "."
+examples/graph.cl:363:11  Id<print_E>
+examples/graph.cl:363:18  "("
+examples/graph.cl:363:19  ")"
+examples/graph.cl:363:20  ";"
+examples/graph.cl:364: 6  "}"
+examples/graph.cl:365: 3  "}"
+examples/graph.cl:365: 4  ";"
+examples/graph.cl:367: 0  "}"
+examples/graph.cl:367: 1  ";"
+examples/graph.cl:369: 0  "class"
+examples/graph.cl:369: 6  Type<BoolOp>
+examples/graph.cl:369:13  "{"
+examples/graph.cl:371: 2  Id<and>
+examples/graph.cl:371: 5  "("
+examples/graph.cl:371: 6  Id<b1>
+examples/graph.cl:371: 9  ":"
+examples/graph.cl:371:11  Type<Bool>
+examples/graph.cl:371:15  ","
+examples/graph.cl:371:17  Id<b2>
+examples/graph.cl:371:20  ":"
+examples/graph.cl:371:22  Type<Bool>
+examples/graph.cl:371:26  ")"
+examples/graph.cl:371:28  ":"
+examples/graph.cl:371:30  Type<Bool>
+examples/graph.cl:371:35  "{"
+examples/graph.cl:372: 5  "if"
+examples/graph.cl:372: 8  Id<b1>
+examples/graph.cl:372:11  "then"
+examples/graph.cl:372:16  Id<b2>
+examples/graph.cl:372:19  "else"
+examples/graph.cl:372:24  Boolean<False>
+examples/graph.cl:372:30  "fi"
+examples/graph.cl:373: 2  "}"
+examples/graph.cl:373: 3  ";"
+examples/graph.cl:376: 2  Id<or>
+examples/graph.cl:376: 4  "("
+examples/graph.cl:376: 5  Id<b1>
+examples/graph.cl:376: 8  ":"
+examples/graph.cl:376:10  Type<Bool>
+examples/graph.cl:376:14  ","
+examples/graph.cl:376:16  Id<b2>
+examples/graph.cl:376:19  ":"
+examples/graph.cl:376:21  Type<Bool>
+examples/graph.cl:376:25  ")"
+examples/graph.cl:376:27  ":"
+examples/graph.cl:376:29  Type<Bool>
+examples/graph.cl:376:34  "{"
+examples/graph.cl:377: 5  "if"
+examples/graph.cl:377: 8  Id<b1>
+examples/graph.cl:377:11  "then"
+examples/graph.cl:377:16  Boolean<True>
+examples/graph.cl:377:21  "else"
+examples/graph.cl:377:26  Id<b2>
+examples/graph.cl:377:29  "fi"
+examples/graph.cl:378: 2  "}"
+examples/graph.cl:378: 3  ";"
+examples/graph.cl:380: 0  "}"
+examples/graph.cl:380: 1  ";"

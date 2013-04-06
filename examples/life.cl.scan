@@ -1,0 +1,1451 @@
+examples/life.cl:44: 0  "class"
+examples/life.cl:44: 6  Type<Board>
+examples/life.cl:44:12  "inherits"
+examples/life.cl:44:21  Type<IO>
+examples/life.cl:44:24  "{"
+examples/life.cl:46: 1  Id<rows>
+examples/life.cl:46: 6  ":"
+examples/life.cl:46: 8  Type<Int>
+examples/life.cl:46:11  ";"
+examples/life.cl:47: 1  Id<columns>
+examples/life.cl:47: 9  ":"
+examples/life.cl:47:11  Type<Int>
+examples/life.cl:47:14  ";"
+examples/life.cl:48: 1  Id<board_size>
+examples/life.cl:48:12  ":"
+examples/life.cl:48:14  Type<Int>
+examples/life.cl:48:17  ";"
+examples/life.cl:50: 1  Id<size_of_board>
+examples/life.cl:50:14  "("
+examples/life.cl:50:15  Id<initial>
+examples/life.cl:50:23  ":"
+examples/life.cl:50:25  Type<String>
+examples/life.cl:50:31  ")"
+examples/life.cl:50:33  ":"
+examples/life.cl:50:35  Type<Int>
+examples/life.cl:50:39  "{"
+examples/life.cl:51: 3  Id<initial>
+examples/life.cl:51:10  "."
+examples/life.cl:51:11  Id<length>
+examples/life.cl:51:17  "("
+examples/life.cl:51:18  ")"
+examples/life.cl:52: 1  "}"
+examples/life.cl:52: 2  ";"
+examples/life.cl:54: 1  Id<board_init>
+examples/life.cl:54:11  "("
+examples/life.cl:54:12  Id<start>
+examples/life.cl:54:18  ":"
+examples/life.cl:54:20  Type<String>
+examples/life.cl:54:26  ")"
+examples/life.cl:54:28  ":"
+examples/life.cl:54:30  Type<SELF_TYPE>
+examples/life.cl:54:40  "{"
+examples/life.cl:55: 3  "("
+examples/life.cl:55: 4  "let"
+examples/life.cl:55: 8  Id<size>
+examples/life.cl:55:13  ":"
+examples/life.cl:55:14  Type<Int>
+examples/life.cl:55:19  "<-"
+examples/life.cl:55:22  Id<size_of_board>
+examples/life.cl:55:35  "("
+examples/life.cl:55:36  Id<start>
+examples/life.cl:55:41  ")"
+examples/life.cl:55:43  "in"
+examples/life.cl:56: 4  "{"
+examples/life.cl:57: 1  "if"
+examples/life.cl:57: 4  Id<size>
+examples/life.cl:57: 9  "="
+examples/life.cl:57:11  Int<15>
+examples/life.cl:57:14  "then"
+examples/life.cl:58: 2  "{"
+examples/life.cl:59: 3  Id<rows>
+examples/life.cl:59: 8  "<-"
+examples/life.cl:59:11  Int<3>
+examples/life.cl:59:12  ";"
+examples/life.cl:60: 3  Id<columns>
+examples/life.cl:60:11  "<-"
+examples/life.cl:60:14  Int<5>
+examples/life.cl:60:15  ";"
+examples/life.cl:61: 3  Id<board_size>
+examples/life.cl:61:14  "<-"
+examples/life.cl:61:17  Id<size>
+examples/life.cl:61:21  ";"
+examples/life.cl:62: 2  "}"
+examples/life.cl:63: 1  "else"
+examples/life.cl:63: 6  "if"
+examples/life.cl:63: 9  Id<size>
+examples/life.cl:63:14  "="
+examples/life.cl:63:16  Int<16>
+examples/life.cl:63:19  "then"
+examples/life.cl:64: 3  "{"
+examples/life.cl:65: 3  Id<rows>
+examples/life.cl:65: 8  "<-"
+examples/life.cl:65:11  Int<4>
+examples/life.cl:65:12  ";"
+examples/life.cl:66: 3  Id<columns>
+examples/life.cl:66:11  "<-"
+examples/life.cl:66:14  Int<4>
+examples/life.cl:66:15  ";"
+examples/life.cl:67: 3  Id<board_size>
+examples/life.cl:67:14  "<-"
+examples/life.cl:67:17  Id<size>
+examples/life.cl:67:21  ";"
+examples/life.cl:68: 2  "}"
+examples/life.cl:69: 1  "else"
+examples/life.cl:69: 6  "if"
+examples/life.cl:69: 9  Id<size>
+examples/life.cl:69:14  "="
+examples/life.cl:69:16  Int<20>
+examples/life.cl:69:19  "then"
+examples/life.cl:70: 2  "{"
+examples/life.cl:71: 3  Id<rows>
+examples/life.cl:71: 8  "<-"
+examples/life.cl:71:11  Int<4>
+examples/life.cl:71:12  ";"
+examples/life.cl:72: 3  Id<columns>
+examples/life.cl:72:11  "<-"
+examples/life.cl:72:14  Int<5>
+examples/life.cl:72:15  ";"
+examples/life.cl:73: 3  Id<board_size>
+examples/life.cl:73:14  "<-"
+examples/life.cl:73:17  Id<size>
+examples/life.cl:73:21  ";"
+examples/life.cl:74: 2  "}"
+examples/life.cl:75: 1  "else"
+examples/life.cl:75: 6  "if"
+examples/life.cl:75: 9  Id<size>
+examples/life.cl:75:14  "="
+examples/life.cl:75:16  Int<21>
+examples/life.cl:75:19  "then"
+examples/life.cl:76: 2  "{"
+examples/life.cl:77: 3  Id<rows>
+examples/life.cl:77: 8  "<-"
+examples/life.cl:77:11  Int<3>
+examples/life.cl:77:12  ";"
+examples/life.cl:78: 3  Id<columns>
+examples/life.cl:78:11  "<-"
+examples/life.cl:78:14  Int<7>
+examples/life.cl:78:15  ";"
+examples/life.cl:79: 3  Id<board_size>
+examples/life.cl:79:14  "<-"
+examples/life.cl:79:17  Id<size>
+examples/life.cl:79:21  ";"
+examples/life.cl:80: 2  "}"
+examples/life.cl:81: 1  "else"
+examples/life.cl:81: 6  "if"
+examples/life.cl:81: 9  Id<size>
+examples/life.cl:81:14  "="
+examples/life.cl:81:16  Int<25>
+examples/life.cl:81:19  "then"
+examples/life.cl:82: 2  "{"
+examples/life.cl:83: 3  Id<rows>
+examples/life.cl:83: 8  "<-"
+examples/life.cl:83:11  Int<5>
+examples/life.cl:83:12  ";"
+examples/life.cl:84: 3  Id<columns>
+examples/life.cl:84:11  "<-"
+examples/life.cl:84:14  Int<5>
+examples/life.cl:84:15  ";"
+examples/life.cl:85: 3  Id<board_size>
+examples/life.cl:85:14  "<-"
+examples/life.cl:85:17  Id<size>
+examples/life.cl:85:21  ";"
+examples/life.cl:86: 2  "}"
+examples/life.cl:87: 1  "else"
+examples/life.cl:87: 6  "if"
+examples/life.cl:87: 9  Id<size>
+examples/life.cl:87:14  "="
+examples/life.cl:87:16  Int<28>
+examples/life.cl:87:19  "then"
+examples/life.cl:88: 2  "{"
+examples/life.cl:89: 3  Id<rows>
+examples/life.cl:89: 8  "<-"
+examples/life.cl:89:11  Int<7>
+examples/life.cl:89:12  ";"
+examples/life.cl:90: 3  Id<columns>
+examples/life.cl:90:11  "<-"
+examples/life.cl:90:14  Int<4>
+examples/life.cl:90:15  ";"
+examples/life.cl:91: 3  Id<board_size>
+examples/life.cl:91:14  "<-"
+examples/life.cl:91:17  Id<size>
+examples/life.cl:91:21  ";"
+examples/life.cl:92: 2  "}"
+examples/life.cl:93: 1  "else"
+examples/life.cl:94: 2  "{"
+examples/life.cl:95: 3  Id<rows>
+examples/life.cl:95: 8  "<-"
+examples/life.cl:95:11  Int<5>
+examples/life.cl:95:12  ";"
+examples/life.cl:96: 3  Id<columns>
+examples/life.cl:96:11  "<-"
+examples/life.cl:96:14  Int<5>
+examples/life.cl:96:15  ";"
+examples/life.cl:97: 3  Id<board_size>
+examples/life.cl:97:14  "<-"
+examples/life.cl:97:17  Id<size>
+examples/life.cl:97:21  ";"
+examples/life.cl:98: 2  "}"
+examples/life.cl:99: 1  "fi"
+examples/life.cl:99: 4  "fi"
+examples/life.cl:99: 7  "fi"
+examples/life.cl:99:10  "fi"
+examples/life.cl:99:13  "fi"
+examples/life.cl:99:16  "fi"
+examples/life.cl:99:18  ";"
+examples/life.cl:100: 1  Id<self>
+examples/life.cl:100: 5  ";"
+examples/life.cl:101: 4  "}"
+examples/life.cl:102: 3  ")"
+examples/life.cl:103: 1  "}"
+examples/life.cl:103: 2  ";"
+examples/life.cl:105: 0  "}"
+examples/life.cl:105: 1  ";"
+examples/life.cl:109: 0  "class"
+examples/life.cl:109: 6  Type<CellularAutomaton>
+examples/life.cl:109:24  "inherits"
+examples/life.cl:109:33  Type<Board>
+examples/life.cl:109:39  "{"
+examples/life.cl:110: 4  Id<population_map>
+examples/life.cl:110:19  ":"
+examples/life.cl:110:21  Type<String>
+examples/life.cl:110:27  ";"
+examples/life.cl:112: 4  Id<init>
+examples/life.cl:112: 8  "("
+examples/life.cl:112: 9  Id<map>
+examples/life.cl:112:13  ":"
+examples/life.cl:112:15  Type<String>
+examples/life.cl:112:21  ")"
+examples/life.cl:112:23  ":"
+examples/life.cl:112:25  Type<SELF_TYPE>
+examples/life.cl:112:35  "{"
+examples/life.cl:113: 8  "{"
+examples/life.cl:114:12  Id<population_map>
+examples/life.cl:114:27  "<-"
+examples/life.cl:114:30  Id<map>
+examples/life.cl:114:33  ";"
+examples/life.cl:115: 5  Id<board_init>
+examples/life.cl:115:15  "("
+examples/life.cl:115:16  Id<map>
+examples/life.cl:115:19  ")"
+examples/life.cl:115:20  ";"
+examples/life.cl:116:12  Id<self>
+examples/life.cl:116:16  ";"
+examples/life.cl:117: 8  "}"
+examples/life.cl:118: 4  "}"
+examples/life.cl:118: 5  ";"
+examples/life.cl:123: 4  Id<print>
+examples/life.cl:123: 9  "("
+examples/life.cl:123:10  ")"
+examples/life.cl:123:12  ":"
+examples/life.cl:123:14  Type<SELF_TYPE>
+examples/life.cl:123:24  "{"
+examples/life.cl:125: 1  "("
+examples/life.cl:125: 2  "let"
+examples/life.cl:125: 6  Id<i>
+examples/life.cl:125: 8  ":"
+examples/life.cl:125:10  Type<Int>
+examples/life.cl:125:14  "<-"
+examples/life.cl:125:17  Int<0>
+examples/life.cl:125:19  "in"
+examples/life.cl:126: 1  "("
+examples/life.cl:126: 2  "let"
+examples/life.cl:126: 6  Id<num>
+examples/life.cl:126:10  ":"
+examples/life.cl:126:12  Type<Int>
+examples/life.cl:126:16  "<-"
+examples/life.cl:126:19  Id<board_size>
+examples/life.cl:126:30  "in"
+examples/life.cl:127: 1  "{"
+examples/life.cl:128: 2  Id<out_string>
+examples/life.cl:128:12  "("
+examples/life.cl:128:16  String<>
+examples/life.cl:128:17  ")"
+examples/life.cl:128:18  ";"
+examples/life.cl:129: 2  "while"
+examples/life.cl:129: 8  Id<i>
+examples/life.cl:129:10  "<"
+examples/life.cl:129:12  Id<num>
+examples/life.cl:129:16  "loop"
+examples/life.cl:130:11  "{"
+examples/life.cl:131: 5  Id<out_string>
+examples/life.cl:131:15  "("
+examples/life.cl:131:16  Id<population_map>
+examples/life.cl:131:30  "."
+examples/life.cl:131:31  Id<substr>
+examples/life.cl:131:37  "("
+examples/life.cl:131:38  Id<i>
+examples/life.cl:131:39  ","
+examples/life.cl:131:40  Id<columns>
+examples/life.cl:131:47  ")"
+examples/life.cl:131:48  ")"
+examples/life.cl:131:49  ";"
+examples/life.cl:132: 5  Id<out_string>
+examples/life.cl:132:15  "("
+examples/life.cl:132:19  String<>
+examples/life.cl:132:20  ")"
+examples/life.cl:132:21  ";"
+examples/life.cl:133: 5  Id<i>
+examples/life.cl:133: 7  "<-"
+examples/life.cl:133:10  Id<i>
+examples/life.cl:133:12  "+"
+examples/life.cl:133:14  Id<columns>
+examples/life.cl:133:21  ";"
+examples/life.cl:134: 4  "}"
+examples/life.cl:135: 2  "pool"
+examples/life.cl:135: 6  ";"
+examples/life.cl:136: 2  Id<out_string>
+examples/life.cl:136:12  "("
+examples/life.cl:136:16  String<>
+examples/life.cl:136:17  ")"
+examples/life.cl:136:18  ";"
+examples/life.cl:137: 1  Id<self>
+examples/life.cl:137: 5  ";"
+examples/life.cl:138: 1  "}"
+examples/life.cl:139: 1  ")"
+examples/life.cl:139: 3  ")"
+examples/life.cl:140: 4  "}"
+examples/life.cl:140: 5  ";"
+examples/life.cl:142: 4  Id<num_cells>
+examples/life.cl:142:13  "("
+examples/life.cl:142:14  ")"
+examples/life.cl:142:16  ":"
+examples/life.cl:142:18  Type<Int>
+examples/life.cl:142:22  "{"
+examples/life.cl:143: 8  Id<population_map>
+examples/life.cl:143:22  "."
+examples/life.cl:143:23  Id<length>
+examples/life.cl:143:29  "("
+examples/life.cl:143:30  ")"
+examples/life.cl:144: 4  "}"
+examples/life.cl:144: 5  ";"
+examples/life.cl:146: 4  Id<cell>
+examples/life.cl:146: 8  "("
+examples/life.cl:146: 9  Id<position>
+examples/life.cl:146:18  ":"
+examples/life.cl:146:20  Type<Int>
+examples/life.cl:146:23  ")"
+examples/life.cl:146:25  ":"
+examples/life.cl:146:27  Type<String>
+examples/life.cl:146:34  "{"
+examples/life.cl:147: 1  "if"
+examples/life.cl:147: 4  Id<board_size>
+examples/life.cl:147:15  "-"
+examples/life.cl:147:17  Int<1>
+examples/life.cl:147:19  "<"
+examples/life.cl:147:21  Id<position>
+examples/life.cl:147:30  "then"
+examples/life.cl:148: 4  String< >
+examples/life.cl:149: 1  "else"
+examples/life.cl:150: 9  Id<population_map>
+examples/life.cl:150:23  "."
+examples/life.cl:150:24  Id<substr>
+examples/life.cl:150:30  "("
+examples/life.cl:150:31  Id<position>
+examples/life.cl:150:39  ","
+examples/life.cl:150:41  Int<1>
+examples/life.cl:150:42  ")"
+examples/life.cl:151: 1  "fi"
+examples/life.cl:152: 4  "}"
+examples/life.cl:152: 5  ";"
+examples/life.cl:154: 1  Id<north>
+examples/life.cl:154: 6  "("
+examples/life.cl:154: 7  Id<position>
+examples/life.cl:154:16  ":"
+examples/life.cl:154:18  Type<Int>
+examples/life.cl:154:21  ")"
+examples/life.cl:154:22  ":"
+examples/life.cl:154:24  Type<String>
+examples/life.cl:154:31  "{"
+examples/life.cl:155: 1  "if"
+examples/life.cl:155: 4  "("
+examples/life.cl:155: 5  Id<position>
+examples/life.cl:155:14  "-"
+examples/life.cl:155:16  Id<columns>
+examples/life.cl:155:23  ")"
+examples/life.cl:155:25  "<"
+examples/life.cl:155:27  Int<0>
+examples/life.cl:155:29  "then"
+examples/life.cl:156: 9  String< >
+examples/life.cl:157: 1  "else"
+examples/life.cl:158: 4  Id<cell>
+examples/life.cl:158: 8  "("
+examples/life.cl:158: 9  Id<position>
+examples/life.cl:158:18  "-"
+examples/life.cl:158:20  Id<columns>
+examples/life.cl:158:27  ")"
+examples/life.cl:159: 1  "fi"
+examples/life.cl:160: 1  "}"
+examples/life.cl:160: 2  ";"
+examples/life.cl:162: 1  Id<south>
+examples/life.cl:162: 6  "("
+examples/life.cl:162: 7  Id<position>
+examples/life.cl:162:16  ":"
+examples/life.cl:162:18  Type<Int>
+examples/life.cl:162:21  ")"
+examples/life.cl:162:22  ":"
+examples/life.cl:162:24  Type<String>
+examples/life.cl:162:31  "{"
+examples/life.cl:163: 1  "if"
+examples/life.cl:163: 4  Id<board_size>
+examples/life.cl:163:15  "<"
+examples/life.cl:163:17  "("
+examples/life.cl:163:18  Id<position>
+examples/life.cl:163:27  "+"
+examples/life.cl:163:29  Id<columns>
+examples/life.cl:163:36  ")"
+examples/life.cl:163:38  "then"
+examples/life.cl:164: 9  String< >
+examples/life.cl:165: 1  "else"
+examples/life.cl:166: 4  Id<cell>
+examples/life.cl:166: 8  "("
+examples/life.cl:166: 9  Id<position>
+examples/life.cl:166:18  "+"
+examples/life.cl:166:20  Id<columns>
+examples/life.cl:166:27  ")"
+examples/life.cl:167: 1  "fi"
+examples/life.cl:168: 1  "}"
+examples/life.cl:168: 2  ";"
+examples/life.cl:170: 1  Id<east>
+examples/life.cl:170: 5  "("
+examples/life.cl:170: 6  Id<position>
+examples/life.cl:170:15  ":"
+examples/life.cl:170:17  Type<Int>
+examples/life.cl:170:20  ")"
+examples/life.cl:170:21  ":"
+examples/life.cl:170:23  Type<String>
+examples/life.cl:170:30  "{"
+examples/life.cl:171: 1  "if"
+examples/life.cl:171: 4  "("
+examples/life.cl:171: 5  "("
+examples/life.cl:171: 6  "("
+examples/life.cl:171: 7  Id<position>
+examples/life.cl:171:16  "+"
+examples/life.cl:171:18  Int<1>
+examples/life.cl:171:19  ")"
+examples/life.cl:171:21  "/"
+examples/life.cl:171:22  Id<columns>
+examples/life.cl:171:30  ")"
+examples/life.cl:171:32  "*"
+examples/life.cl:171:34  Id<columns>
+examples/life.cl:171:41  ")"
+examples/life.cl:171:43  "="
+examples/life.cl:171:45  "("
+examples/life.cl:171:46  Id<position>
+examples/life.cl:171:55  "+"
+examples/life.cl:171:57  Int<1>
+examples/life.cl:171:58  ")"
+examples/life.cl:171:60  "then"
+examples/life.cl:172: 9  String< >
+examples/life.cl:173: 1  "else"
+examples/life.cl:174: 4  Id<cell>
+examples/life.cl:174: 8  "("
+examples/life.cl:174: 9  Id<position>
+examples/life.cl:174:18  "+"
+examples/life.cl:174:20  Int<1>
+examples/life.cl:174:21  ")"
+examples/life.cl:175: 1  "fi"
+examples/life.cl:176: 1  "}"
+examples/life.cl:176: 2  ";"
+examples/life.cl:178: 1  Id<west>
+examples/life.cl:178: 5  "("
+examples/life.cl:178: 6  Id<position>
+examples/life.cl:178:15  ":"
+examples/life.cl:178:17  Type<Int>
+examples/life.cl:178:20  ")"
+examples/life.cl:178:21  ":"
+examples/life.cl:178:23  Type<String>
+examples/life.cl:178:30  "{"
+examples/life.cl:179: 1  "if"
+examples/life.cl:179: 4  Id<position>
+examples/life.cl:179:13  "="
+examples/life.cl:179:15  Int<0>
+examples/life.cl:179:17  "then"
+examples/life.cl:180: 9  String< >
+examples/life.cl:181: 1  "else"
+examples/life.cl:182: 4  "if"
+examples/life.cl:182: 7  "("
+examples/life.cl:182: 8  "("
+examples/life.cl:182: 9  Id<position>
+examples/life.cl:182:18  "/"
+examples/life.cl:182:20  Id<columns>
+examples/life.cl:182:27  ")"
+examples/life.cl:182:29  "*"
+examples/life.cl:182:31  Id<columns>
+examples/life.cl:182:38  ")"
+examples/life.cl:182:40  "="
+examples/life.cl:182:42  Id<position>
+examples/life.cl:182:51  "then"
+examples/life.cl:183: 9  String< >
+examples/life.cl:184: 4  "else"
+examples/life.cl:185: 7  Id<cell>
+examples/life.cl:185:11  "("
+examples/life.cl:185:12  Id<position>
+examples/life.cl:185:21  "-"
+examples/life.cl:185:23  Int<1>
+examples/life.cl:185:24  ")"
+examples/life.cl:186: 1  "fi"
+examples/life.cl:186: 4  "fi"
+examples/life.cl:187: 1  "}"
+examples/life.cl:187: 2  ";"
+examples/life.cl:189: 1  Id<northwest>
+examples/life.cl:189:10  "("
+examples/life.cl:189:11  Id<position>
+examples/life.cl:189:20  ":"
+examples/life.cl:189:22  Type<Int>
+examples/life.cl:189:25  ")"
+examples/life.cl:189:26  ":"
+examples/life.cl:189:28  Type<String>
+examples/life.cl:189:35  "{"
+examples/life.cl:190: 1  "if"
+examples/life.cl:190: 4  "("
+examples/life.cl:190: 5  Id<position>
+examples/life.cl:190:14  "-"
+examples/life.cl:190:16  Id<columns>
+examples/life.cl:190:23  ")"
+examples/life.cl:190:25  "<"
+examples/life.cl:190:27  Int<0>
+examples/life.cl:190:29  "then"
+examples/life.cl:191: 9  String< >
+examples/life.cl:192: 1  "else"
+examples/life.cl:192: 7  "if"
+examples/life.cl:192:10  "("
+examples/life.cl:192:11  "("
+examples/life.cl:192:12  Id<position>
+examples/life.cl:192:21  "/"
+examples/life.cl:192:23  Id<columns>
+examples/life.cl:192:30  ")"
+examples/life.cl:192:32  "*"
+examples/life.cl:192:34  Id<columns>
+examples/life.cl:192:41  ")"
+examples/life.cl:192:43  "="
+examples/life.cl:192:45  Id<position>
+examples/life.cl:192:54  "then"
+examples/life.cl:193: 9  String< >
+examples/life.cl:194: 7  "else"
+examples/life.cl:195: 2  Id<north>
+examples/life.cl:195: 7  "("
+examples/life.cl:195: 8  Id<position>
+examples/life.cl:195:17  "-"
+examples/life.cl:195:19  Int<1>
+examples/life.cl:195:20  ")"
+examples/life.cl:196: 1  "fi"
+examples/life.cl:196: 4  "fi"
+examples/life.cl:197: 1  "}"
+examples/life.cl:197: 2  ";"
+examples/life.cl:199: 1  Id<northeast>
+examples/life.cl:199:10  "("
+examples/life.cl:199:11  Id<position>
+examples/life.cl:199:20  ":"
+examples/life.cl:199:22  Type<Int>
+examples/life.cl:199:25  ")"
+examples/life.cl:199:26  ":"
+examples/life.cl:199:28  Type<String>
+examples/life.cl:199:35  "{"
+examples/life.cl:200: 1  "if"
+examples/life.cl:200: 4  "("
+examples/life.cl:200: 5  Id<position>
+examples/life.cl:200:14  "-"
+examples/life.cl:200:16  Id<columns>
+examples/life.cl:200:23  ")"
+examples/life.cl:200:25  "<"
+examples/life.cl:200:27  Int<0>
+examples/life.cl:200:29  "then"
+examples/life.cl:201: 9  String< >
+examples/life.cl:202: 1  "else"
+examples/life.cl:202: 6  "if"
+examples/life.cl:202: 9  "("
+examples/life.cl:202:10  "("
+examples/life.cl:202:11  "("
+examples/life.cl:202:12  Id<position>
+examples/life.cl:202:21  "+"
+examples/life.cl:202:23  Int<1>
+examples/life.cl:202:24  ")"
+examples/life.cl:202:26  "/"
+examples/life.cl:202:27  Id<columns>
+examples/life.cl:202:35  ")"
+examples/life.cl:202:37  "*"
+examples/life.cl:202:39  Id<columns>
+examples/life.cl:202:46  ")"
+examples/life.cl:202:48  "="
+examples/life.cl:202:50  "("
+examples/life.cl:202:51  Id<position>
+examples/life.cl:202:60  "+"
+examples/life.cl:202:62  Int<1>
+examples/life.cl:202:63  ")"
+examples/life.cl:202:65  "then"
+examples/life.cl:203: 9  String< >
+examples/life.cl:204: 6  "else"
+examples/life.cl:205: 8  Id<north>
+examples/life.cl:205:13  "("
+examples/life.cl:205:14  Id<position>
+examples/life.cl:205:23  "+"
+examples/life.cl:205:25  Int<1>
+examples/life.cl:205:26  ")"
+examples/life.cl:206: 1  "fi"
+examples/life.cl:206: 4  "fi"
+examples/life.cl:207: 1  "}"
+examples/life.cl:207: 2  ";"
+examples/life.cl:209: 1  Id<southeast>
+examples/life.cl:209:10  "("
+examples/life.cl:209:11  Id<position>
+examples/life.cl:209:20  ":"
+examples/life.cl:209:22  Type<Int>
+examples/life.cl:209:25  ")"
+examples/life.cl:209:26  ":"
+examples/life.cl:209:28  Type<String>
+examples/life.cl:209:35  "{"
+examples/life.cl:210: 1  "if"
+examples/life.cl:210: 4  Id<board_size>
+examples/life.cl:210:15  "<"
+examples/life.cl:210:17  "("
+examples/life.cl:210:18  Id<position>
+examples/life.cl:210:27  "+"
+examples/life.cl:210:29  Id<columns>
+examples/life.cl:210:36  ")"
+examples/life.cl:210:38  "then"
+examples/life.cl:211: 9  String< >
+examples/life.cl:212: 1  "else"
+examples/life.cl:212: 6  "if"
+examples/life.cl:212: 9  "("
+examples/life.cl:212:10  "("
+examples/life.cl:212:11  "("
+examples/life.cl:212:12  Id<position>
+examples/life.cl:212:21  "+"
+examples/life.cl:212:23  Int<1>
+examples/life.cl:212:24  ")"
+examples/life.cl:212:26  "/"
+examples/life.cl:212:27  Id<columns>
+examples/life.cl:212:35  ")"
+examples/life.cl:212:37  "*"
+examples/life.cl:212:39  Id<columns>
+examples/life.cl:212:46  ")"
+examples/life.cl:212:48  "="
+examples/life.cl:212:50  "("
+examples/life.cl:212:51  Id<position>
+examples/life.cl:212:60  "+"
+examples/life.cl:212:62  Int<1>
+examples/life.cl:212:63  ")"
+examples/life.cl:212:65  "then"
+examples/life.cl:213:10  String< >
+examples/life.cl:214: 6  "else"
+examples/life.cl:215: 8  Id<south>
+examples/life.cl:215:13  "("
+examples/life.cl:215:14  Id<position>
+examples/life.cl:215:23  "+"
+examples/life.cl:215:25  Int<1>
+examples/life.cl:215:26  ")"
+examples/life.cl:216: 1  "fi"
+examples/life.cl:216: 4  "fi"
+examples/life.cl:217: 1  "}"
+examples/life.cl:217: 2  ";"
+examples/life.cl:219: 1  Id<southwest>
+examples/life.cl:219:10  "("
+examples/life.cl:219:11  Id<position>
+examples/life.cl:219:20  ":"
+examples/life.cl:219:22  Type<Int>
+examples/life.cl:219:25  ")"
+examples/life.cl:219:26  ":"
+examples/life.cl:219:28  Type<String>
+examples/life.cl:219:35  "{"
+examples/life.cl:220: 1  "if"
+examples/life.cl:220: 4  Id<board_size>
+examples/life.cl:220:15  "<"
+examples/life.cl:220:17  "("
+examples/life.cl:220:18  Id<position>
+examples/life.cl:220:27  "+"
+examples/life.cl:220:29  Id<columns>
+examples/life.cl:220:36  ")"
+examples/life.cl:220:38  "then"
+examples/life.cl:221: 9  String< >
+examples/life.cl:222: 1  "else"
+examples/life.cl:222: 7  "if"
+examples/life.cl:222:10  "("
+examples/life.cl:222:11  "("
+examples/life.cl:222:12  Id<position>
+examples/life.cl:222:21  "/"
+examples/life.cl:222:23  Id<columns>
+examples/life.cl:222:30  ")"
+examples/life.cl:222:32  "*"
+examples/life.cl:222:34  Id<columns>
+examples/life.cl:222:41  ")"
+examples/life.cl:222:43  "="
+examples/life.cl:222:45  Id<position>
+examples/life.cl:222:54  "then"
+examples/life.cl:223: 9  String< >
+examples/life.cl:224: 7  "else"
+examples/life.cl:225: 8  Id<south>
+examples/life.cl:225:13  "("
+examples/life.cl:225:14  Id<position>
+examples/life.cl:225:23  "-"
+examples/life.cl:225:25  Int<1>
+examples/life.cl:225:26  ")"
+examples/life.cl:226: 1  "fi"
+examples/life.cl:226: 4  "fi"
+examples/life.cl:227: 1  "}"
+examples/life.cl:227: 2  ";"
+examples/life.cl:229: 1  Id<neighbors>
+examples/life.cl:229:10  "("
+examples/life.cl:229:11  Id<position>
+examples/life.cl:229:19  ":"
+examples/life.cl:229:21  Type<Int>
+examples/life.cl:229:24  ")"
+examples/life.cl:229:25  ":"
+examples/life.cl:229:27  Type<Int>
+examples/life.cl:229:31  "{"
+examples/life.cl:230: 2  "{"
+examples/life.cl:231: 6  "if"
+examples/life.cl:231: 9  Id<north>
+examples/life.cl:231:14  "("
+examples/life.cl:231:15  Id<position>
+examples/life.cl:231:23  ")"
+examples/life.cl:231:25  "="
+examples/life.cl:231:29  String<X>
+examples/life.cl:231:31  "then"
+examples/life.cl:231:36  Int<1>
+examples/life.cl:231:38  "else"
+examples/life.cl:231:43  Int<0>
+examples/life.cl:231:45  "fi"
+examples/life.cl:232: 6  "+"
+examples/life.cl:232: 8  "if"
+examples/life.cl:232:11  Id<south>
+examples/life.cl:232:16  "("
+examples/life.cl:232:17  Id<position>
+examples/life.cl:232:25  ")"
+examples/life.cl:232:27  "="
+examples/life.cl:232:31  String<X>
+examples/life.cl:232:33  "then"
+examples/life.cl:232:38  Int<1>
+examples/life.cl:232:40  "else"
+examples/life.cl:232:45  Int<0>
+examples/life.cl:232:47  "fi"
+examples/life.cl:233: 7  "+"
+examples/life.cl:233: 9  "if"
+examples/life.cl:233:12  Id<east>
+examples/life.cl:233:16  "("
+examples/life.cl:233:17  Id<position>
+examples/life.cl:233:25  ")"
+examples/life.cl:233:27  "="
+examples/life.cl:233:31  String<X>
+examples/life.cl:233:33  "then"
+examples/life.cl:233:38  Int<1>
+examples/life.cl:233:40  "else"
+examples/life.cl:233:45  Int<0>
+examples/life.cl:233:47  "fi"
+examples/life.cl:234: 7  "+"
+examples/life.cl:234: 9  "if"
+examples/life.cl:234:12  Id<west>
+examples/life.cl:234:16  "("
+examples/life.cl:234:17  Id<position>
+examples/life.cl:234:25  ")"
+examples/life.cl:234:27  "="
+examples/life.cl:234:31  String<X>
+examples/life.cl:234:33  "then"
+examples/life.cl:234:38  Int<1>
+examples/life.cl:234:40  "else"
+examples/life.cl:234:45  Int<0>
+examples/life.cl:234:47  "fi"
+examples/life.cl:235: 6  "+"
+examples/life.cl:235: 8  "if"
+examples/life.cl:235:11  Id<northeast>
+examples/life.cl:235:20  "("
+examples/life.cl:235:21  Id<position>
+examples/life.cl:235:29  ")"
+examples/life.cl:235:31  "="
+examples/life.cl:235:35  String<X>
+examples/life.cl:235:37  "then"
+examples/life.cl:235:42  Int<1>
+examples/life.cl:235:44  "else"
+examples/life.cl:235:49  Int<0>
+examples/life.cl:235:51  "fi"
+examples/life.cl:236: 6  "+"
+examples/life.cl:236: 8  "if"
+examples/life.cl:236:11  Id<northwest>
+examples/life.cl:236:20  "("
+examples/life.cl:236:21  Id<position>
+examples/life.cl:236:29  ")"
+examples/life.cl:236:31  "="
+examples/life.cl:236:35  String<X>
+examples/life.cl:236:37  "then"
+examples/life.cl:236:42  Int<1>
+examples/life.cl:236:44  "else"
+examples/life.cl:236:49  Int<0>
+examples/life.cl:236:51  "fi"
+examples/life.cl:237: 7  "+"
+examples/life.cl:237: 9  "if"
+examples/life.cl:237:12  Id<southeast>
+examples/life.cl:237:21  "("
+examples/life.cl:237:22  Id<position>
+examples/life.cl:237:30  ")"
+examples/life.cl:237:32  "="
+examples/life.cl:237:36  String<X>
+examples/life.cl:237:38  "then"
+examples/life.cl:237:43  Int<1>
+examples/life.cl:237:45  "else"
+examples/life.cl:237:50  Int<0>
+examples/life.cl:237:52  "fi"
+examples/life.cl:238: 6  "+"
+examples/life.cl:238: 8  "if"
+examples/life.cl:238:11  Id<southwest>
+examples/life.cl:238:20  "("
+examples/life.cl:238:21  Id<position>
+examples/life.cl:238:29  ")"
+examples/life.cl:238:31  "="
+examples/life.cl:238:35  String<X>
+examples/life.cl:238:37  "then"
+examples/life.cl:238:42  Int<1>
+examples/life.cl:238:44  "else"
+examples/life.cl:238:49  Int<0>
+examples/life.cl:238:51  "fi"
+examples/life.cl:238:53  ";"
+examples/life.cl:239: 2  "}"
+examples/life.cl:240: 1  "}"
+examples/life.cl:240: 2  ";"
+examples/life.cl:246: 4  Id<cell_at_next_evolution>
+examples/life.cl:246:26  "("
+examples/life.cl:246:27  Id<position>
+examples/life.cl:246:36  ":"
+examples/life.cl:246:38  Type<Int>
+examples/life.cl:246:41  ")"
+examples/life.cl:246:43  ":"
+examples/life.cl:246:45  Type<String>
+examples/life.cl:246:52  "{"
+examples/life.cl:248: 1  "if"
+examples/life.cl:248: 4  Id<neighbors>
+examples/life.cl:248:13  "("
+examples/life.cl:248:14  Id<position>
+examples/life.cl:248:22  ")"
+examples/life.cl:248:24  "="
+examples/life.cl:248:26  Int<3>
+examples/life.cl:248:28  "then"
+examples/life.cl:249: 4  String<X>
+examples/life.cl:250: 1  "else"
+examples/life.cl:251: 4  "if"
+examples/life.cl:251: 7  Id<neighbors>
+examples/life.cl:251:16  "("
+examples/life.cl:251:17  Id<position>
+examples/life.cl:251:25  ")"
+examples/life.cl:251:27  "="
+examples/life.cl:251:29  Int<2>
+examples/life.cl:251:31  "then"
+examples/life.cl:252: 2  "if"
+examples/life.cl:252: 5  Id<cell>
+examples/life.cl:252: 9  "("
+examples/life.cl:252:10  Id<position>
+examples/life.cl:252:18  ")"
+examples/life.cl:252:20  "="
+examples/life.cl:252:24  String<X>
+examples/life.cl:252:26  "then"
+examples/life.cl:253: 5  String<X>
+examples/life.cl:254: 2  "else"
+examples/life.cl:255: 5  String<->
+examples/life.cl:256: 9  "fi"
+examples/life.cl:257: 4  "else"
+examples/life.cl:258: 4  String<->
+examples/life.cl:259: 1  "fi"
+examples/life.cl:259: 4  "fi"
+examples/life.cl:260: 4  "}"
+examples/life.cl:260: 5  ";"
+examples/life.cl:263: 4  Id<evolve>
+examples/life.cl:263:10  "("
+examples/life.cl:263:11  ")"
+examples/life.cl:263:13  ":"
+examples/life.cl:263:15  Type<SELF_TYPE>
+examples/life.cl:263:25  "{"
+examples/life.cl:264: 8  "("
+examples/life.cl:264: 9  "let"
+examples/life.cl:264:13  Id<position>
+examples/life.cl:264:22  ":"
+examples/life.cl:264:24  Type<Int>
+examples/life.cl:264:28  "<-"
+examples/life.cl:264:31  Int<0>
+examples/life.cl:264:33  "in"
+examples/life.cl:265: 8  "("
+examples/life.cl:265: 9  "let"
+examples/life.cl:265:13  Id<num>
+examples/life.cl:265:17  ":"
+examples/life.cl:265:19  Type<Int>
+examples/life.cl:265:23  "<-"
+examples/life.cl:265:26  Id<num_cells>
+examples/life.cl:265:35  "("
+examples/life.cl:265:36  ")"
+examples/life.cl:265:38  "in"
+examples/life.cl:266: 8  "("
+examples/life.cl:266: 9  "let"
+examples/life.cl:266:13  Id<temp>
+examples/life.cl:266:18  ":"
+examples/life.cl:266:20  Type<String>
+examples/life.cl:266:27  "in"
+examples/life.cl:267:12  "{"
+examples/life.cl:268:16  "while"
+examples/life.cl:268:22  Id<position>
+examples/life.cl:268:31  "<"
+examples/life.cl:268:33  Id<num>
+examples/life.cl:268:37  "loop"
+examples/life.cl:269:20  "{"
+examples/life.cl:270:24  Id<temp>
+examples/life.cl:270:29  "<-"
+examples/life.cl:270:32  Id<temp>
+examples/life.cl:270:36  "."
+examples/life.cl:270:37  Id<concat>
+examples/life.cl:270:43  "("
+examples/life.cl:270:44  Id<cell_at_next_evolution>
+examples/life.cl:270:66  "("
+examples/life.cl:270:67  Id<position>
+examples/life.cl:270:75  ")"
+examples/life.cl:270:76  ")"
+examples/life.cl:270:77  ";"
+examples/life.cl:271:24  Id<position>
+examples/life.cl:271:33  "<-"
+examples/life.cl:271:36  Id<position>
+examples/life.cl:271:45  "+"
+examples/life.cl:271:47  Int<1>
+examples/life.cl:271:48  ";"
+examples/life.cl:272:20  "}"
+examples/life.cl:273:16  "pool"
+examples/life.cl:273:20  ";"
+examples/life.cl:274:16  Id<population_map>
+examples/life.cl:274:31  "<-"
+examples/life.cl:274:34  Id<temp>
+examples/life.cl:274:38  ";"
+examples/life.cl:275:16  Id<self>
+examples/life.cl:275:20  ";"
+examples/life.cl:276:12  "}"
+examples/life.cl:277: 8  ")"
+examples/life.cl:277:10  ")"
+examples/life.cl:277:12  ")"
+examples/life.cl:278: 4  "}"
+examples/life.cl:278: 5  ";"
+examples/life.cl:283: 1  Id<option>
+examples/life.cl:283: 7  "("
+examples/life.cl:283: 8  ")"
+examples/life.cl:283: 9  ":"
+examples/life.cl:283:11  Type<String>
+examples/life.cl:283:18  "{"
+examples/life.cl:284: 1  "{"
+examples/life.cl:285: 2  "("
+examples/life.cl:285: 3  "let"
+examples/life.cl:285: 7  Id<num>
+examples/life.cl:285:11  ":"
+examples/life.cl:285:13  Type<Int>
+examples/life.cl:285:17  "in"
+examples/life.cl:286: 3  "{"
+examples/life.cl:287: 3  Id<out_string>
+examples/life.cl:287:13  "("
+examples/life.cl:287:41  String<Please chose a numbe>
+examples/life.cl:287:42  ")"
+examples/life.cl:287:43  ";"
+examples/life.cl:288: 3  Id<out_string>
+examples/life.cl:288:13  "("
+examples/life.cl:288:29  String<	1: A cross>
+examples/life.cl:288:30  ")"
+examples/life.cl:288:31  ";"
+examples/life.cl:289: 3  Id<out_string>
+examples/life.cl:289:13  "("
+examples/life.cl:289:64  String<	2: A slash from the>
+examples/life.cl:289:65  ")"
+examples/life.cl:289:66  ";"
+examples/life.cl:290: 3  Id<out_string>
+examples/life.cl:290:13  "("
+examples/life.cl:290:64  String<	3: A slash from the>
+examples/life.cl:290:65  ")"
+examples/life.cl:290:66  ";"
+examples/life.cl:291: 3  Id<out_string>
+examples/life.cl:291:13  "("
+examples/life.cl:291:26  String<	4: An X>
+examples/life.cl:291:27  ")"
+examples/life.cl:291:28  ";"
+examples/life.cl:292: 3  Id<out_string>
+examples/life.cl:292:13  "("
+examples/life.cl:292:42  String<	5: A greater than s>
+examples/life.cl:292:43  ")"
+examples/life.cl:292:44  ";"
+examples/life.cl:293: 3  Id<out_string>
+examples/life.cl:293:13  "("
+examples/life.cl:293:38  String<	6: A less than sign>
+examples/life.cl:293:39  ")"
+examples/life.cl:293:40  ";"
+examples/life.cl:294: 3  Id<out_string>
+examples/life.cl:294:13  "("
+examples/life.cl:294:44  String<	7: Two greater than>
+examples/life.cl:294:45  ")"
+examples/life.cl:294:46  ";"
+examples/life.cl:295: 3  Id<out_string>
+examples/life.cl:295:13  "("
+examples/life.cl:295:41  String<	8: Two less than si>
+examples/life.cl:295:42  ")"
+examples/life.cl:295:43  ";"
+examples/life.cl:296: 3  Id<out_string>
+examples/life.cl:296:13  "("
+examples/life.cl:296:27  String<	9: A 'V'>
+examples/life.cl:296:28  ")"
+examples/life.cl:296:29  ";"
+examples/life.cl:297: 3  Id<out_string>
+examples/life.cl:297:13  "("
+examples/life.cl:297:37  String<	10: An inverse 'V'>
+examples/life.cl:297:38  ")"
+examples/life.cl:297:39  ";"
+examples/life.cl:298: 3  Id<out_string>
+examples/life.cl:298:13  "("
+examples/life.cl:298:48  String<	11: Numbers 9 and 1>
+examples/life.cl:298:49  ")"
+examples/life.cl:298:50  ";"
+examples/life.cl:299: 3  Id<out_string>
+examples/life.cl:299:13  "("
+examples/life.cl:299:34  String<	12: A full grid>
+examples/life.cl:299:35  ")"
+examples/life.cl:299:36  ";"
+examples/life.cl:300: 3  Id<out_string>
+examples/life.cl:300:13  "("
+examples/life.cl:300:28  String<	13: A 'T'>
+examples/life.cl:300:29  ")"
+examples/life.cl:300:30  ";"
+examples/life.cl:301: 3  Id<out_string>
+examples/life.cl:301:13  "("
+examples/life.cl:301:33  String<	14: A plus '+'>
+examples/life.cl:301:34  ")"
+examples/life.cl:301:35  ";"
+examples/life.cl:302: 3  Id<out_string>
+examples/life.cl:302:13  "("
+examples/life.cl:302:28  String<	15: A 'W'>
+examples/life.cl:302:29  ")"
+examples/life.cl:302:30  ";"
+examples/life.cl:303: 3  Id<out_string>
+examples/life.cl:303:13  "("
+examples/life.cl:303:29  String<	16: An 'M'>
+examples/life.cl:303:30  ")"
+examples/life.cl:303:31  ";"
+examples/life.cl:304: 3  Id<out_string>
+examples/life.cl:304:13  "("
+examples/life.cl:304:29  String<	17: An 'E'>
+examples/life.cl:304:30  ")"
+examples/life.cl:304:31  ";"
+examples/life.cl:305: 3  Id<out_string>
+examples/life.cl:305:13  "("
+examples/life.cl:305:28  String<	18: A '3'>
+examples/life.cl:305:29  ")"
+examples/life.cl:305:30  ";"
+examples/life.cl:306: 3  Id<out_string>
+examples/life.cl:306:13  "("
+examples/life.cl:306:29  String<	19: An 'O'>
+examples/life.cl:306:30  ")"
+examples/life.cl:306:31  ";"
+examples/life.cl:307: 3  Id<out_string>
+examples/life.cl:307:13  "("
+examples/life.cl:307:29  String<	20: An '8'>
+examples/life.cl:307:30  ")"
+examples/life.cl:307:31  ";"
+examples/life.cl:308: 3  Id<out_string>
+examples/life.cl:308:13  "("
+examples/life.cl:308:29  String<	21: An 'S'>
+examples/life.cl:308:30  ")"
+examples/life.cl:308:31  ";"
+examples/life.cl:309: 3  Id<out_string>
+examples/life.cl:309:13  "("
+examples/life.cl:309:30  String<Your choice = >
+examples/life.cl:309:31  ")"
+examples/life.cl:309:32  ";"
+examples/life.cl:310: 3  Id<num>
+examples/life.cl:310: 7  "<-"
+examples/life.cl:310:10  Id<in_int>
+examples/life.cl:310:16  "("
+examples/life.cl:310:17  ")"
+examples/life.cl:310:18  ";"
+examples/life.cl:311: 3  Id<out_string>
+examples/life.cl:311:13  "("
+examples/life.cl:311:17  String<>
+examples/life.cl:311:18  ")"
+examples/life.cl:311:19  ";"
+examples/life.cl:312: 3  "if"
+examples/life.cl:312: 6  Id<num>
+examples/life.cl:312:10  "="
+examples/life.cl:312:12  Int<1>
+examples/life.cl:312:14  "then"
+examples/life.cl:313:26  String< XX  XXXX XXXX  XX  >
+examples/life.cl:314: 3  "else"
+examples/life.cl:314: 8  "if"
+examples/life.cl:314:11  Id<num>
+examples/life.cl:314:15  "="
+examples/life.cl:314:17  Int<2>
+examples/life.cl:314:19  "then"
+examples/life.cl:315:31  String<    X   X   X   X   >
+examples/life.cl:316: 3  "else"
+examples/life.cl:316: 8  "if"
+examples/life.cl:316:11  Id<num>
+examples/life.cl:316:15  "="
+examples/life.cl:316:17  Int<3>
+examples/life.cl:316:19  "then"
+examples/life.cl:317:31  String<X     X     X     X >
+examples/life.cl:318: 3  "else"
+examples/life.cl:318: 8  "if"
+examples/life.cl:318:11  Id<num>
+examples/life.cl:318:15  "="
+examples/life.cl:318:17  Int<4>
+examples/life.cl:318:19  "then"
+examples/life.cl:319:27  String<X   X X X   X   X X >
+examples/life.cl:320: 3  "else"
+examples/life.cl:320: 8  "if"
+examples/life.cl:320:11  Id<num>
+examples/life.cl:320:15  "="
+examples/life.cl:320:17  Int<5>
+examples/life.cl:320:19  "then"
+examples/life.cl:321:27  String<X     X     X   X   >
+examples/life.cl:322: 3  "else"
+examples/life.cl:322: 8  "if"
+examples/life.cl:322:11  Id<num>
+examples/life.cl:322:15  "="
+examples/life.cl:322:17  Int<6>
+examples/life.cl:322:19  "then"
+examples/life.cl:323:27  String<    X   X   X     X >
+examples/life.cl:324: 3  "else"
+examples/life.cl:324: 8  "if"
+examples/life.cl:324:11  Id<num>
+examples/life.cl:324:15  "="
+examples/life.cl:324:17  Int<7>
+examples/life.cl:324:19  "then"
+examples/life.cl:325:22  String<X  X  X  XX  X      >
+examples/life.cl:326: 3  "else"
+examples/life.cl:326: 8  "if"
+examples/life.cl:326:11  Id<num>
+examples/life.cl:326:15  "="
+examples/life.cl:326:17  Int<8>
+examples/life.cl:326:19  "then"
+examples/life.cl:327:22  String< X  XX  X  X  X     >
+examples/life.cl:328: 3  "else"
+examples/life.cl:328: 8  "if"
+examples/life.cl:328:11  Id<num>
+examples/life.cl:328:15  "="
+examples/life.cl:328:17  Int<9>
+examples/life.cl:328:19  "then"
+examples/life.cl:329:17  String<X   X X X   X  >
+examples/life.cl:330: 3  "else"
+examples/life.cl:330: 8  "if"
+examples/life.cl:330:11  Id<num>
+examples/life.cl:330:15  "="
+examples/life.cl:330:17  Int<10>
+examples/life.cl:330:20  "then"
+examples/life.cl:331:17  String<  X   X X X   X>
+examples/life.cl:332: 3  "else"
+examples/life.cl:332: 8  "if"
+examples/life.cl:332:11  Id<num>
+examples/life.cl:332:15  "="
+examples/life.cl:332:17  Int<11>
+examples/life.cl:332:20  "then"
+examples/life.cl:333:17  String<X X X X X X X X>
+examples/life.cl:334: 3  "else"
+examples/life.cl:334: 8  "if"
+examples/life.cl:334:11  Id<num>
+examples/life.cl:334:15  "="
+examples/life.cl:334:17  Int<12>
+examples/life.cl:334:20  "then"
+examples/life.cl:335:27  String<XXXXXXXXXXXXXXXXXXXX>
+examples/life.cl:336: 3  "else"
+examples/life.cl:336: 8  "if"
+examples/life.cl:336:11  Id<num>
+examples/life.cl:336:15  "="
+examples/life.cl:336:17  Int<13>
+examples/life.cl:336:20  "then"
+examples/life.cl:337:31  String<XXXXX  X    X    X  >
+examples/life.cl:338: 3  "else"
+examples/life.cl:338: 8  "if"
+examples/life.cl:338:11  Id<num>
+examples/life.cl:338:15  "="
+examples/life.cl:338:17  Int<14>
+examples/life.cl:338:20  "then"
+examples/life.cl:339:31  String<  X    X  XXXXX  X  >
+examples/life.cl:340: 3  "else"
+examples/life.cl:340: 8  "if"
+examples/life.cl:340:11  Id<num>
+examples/life.cl:340:15  "="
+examples/life.cl:340:17  Int<15>
+examples/life.cl:340:20  "then"
+examples/life.cl:341:27  String<X     X X X X   X X >
+examples/life.cl:342: 3  "else"
+examples/life.cl:342: 8  "if"
+examples/life.cl:342:11  Id<num>
+examples/life.cl:342:15  "="
+examples/life.cl:342:17  Int<16>
+examples/life.cl:342:20  "then"
+examples/life.cl:343:27  String<  X X   X X X X     >
+examples/life.cl:344: 3  "else"
+examples/life.cl:344: 8  "if"
+examples/life.cl:344:11  Id<num>
+examples/life.cl:344:15  "="
+examples/life.cl:344:17  Int<17>
+examples/life.cl:344:20  "then"
+examples/life.cl:345:30  String<XXXXX   X   XXXXX   >
+examples/life.cl:346: 3  "else"
+examples/life.cl:346: 8  "if"
+examples/life.cl:346:11  Id<num>
+examples/life.cl:346:15  "="
+examples/life.cl:346:17  Int<18>
+examples/life.cl:346:20  "then"
+examples/life.cl:347:30  String<XXX    X   X  X    X>
+examples/life.cl:348: 3  "else"
+examples/life.cl:348: 8  "if"
+examples/life.cl:348:11  Id<num>
+examples/life.cl:348:15  "="
+examples/life.cl:348:17  Int<19>
+examples/life.cl:348:20  "then"
+examples/life.cl:349:18  String< XX X  XX  X XX >
+examples/life.cl:350: 3  "else"
+examples/life.cl:350: 8  "if"
+examples/life.cl:350:11  Id<num>
+examples/life.cl:350:15  "="
+examples/life.cl:350:17  Int<20>
+examples/life.cl:350:20  "then"
+examples/life.cl:351:30  String< XX X  XX  X XX X  X>
+examples/life.cl:352: 3  "else"
+examples/life.cl:352: 8  "if"
+examples/life.cl:352:11  Id<num>
+examples/life.cl:352:15  "="
+examples/life.cl:352:17  Int<21>
+examples/life.cl:352:20  "then"
+examples/life.cl:353:30  String< XXXX   X    XX    X>
+examples/life.cl:354: 3  "else"
+examples/life.cl:355:27  String<                    >
+examples/life.cl:356: 2  "fi"
+examples/life.cl:356: 5  "fi"
+examples/life.cl:356: 8  "fi"
+examples/life.cl:356:11  "fi"
+examples/life.cl:356:14  "fi"
+examples/life.cl:356:17  "fi"
+examples/life.cl:356:20  "fi"
+examples/life.cl:356:23  "fi"
+examples/life.cl:356:26  "fi"
+examples/life.cl:356:29  "fi"
+examples/life.cl:356:32  "fi"
+examples/life.cl:356:35  "fi"
+examples/life.cl:356:38  "fi"
+examples/life.cl:356:41  "fi"
+examples/life.cl:356:44  "fi"
+examples/life.cl:356:47  "fi"
+examples/life.cl:356:50  "fi"
+examples/life.cl:356:53  "fi"
+examples/life.cl:356:56  "fi"
+examples/life.cl:356:59  "fi"
+examples/life.cl:356:62  "fi"
+examples/life.cl:356:64  ";"
+examples/life.cl:357: 4  "}"
+examples/life.cl:358: 3  ")"
+examples/life.cl:358: 4  ";"
+examples/life.cl:359: 1  "}"
+examples/life.cl:360: 1  "}"
+examples/life.cl:360: 2  ";"
+examples/life.cl:365: 1  Id<prompt>
+examples/life.cl:365: 7  "("
+examples/life.cl:365: 8  ")"
+examples/life.cl:365:10  ":"
+examples/life.cl:365:12  Type<Bool>
+examples/life.cl:365:17  "{"
+examples/life.cl:366: 1  "{"
+examples/life.cl:367: 2  "("
+examples/life.cl:367: 3  "let"
+examples/life.cl:367: 7  Id<ans>
+examples/life.cl:367:11  ":"
+examples/life.cl:367:13  Type<String>
+examples/life.cl:367:20  "in"
+examples/life.cl:368: 3  "{"
+examples/life.cl:369: 3  Id<out_string>
+examples/life.cl:369:13  "("
+examples/life.cl:369:70  String<Would you like to co>
+examples/life.cl:369:71  ")"
+examples/life.cl:369:72  ";"
+examples/life.cl:370: 3  Id<out_string>
+examples/life.cl:370:13  "("
+examples/life.cl:370:64  String<Please use lowercase>
+examples/life.cl:370:65  ")"
+examples/life.cl:370:66  ";"
+examples/life.cl:371: 3  Id<ans>
+examples/life.cl:371: 7  "<-"
+examples/life.cl:371:10  Id<in_string>
+examples/life.cl:371:19  "("
+examples/life.cl:371:20  ")"
+examples/life.cl:371:21  ";"
+examples/life.cl:372: 3  Id<out_string>
+examples/life.cl:372:13  "("
+examples/life.cl:372:17  String<>
+examples/life.cl:372:18  ")"
+examples/life.cl:372:19  ";"
+examples/life.cl:373: 3  "if"
+examples/life.cl:373: 6  Id<ans>
+examples/life.cl:373:10  "="
+examples/life.cl:373:14  String<n>
+examples/life.cl:373:16  "then"
+examples/life.cl:374: 1  Boolean<False>
+examples/life.cl:375: 3  "else"
+examples/life.cl:376: 1  Boolean<True>
+examples/life.cl:377: 3  "fi"
+examples/life.cl:377: 5  ";"
+examples/life.cl:378: 3  "}"
+examples/life.cl:379: 2  ")"
+examples/life.cl:379: 3  ";"
+examples/life.cl:380: 1  "}"
+examples/life.cl:381: 1  "}"
+examples/life.cl:381: 2  ";"
+examples/life.cl:384: 1  Id<prompt2>
+examples/life.cl:384: 8  "("
+examples/life.cl:384: 9  ")"
+examples/life.cl:384:11  ":"
+examples/life.cl:384:13  Type<Bool>
+examples/life.cl:384:18  "{"
+examples/life.cl:385: 2  "("
+examples/life.cl:385: 3  "let"
+examples/life.cl:385: 7  Id<ans>
+examples/life.cl:385:11  ":"
+examples/life.cl:385:13  Type<String>
+examples/life.cl:385:20  "in"
+examples/life.cl:386: 3  "{"
+examples/life.cl:387: 3  Id<out_string>
+examples/life.cl:387:13  "("
+examples/life.cl:387:19  String<>
+examples/life.cl:387:20  ")"
+examples/life.cl:387:21  ";"
+examples/life.cl:388: 3  Id<out_string>
+examples/life.cl:388:13  "("
+examples/life.cl:388:64  String<Would you like to ch>
+examples/life.cl:388:65  ")"
+examples/life.cl:388:66  ";"
+examples/life.cl:389: 3  Id<out_string>
+examples/life.cl:389:13  "("
+examples/life.cl:389:64  String<Please use lowercase>
+examples/life.cl:389:65  ")"
+examples/life.cl:389:66  ";"
+examples/life.cl:390: 3  Id<ans>
+examples/life.cl:390: 7  "<-"
+examples/life.cl:390:10  Id<in_string>
+examples/life.cl:390:19  "("
+examples/life.cl:390:20  ")"
+examples/life.cl:390:21  ";"
+examples/life.cl:391: 3  "if"
+examples/life.cl:391: 6  Id<ans>
+examples/life.cl:391:10  "="
+examples/life.cl:391:14  String<y>
+examples/life.cl:391:16  "then"
+examples/life.cl:392: 1  Boolean<True>
+examples/life.cl:393: 3  "else"
+examples/life.cl:394: 1  Boolean<False>
+examples/life.cl:395: 3  "fi"
+examples/life.cl:395: 5  ";"
+examples/life.cl:396: 3  "}"
+examples/life.cl:397: 2  ")"
+examples/life.cl:398: 1  "}"
+examples/life.cl:398: 2  ";"
+examples/life.cl:401: 0  "}"
+examples/life.cl:401: 1  ";"
+examples/life.cl:403: 0  "class"
+examples/life.cl:403: 6  Type<Main>
+examples/life.cl:403:11  "inherits"
+examples/life.cl:403:20  Type<CellularAutomaton>
+examples/life.cl:403:38  "{"
+examples/life.cl:404: 4  Id<cells>
+examples/life.cl:404:10  ":"
+examples/life.cl:404:12  Type<CellularAutomaton>
+examples/life.cl:404:29  ";"
+examples/life.cl:406: 4  Id<main>
+examples/life.cl:406: 8  "("
+examples/life.cl:406: 9  ")"
+examples/life.cl:406:11  ":"
+examples/life.cl:406:13  Type<SELF_TYPE>
+examples/life.cl:406:23  "{"
+examples/life.cl:407: 8  "{"
+examples/life.cl:408: 2  "("
+examples/life.cl:408: 3  "let"
+examples/life.cl:408: 7  Id<continue>
+examples/life.cl:408:16  ":"
+examples/life.cl:408:18  Type<Bool>
+examples/life.cl:408:24  "in"
+examples/life.cl:409: 3  "("
+examples/life.cl:409: 4  "let"
+examples/life.cl:409: 8  Id<choice>
+examples/life.cl:409:15  ":"
+examples/life.cl:409:17  Type<String>
+examples/life.cl:409:25  "in"
+examples/life.cl:410: 4  "{"
+examples/life.cl:411: 4  Id<out_string>
+examples/life.cl:411:14  "("
+examples/life.cl:411:46  String<Welcome to the Game >
+examples/life.cl:411:47  ")"
+examples/life.cl:411:48  ";"
+examples/life.cl:412: 4  Id<out_string>
+examples/life.cl:412:14  "("
+examples/life.cl:412:64  String<There are many initi>
+examples/life.cl:412:65  ")"
+examples/life.cl:412:66  ";"
+examples/life.cl:413: 4  "while"
+examples/life.cl:413:10  Id<prompt2>
+examples/life.cl:413:17  "("
+examples/life.cl:413:18  ")"
+examples/life.cl:413:20  "loop"
+examples/life.cl:414: 5  "{"
+examples/life.cl:415: 6  Id<continue>
+examples/life.cl:415:15  "<-"
+examples/life.cl:415:18  Boolean<True>
+examples/life.cl:415:22  ";"
+examples/life.cl:416: 6  Id<choice>
+examples/life.cl:416:13  "<-"
+examples/life.cl:416:16  Id<option>
+examples/life.cl:416:22  "("
+examples/life.cl:416:23  ")"
+examples/life.cl:416:24  ";"
+examples/life.cl:417: 6  Id<cells>
+examples/life.cl:417:12  "<-"
+examples/life.cl:417:15  "("
+examples/life.cl:417:16  "new"
+examples/life.cl:417:20  Type<CellularAutomaton>
+examples/life.cl:417:37  ")"
+examples/life.cl:417:38  "."
+examples/life.cl:417:39  Id<init>
+examples/life.cl:417:43  "("
+examples/life.cl:417:44  Id<choice>
+examples/life.cl:417:50  ")"
+examples/life.cl:417:51  ";"
+examples/life.cl:418: 6  Id<cells>
+examples/life.cl:418:11  "."
+examples/life.cl:418:12  Id<print>
+examples/life.cl:418:17  "("
+examples/life.cl:418:18  ")"
+examples/life.cl:418:19  ";"
+examples/life.cl:419:13  "while"
+examples/life.cl:419:19  Id<continue>
+examples/life.cl:419:28  "loop"
+examples/life.cl:420: 2  "if"
+examples/life.cl:420: 5  Id<prompt>
+examples/life.cl:420:11  "("
+examples/life.cl:420:12  ")"
+examples/life.cl:420:14  "then"
+examples/life.cl:421:20  "{"
+examples/life.cl:422:24  Id<cells>
+examples/life.cl:422:29  "."
+examples/life.cl:422:30  Id<evolve>
+examples/life.cl:422:36  "("
+examples/life.cl:422:37  ")"
+examples/life.cl:422:38  ";"
+examples/life.cl:423:24  Id<cells>
+examples/life.cl:423:29  "."
+examples/life.cl:423:30  Id<print>
+examples/life.cl:423:35  "("
+examples/life.cl:423:36  ")"
+examples/life.cl:423:37  ";"
+examples/life.cl:424:20  "}"
+examples/life.cl:425: 2  "else"
+examples/life.cl:426: 6  Id<continue>
+examples/life.cl:426:15  "<-"
+examples/life.cl:426:18  Boolean<False>
+examples/life.cl:427: 7  "fi"
+examples/life.cl:428:16  "pool"
+examples/life.cl:428:20  ";"
+examples/life.cl:429:12  "}"
+examples/life.cl:430:12  "pool"
+examples/life.cl:430:16  ";"
+examples/life.cl:431: 5  Id<self>
+examples/life.cl:431: 9  ";"
+examples/life.cl:432: 6  "}"
+examples/life.cl:432: 9  ")"
+examples/life.cl:432:11  ")"
+examples/life.cl:432:12  ";"
+examples/life.cl:432:14  "}"
+examples/life.cl:433: 4  "}"
+examples/life.cl:433: 5  ";"
+examples/life.cl:434: 0  "}"
+examples/life.cl:434: 1  ";"

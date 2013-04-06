@@ -1,0 +1,144 @@
+examples/primes.cl:26: 0  "class"
+examples/primes.cl:26: 6  Type<Main>
+examples/primes.cl:26:11  "inherits"
+examples/primes.cl:26:20  Type<IO>
+examples/primes.cl:26:23  "{"
+examples/primes.cl:28: 2  Id<main>
+examples/primes.cl:28: 6  "("
+examples/primes.cl:28: 7  ")"
+examples/primes.cl:28: 9  ":"
+examples/primes.cl:28:11  Type<Int>
+examples/primes.cl:28:15  "{"
+examples/primes.cl:29: 4  Int<0>
+examples/primes.cl:30: 2  "}"
+examples/primes.cl:30: 3  ";"
+examples/primes.cl:32: 2  Id<out>
+examples/primes.cl:32: 6  ":"
+examples/primes.cl:32: 8  Type<Int>
+examples/primes.cl:32:12  "<-"
+examples/primes.cl:33: 4  "{"
+examples/primes.cl:34: 6  Id<out_string>
+examples/primes.cl:34:16  "("
+examples/primes.cl:34:41  String<2 is trivially prime>
+examples/primes.cl:34:42  ")"
+examples/primes.cl:34:43  ";"
+examples/primes.cl:35: 6  Int<2>
+examples/primes.cl:35: 7  ";"
+examples/primes.cl:36: 4  "}"
+examples/primes.cl:36: 5  ";"
+examples/primes.cl:38: 2  Id<testee>
+examples/primes.cl:38: 9  ":"
+examples/primes.cl:38:11  Type<Int>
+examples/primes.cl:38:15  "<-"
+examples/primes.cl:38:18  Id<out>
+examples/primes.cl:38:21  ";"
+examples/primes.cl:40: 2  Id<divisor>
+examples/primes.cl:40:10  ":"
+examples/primes.cl:40:12  Type<Int>
+examples/primes.cl:40:15  ";"
+examples/primes.cl:42: 2  Id<stop>
+examples/primes.cl:42: 7  ":"
+examples/primes.cl:42: 9  Type<Int>
+examples/primes.cl:42:13  "<-"
+examples/primes.cl:42:16  Int<500>
+examples/primes.cl:42:19  ";"
+examples/primes.cl:44: 2  Id<m>
+examples/primes.cl:44: 4  ":"
+examples/primes.cl:44: 6  Type<Object>
+examples/primes.cl:44:13  "<-"
+examples/primes.cl:45: 4  "while"
+examples/primes.cl:45:10  Boolean<True>
+examples/primes.cl:45:15  "loop"
+examples/primes.cl:46: 6  "{"
+examples/primes.cl:48: 8  Id<testee>
+examples/primes.cl:48:15  "<-"
+examples/primes.cl:48:18  Id<testee>
+examples/primes.cl:48:25  "+"
+examples/primes.cl:48:27  Int<1>
+examples/primes.cl:48:28  ";"
+examples/primes.cl:49: 8  Id<divisor>
+examples/primes.cl:49:16  "<-"
+examples/primes.cl:49:19  Int<2>
+examples/primes.cl:49:20  ";"
+examples/primes.cl:51: 8  "while"
+examples/primes.cl:52:10  "if"
+examples/primes.cl:52:13  Id<testee>
+examples/primes.cl:52:20  "<"
+examples/primes.cl:52:22  Id<divisor>
+examples/primes.cl:52:30  "*"
+examples/primes.cl:52:32  Id<divisor>
+examples/primes.cl:53:12  "then"
+examples/primes.cl:53:17  Boolean<False>
+examples/primes.cl:54: 3  "else"
+examples/primes.cl:54: 8  "if"
+examples/primes.cl:54:11  Id<testee>
+examples/primes.cl:54:18  "-"
+examples/primes.cl:54:20  Id<divisor>
+examples/primes.cl:54:27  "*"
+examples/primes.cl:54:28  "("
+examples/primes.cl:54:29  Id<testee>
+examples/primes.cl:54:35  "/"
+examples/primes.cl:54:36  Id<divisor>
+examples/primes.cl:54:43  ")"
+examples/primes.cl:54:45  "="
+examples/primes.cl:54:47  Int<0>
+examples/primes.cl:55:12  "then"
+examples/primes.cl:55:17  Boolean<False>
+examples/primes.cl:56:12  "else"
+examples/primes.cl:56:17  Boolean<True>
+examples/primes.cl:57:10  "fi"
+examples/primes.cl:57:13  "fi"
+examples/primes.cl:58: 8  "loop"
+examples/primes.cl:59:10  Id<divisor>
+examples/primes.cl:59:18  "<-"
+examples/primes.cl:59:21  Id<divisor>
+examples/primes.cl:59:29  "+"
+examples/primes.cl:59:31  Int<1>
+examples/primes.cl:60: 8  "pool"
+examples/primes.cl:60:12  ";"
+examples/primes.cl:62: 8  "if"
+examples/primes.cl:62:11  Id<testee>
+examples/primes.cl:62:18  "<"
+examples/primes.cl:62:20  Id<divisor>
+examples/primes.cl:62:28  "*"
+examples/primes.cl:62:30  Id<divisor>
+examples/primes.cl:63: 8  "then"
+examples/primes.cl:64:10  "{"
+examples/primes.cl:65:12  Id<out>
+examples/primes.cl:65:16  "<-"
+examples/primes.cl:65:19  Id<testee>
+examples/primes.cl:65:25  ";"
+examples/primes.cl:66:12  Id<out_int>
+examples/primes.cl:66:19  "("
+examples/primes.cl:66:20  Id<out>
+examples/primes.cl:66:23  ")"
+examples/primes.cl:66:24  ";"
+examples/primes.cl:67:12  Id<out_string>
+examples/primes.cl:67:22  "("
+examples/primes.cl:67:36  String< is prime.>
+examples/primes.cl:67:37  ")"
+examples/primes.cl:67:38  ";"
+examples/primes.cl:68:10  "}"
+examples/primes.cl:69: 8  "else"
+examples/primes.cl:70:10  Int<0>
+examples/primes.cl:71: 1  "fi"
+examples/primes.cl:71: 3  ";"
+examples/primes.cl:73: 8  "if"
+examples/primes.cl:73:11  Id<stop>
+examples/primes.cl:73:16  "<="
+examples/primes.cl:73:19  Id<testee>
+examples/primes.cl:73:26  "then"
+examples/primes.cl:74:15  String<halt>
+examples/primes.cl:74:16  "."
+examples/primes.cl:74:17  Id<abort>
+examples/primes.cl:74:22  "("
+examples/primes.cl:74:23  ")"
+examples/primes.cl:75: 8  "else"
+examples/primes.cl:76:19  String<continue>
+examples/primes.cl:77: 8  "fi"
+examples/primes.cl:77:10  ";"
+examples/primes.cl:79: 6  "}"
+examples/primes.cl:80: 4  "pool"
+examples/primes.cl:80: 8  ";"
+examples/primes.cl:82: 0  "}"
+examples/primes.cl:82: 1  ";"

@@ -1,0 +1,326 @@
+examples/hairyscary.cl: 2: 0  "class"
+examples/hairyscary.cl: 2: 6  Type<Foo>
+examples/hairyscary.cl: 2:10  "inherits"
+examples/hairyscary.cl: 2:19  Type<Bazz>
+examples/hairyscary.cl: 2:24  "{"
+examples/hairyscary.cl: 3: 5  Id<a>
+examples/hairyscary.cl: 3: 7  ":"
+examples/hairyscary.cl: 3: 9  Type<Razz>
+examples/hairyscary.cl: 3:14  "<-"
+examples/hairyscary.cl: 3:17  "case"
+examples/hairyscary.cl: 3:22  Id<self>
+examples/hairyscary.cl: 3:27  "of"
+examples/hairyscary.cl: 4: 8  Id<n>
+examples/hairyscary.cl: 4:10  ":"
+examples/hairyscary.cl: 4:12  Type<Razz>
+examples/hairyscary.cl: 4:17  "=>"
+examples/hairyscary.cl: 4:20  "("
+examples/hairyscary.cl: 4:21  "new"
+examples/hairyscary.cl: 4:25  Type<Bar>
+examples/hairyscary.cl: 4:28  ")"
+examples/hairyscary.cl: 4:29  ";"
+examples/hairyscary.cl: 5: 8  Id<n>
+examples/hairyscary.cl: 5:10  ":"
+examples/hairyscary.cl: 5:12  Type<Foo>
+examples/hairyscary.cl: 5:16  "=>"
+examples/hairyscary.cl: 5:19  "("
+examples/hairyscary.cl: 5:20  "new"
+examples/hairyscary.cl: 5:24  Type<Razz>
+examples/hairyscary.cl: 5:28  ")"
+examples/hairyscary.cl: 5:29  ";"
+examples/hairyscary.cl: 6: 8  Id<n>
+examples/hairyscary.cl: 6:10  ":"
+examples/hairyscary.cl: 6:12  Type<Bar>
+examples/hairyscary.cl: 6:16  "=>"
+examples/hairyscary.cl: 6:19  Id<n>
+examples/hairyscary.cl: 6:20  ";"
+examples/hairyscary.cl: 7:13  "esac"
+examples/hairyscary.cl: 7:17  ";"
+examples/hairyscary.cl: 9: 5  Id<b>
+examples/hairyscary.cl: 9: 7  ":"
+examples/hairyscary.cl: 9: 9  Type<Int>
+examples/hairyscary.cl: 9:13  "<-"
+examples/hairyscary.cl: 9:16  Id<a>
+examples/hairyscary.cl: 9:17  "."
+examples/hairyscary.cl: 9:18  Id<doh>
+examples/hairyscary.cl: 9:21  "("
+examples/hairyscary.cl: 9:22  ")"
+examples/hairyscary.cl: 9:24  "+"
+examples/hairyscary.cl: 9:26  Id<g>
+examples/hairyscary.cl: 9:27  "."
+examples/hairyscary.cl: 9:28  Id<doh>
+examples/hairyscary.cl: 9:31  "("
+examples/hairyscary.cl: 9:32  ")"
+examples/hairyscary.cl: 9:34  "+"
+examples/hairyscary.cl: 9:36  Id<doh>
+examples/hairyscary.cl: 9:39  "("
+examples/hairyscary.cl: 9:40  ")"
+examples/hairyscary.cl: 9:42  "+"
+examples/hairyscary.cl: 9:44  Id<printh>
+examples/hairyscary.cl: 9:50  "("
+examples/hairyscary.cl: 9:51  ")"
+examples/hairyscary.cl: 9:52  ";"
+examples/hairyscary.cl:11: 5  Id<doh>
+examples/hairyscary.cl:11: 8  "("
+examples/hairyscary.cl:11: 9  ")"
+examples/hairyscary.cl:11:11  ":"
+examples/hairyscary.cl:11:13  Type<Int>
+examples/hairyscary.cl:11:17  "{"
+examples/hairyscary.cl:11:19  "("
+examples/hairyscary.cl:11:20  "let"
+examples/hairyscary.cl:11:24  Id<i>
+examples/hairyscary.cl:11:26  ":"
+examples/hairyscary.cl:11:28  Type<Int>
+examples/hairyscary.cl:11:32  "<-"
+examples/hairyscary.cl:11:35  Id<h>
+examples/hairyscary.cl:11:37  "in"
+examples/hairyscary.cl:11:40  "{"
+examples/hairyscary.cl:11:42  Id<h>
+examples/hairyscary.cl:11:44  "<-"
+examples/hairyscary.cl:11:47  Id<h>
+examples/hairyscary.cl:11:49  "+"
+examples/hairyscary.cl:11:51  Int<2>
+examples/hairyscary.cl:11:52  ";"
+examples/hairyscary.cl:11:54  Id<i>
+examples/hairyscary.cl:11:55  ";"
+examples/hairyscary.cl:11:57  "}"
+examples/hairyscary.cl:11:59  ")"
+examples/hairyscary.cl:11:61  "}"
+examples/hairyscary.cl:11:62  ";"
+examples/hairyscary.cl:13: 0  "}"
+examples/hairyscary.cl:13: 1  ";"
+examples/hairyscary.cl:15: 0  "class"
+examples/hairyscary.cl:15: 6  Type<Bar>
+examples/hairyscary.cl:15:10  "inherits"
+examples/hairyscary.cl:15:19  Type<Razz>
+examples/hairyscary.cl:15:24  "{"
+examples/hairyscary.cl:17: 5  Id<c>
+examples/hairyscary.cl:17: 7  ":"
+examples/hairyscary.cl:17: 9  Type<Int>
+examples/hairyscary.cl:17:13  "<-"
+examples/hairyscary.cl:17:16  Id<doh>
+examples/hairyscary.cl:17:19  "("
+examples/hairyscary.cl:17:20  ")"
+examples/hairyscary.cl:17:21  ";"
+examples/hairyscary.cl:19: 5  Id<d>
+examples/hairyscary.cl:19: 7  ":"
+examples/hairyscary.cl:19: 9  Type<Object>
+examples/hairyscary.cl:19:16  "<-"
+examples/hairyscary.cl:19:19  Id<printh>
+examples/hairyscary.cl:19:25  "("
+examples/hairyscary.cl:19:26  ")"
+examples/hairyscary.cl:19:27  ";"
+examples/hairyscary.cl:20: 0  "}"
+examples/hairyscary.cl:20: 1  ";"
+examples/hairyscary.cl:23: 0  "class"
+examples/hairyscary.cl:23: 6  Type<Razz>
+examples/hairyscary.cl:23:11  "inherits"
+examples/hairyscary.cl:23:20  Type<Foo>
+examples/hairyscary.cl:23:24  "{"
+examples/hairyscary.cl:25: 5  Id<e>
+examples/hairyscary.cl:25: 7  ":"
+examples/hairyscary.cl:25: 9  Type<Bar>
+examples/hairyscary.cl:25:13  "<-"
+examples/hairyscary.cl:25:16  "case"
+examples/hairyscary.cl:25:21  Id<self>
+examples/hairyscary.cl:25:26  "of"
+examples/hairyscary.cl:26: 4  Id<n>
+examples/hairyscary.cl:26: 6  ":"
+examples/hairyscary.cl:26: 8  Type<Razz>
+examples/hairyscary.cl:26:13  "=>"
+examples/hairyscary.cl:26:16  "("
+examples/hairyscary.cl:26:17  "new"
+examples/hairyscary.cl:26:21  Type<Bar>
+examples/hairyscary.cl:26:24  ")"
+examples/hairyscary.cl:26:25  ";"
+examples/hairyscary.cl:27: 4  Id<n>
+examples/hairyscary.cl:27: 6  ":"
+examples/hairyscary.cl:27: 8  Type<Bar>
+examples/hairyscary.cl:27:12  "=>"
+examples/hairyscary.cl:27:15  Id<n>
+examples/hairyscary.cl:27:16  ";"
+examples/hairyscary.cl:28: 2  "esac"
+examples/hairyscary.cl:28: 6  ";"
+examples/hairyscary.cl:30: 5  Id<f>
+examples/hairyscary.cl:30: 7  ":"
+examples/hairyscary.cl:30: 9  Type<Int>
+examples/hairyscary.cl:30:13  "<-"
+examples/hairyscary.cl:30:16  Id<a>
+examples/hairyscary.cl:30:17  "@"
+examples/hairyscary.cl:30:18  Type<Bazz>
+examples/hairyscary.cl:30:22  "."
+examples/hairyscary.cl:30:23  Id<doh>
+examples/hairyscary.cl:30:26  "("
+examples/hairyscary.cl:30:27  ")"
+examples/hairyscary.cl:30:29  "+"
+examples/hairyscary.cl:30:31  Id<g>
+examples/hairyscary.cl:30:32  "."
+examples/hairyscary.cl:30:33  Id<doh>
+examples/hairyscary.cl:30:36  "("
+examples/hairyscary.cl:30:37  ")"
+examples/hairyscary.cl:30:39  "+"
+examples/hairyscary.cl:30:41  Id<e>
+examples/hairyscary.cl:30:42  "."
+examples/hairyscary.cl:30:43  Id<doh>
+examples/hairyscary.cl:30:46  "("
+examples/hairyscary.cl:30:47  ")"
+examples/hairyscary.cl:30:49  "+"
+examples/hairyscary.cl:30:51  Id<doh>
+examples/hairyscary.cl:30:54  "("
+examples/hairyscary.cl:30:55  ")"
+examples/hairyscary.cl:30:57  "+"
+examples/hairyscary.cl:30:59  Id<printh>
+examples/hairyscary.cl:30:65  "("
+examples/hairyscary.cl:30:66  ")"
+examples/hairyscary.cl:30:67  ";"
+examples/hairyscary.cl:32: 0  "}"
+examples/hairyscary.cl:32: 1  ";"
+examples/hairyscary.cl:34: 0  "class"
+examples/hairyscary.cl:34: 6  Type<Bazz>
+examples/hairyscary.cl:34:11  "inherits"
+examples/hairyscary.cl:34:20  Type<IO>
+examples/hairyscary.cl:34:23  "{"
+examples/hairyscary.cl:36: 5  Id<h>
+examples/hairyscary.cl:36: 7  ":"
+examples/hairyscary.cl:36: 9  Type<Int>
+examples/hairyscary.cl:36:13  "<-"
+examples/hairyscary.cl:36:16  Int<1>
+examples/hairyscary.cl:36:17  ";"
+examples/hairyscary.cl:38: 5  Id<g>
+examples/hairyscary.cl:38: 7  ":"
+examples/hairyscary.cl:38: 9  Type<Foo>
+examples/hairyscary.cl:38:14  "<-"
+examples/hairyscary.cl:38:17  "case"
+examples/hairyscary.cl:38:22  Id<self>
+examples/hairyscary.cl:38:27  "of"
+examples/hairyscary.cl:39: 8  Id<n>
+examples/hairyscary.cl:39:10  ":"
+examples/hairyscary.cl:39:12  Type<Bazz>
+examples/hairyscary.cl:39:17  "=>"
+examples/hairyscary.cl:39:20  "("
+examples/hairyscary.cl:39:21  "new"
+examples/hairyscary.cl:39:25  Type<Foo>
+examples/hairyscary.cl:39:28  ")"
+examples/hairyscary.cl:39:29  ";"
+examples/hairyscary.cl:40: 8  Id<n>
+examples/hairyscary.cl:40:10  ":"
+examples/hairyscary.cl:40:12  Type<Razz>
+examples/hairyscary.cl:40:17  "=>"
+examples/hairyscary.cl:40:20  "("
+examples/hairyscary.cl:40:21  "new"
+examples/hairyscary.cl:40:25  Type<Bar>
+examples/hairyscary.cl:40:28  ")"
+examples/hairyscary.cl:40:29  ";"
+examples/hairyscary.cl:41: 3  Id<n>
+examples/hairyscary.cl:41: 5  ":"
+examples/hairyscary.cl:41: 7  Type<Foo>
+examples/hairyscary.cl:41:12  "=>"
+examples/hairyscary.cl:41:15  "("
+examples/hairyscary.cl:41:16  "new"
+examples/hairyscary.cl:41:20  Type<Razz>
+examples/hairyscary.cl:41:24  ")"
+examples/hairyscary.cl:41:25  ";"
+examples/hairyscary.cl:42: 3  Id<n>
+examples/hairyscary.cl:42: 5  ":"
+examples/hairyscary.cl:42: 7  Type<Bar>
+examples/hairyscary.cl:42:11  "=>"
+examples/hairyscary.cl:42:14  Id<n>
+examples/hairyscary.cl:42:15  ";"
+examples/hairyscary.cl:43: 4  "esac"
+examples/hairyscary.cl:43: 8  ";"
+examples/hairyscary.cl:45: 5  Id<i>
+examples/hairyscary.cl:45: 7  ":"
+examples/hairyscary.cl:45: 9  Type<Object>
+examples/hairyscary.cl:45:16  "<-"
+examples/hairyscary.cl:45:19  Id<printh>
+examples/hairyscary.cl:45:25  "("
+examples/hairyscary.cl:45:26  ")"
+examples/hairyscary.cl:45:27  ";"
+examples/hairyscary.cl:47: 5  Id<printh>
+examples/hairyscary.cl:47:11  "("
+examples/hairyscary.cl:47:12  ")"
+examples/hairyscary.cl:47:14  ":"
+examples/hairyscary.cl:47:16  Type<Int>
+examples/hairyscary.cl:47:20  "{"
+examples/hairyscary.cl:47:22  "{"
+examples/hairyscary.cl:47:24  Id<out_int>
+examples/hairyscary.cl:47:31  "("
+examples/hairyscary.cl:47:32  Id<h>
+examples/hairyscary.cl:47:33  ")"
+examples/hairyscary.cl:47:34  ";"
+examples/hairyscary.cl:47:36  Int<0>
+examples/hairyscary.cl:47:37  ";"
+examples/hairyscary.cl:47:39  "}"
+examples/hairyscary.cl:47:41  "}"
+examples/hairyscary.cl:47:42  ";"
+examples/hairyscary.cl:49: 5  Id<doh>
+examples/hairyscary.cl:49: 8  "("
+examples/hairyscary.cl:49: 9  ")"
+examples/hairyscary.cl:49:11  ":"
+examples/hairyscary.cl:49:13  Type<Int>
+examples/hairyscary.cl:49:17  "{"
+examples/hairyscary.cl:49:19  "("
+examples/hairyscary.cl:49:20  "let"
+examples/hairyscary.cl:49:24  Id<i>
+examples/hairyscary.cl:49:25  ":"
+examples/hairyscary.cl:49:27  Type<Int>
+examples/hairyscary.cl:49:31  "<-"
+examples/hairyscary.cl:49:34  Id<h>
+examples/hairyscary.cl:49:36  "in"
+examples/hairyscary.cl:49:39  "{"
+examples/hairyscary.cl:49:41  Id<h>
+examples/hairyscary.cl:49:43  "<-"
+examples/hairyscary.cl:49:46  Id<h>
+examples/hairyscary.cl:49:48  "+"
+examples/hairyscary.cl:49:50  Int<1>
+examples/hairyscary.cl:49:51  ";"
+examples/hairyscary.cl:49:53  Id<i>
+examples/hairyscary.cl:49:54  ";"
+examples/hairyscary.cl:49:56  "}"
+examples/hairyscary.cl:49:58  ")"
+examples/hairyscary.cl:49:60  "}"
+examples/hairyscary.cl:49:61  ";"
+examples/hairyscary.cl:50: 0  "}"
+examples/hairyscary.cl:50: 1  ";"
+examples/hairyscary.cl:53: 0  "class"
+examples/hairyscary.cl:53: 6  Type<Main>
+examples/hairyscary.cl:53:11  "{"
+examples/hairyscary.cl:54: 2  Id<a>
+examples/hairyscary.cl:54: 4  ":"
+examples/hairyscary.cl:54: 6  Type<Bazz>
+examples/hairyscary.cl:54:11  "<-"
+examples/hairyscary.cl:54:14  "new"
+examples/hairyscary.cl:54:18  Type<Bazz>
+examples/hairyscary.cl:54:22  ";"
+examples/hairyscary.cl:55: 2  Id<b>
+examples/hairyscary.cl:55: 4  ":"
+examples/hairyscary.cl:55: 6  Type<Foo>
+examples/hairyscary.cl:55:10  "<-"
+examples/hairyscary.cl:55:13  "new"
+examples/hairyscary.cl:55:17  Type<Foo>
+examples/hairyscary.cl:55:20  ";"
+examples/hairyscary.cl:56: 2  Id<c>
+examples/hairyscary.cl:56: 4  ":"
+examples/hairyscary.cl:56: 6  Type<Razz>
+examples/hairyscary.cl:56:11  "<-"
+examples/hairyscary.cl:56:14  "new"
+examples/hairyscary.cl:56:18  Type<Razz>
+examples/hairyscary.cl:56:22  ";"
+examples/hairyscary.cl:57: 2  Id<d>
+examples/hairyscary.cl:57: 4  ":"
+examples/hairyscary.cl:57: 6  Type<Bar>
+examples/hairyscary.cl:57:10  "<-"
+examples/hairyscary.cl:57:13  "new"
+examples/hairyscary.cl:57:17  Type<Bar>
+examples/hairyscary.cl:57:20  ";"
+examples/hairyscary.cl:59: 2  Id<main>
+examples/hairyscary.cl:59: 6  "("
+examples/hairyscary.cl:59: 7  ")"
+examples/hairyscary.cl:59: 8  ":"
+examples/hairyscary.cl:59:10  Type<String>
+examples/hairyscary.cl:59:17  "{"
+examples/hairyscary.cl:59:30  String<do nothing>
+examples/hairyscary.cl:59:32  "}"
+examples/hairyscary.cl:59:33  ";"
+examples/hairyscary.cl:61: 0  "}"
+examples/hairyscary.cl:61: 1  ";"
