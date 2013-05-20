@@ -1,0 +1,15 @@
+program
+    class NobleChild
+        method clone : SELF_TYPE
+            id self [NobleChild]
+    class VonFabre : NobleChild
+        method clone : SELF_TYPE
+            new VonFabre [VonFabre]
+    class Main
+        method main : Object
+            let [NobleChild]
+                vars
+                    VonFabre luke
+                call clone as NobleChild [NobleChild]
+                    callee
+                        id luke [VonFabre]

@@ -1,0 +1,61 @@
+program
+    class X86
+        method run : SELF_TYPE
+            id self [X86]
+    class C
+        field Object core
+        method compile : X86
+            new X86 [X86]
+    class Java : C
+        field Object core
+    class CSharp : Java
+        field Object core
+    class CPP : C
+        field Object core
+    class D : C
+        field Object core
+    class Main
+        method shout : String s -> SELF_TYPE
+            id self [Main]
+        method main : SELF_TYPE
+            let [Main]
+                vars
+                    D digitalMars
+                    CSharp mono
+                    CPP msvc
+                    C kAndR
+                        id digitalMars [D]
+                    Java sun
+                        id mono [CSharp]
+                    C clang
+                        id digitalMars [D]
+                block [Main]
+                    call shout [Main]
+                        args
+                            str "Power X-treme" [String]
+                    call compile [X86]
+                        callee
+                            id digitalMars [D]
+                    let [X86]
+                        vars
+                            CPP gpp
+                            C gcc
+                                id gpp [CPP]
+                            X86 machine
+                        block [X86]
+                            call compile [X86]
+                                callee
+                                    id mono [CSharp]
+                            call compile [X86]
+                                callee
+                                    id msvc [CPP]
+                            call compile [X86]
+                                callee
+                                    id kAndR [C]
+                            call compile [X86]
+                                callee
+                                    id sun [Java]
+                            call compile [X86]
+                                callee
+                                    id clang [C]
+                    id self [Main]

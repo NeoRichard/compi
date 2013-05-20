@@ -1,0 +1,8 @@
+class Main : Object
+    fields
+    methods
+        SELF_TYPE main
+            body
+                scope
+                    String carne
+

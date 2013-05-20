@@ -1,0 +1,8 @@
+program
+    class Main
+        method main : Object
+            while [Object]
+                unary not [Bool]
+                    bool true [Bool]
+            loop
+                int 0 [Int]

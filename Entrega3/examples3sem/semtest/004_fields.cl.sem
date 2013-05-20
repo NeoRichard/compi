@@ -1,0 +1,5 @@
+program
+    class Main
+        field Int finn
+        method main : Int
+            id finn [Int]

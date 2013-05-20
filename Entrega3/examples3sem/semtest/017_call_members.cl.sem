@@ -1,0 +1,30 @@
+program
+    class List
+        method skip : Int n -> List
+            id self [List]
+        method take : Int n -> List
+            id self [List]
+        method single : Object
+            new Object [Object]
+    class House
+        method list : List
+            new List [List]
+    class Main
+        method main : Object
+            let [Object]
+                vars
+                    House house
+                        new House [House]
+                call single [Object]
+                    callee
+                        call take [List]
+                            callee
+                                call skip [List]
+                                    callee
+                                        call list [List]
+                                            callee
+                                                id house [House]
+                                    args
+                                        int 4 [Int]
+                            args
+                                int 2 [Int]

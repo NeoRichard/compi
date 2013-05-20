@@ -1,0 +1,12 @@
+class Main : Object
+    fields
+    methods
+        SELF_TYPE main
+            body
+                scope
+                    I i
+                scope
+                    A a
+                    B b
+                    C c
+

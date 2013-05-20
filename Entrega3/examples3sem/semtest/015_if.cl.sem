@@ -1,0 +1,42 @@
+program
+    class A
+        field SELF_TYPE o
+    class B
+        field SELF_TYPE o
+    class Arbol
+        field Object hoja
+    class Nogal : Arbol
+        field Object fruto
+    class Damasco : Arbol
+        field Object fruto
+            str "Damasco" [String]
+    class Main
+        method main : SELF_TYPE
+            let [Main]
+                vars
+                    Object o
+                    Arbol tree
+                block [Main]
+                    assign o [Object]
+                        let [Object]
+                            vars
+                                A a
+                                B b
+                            if [Object]
+                                bool true [Bool]
+                            then
+                                id a [A]
+                            else
+                                id b [B]
+                    assign tree [Arbol]
+                        let [Arbol]
+                            vars
+                                Nogal n
+                                Damasco d
+                            if [Arbol]
+                                bool false [Bool]
+                            then
+                                id n [Nogal]
+                            else
+                                id d [Damasco]
+                    id self [Main]

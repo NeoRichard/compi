@@ -1,0 +1,12 @@
+class Main : Object
+    fields
+    methods
+        SELF_TYPE main
+            body
+                scope
+                    Bool enLaCondicion
+                scope
+                    Int valorEntero
+                scope
+                    String valorString
+

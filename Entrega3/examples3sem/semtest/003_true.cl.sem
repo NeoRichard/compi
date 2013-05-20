@@ -1,0 +1,4 @@
+program
+    class Main
+        method main : Bool
+            bool true [Bool]

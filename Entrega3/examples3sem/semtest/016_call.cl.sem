@@ -1,0 +1,9 @@
+program
+    class Main
+        method doAllTheThings : Int i -> String cmd -> Main
+            id self [Main]
+        method main : SELF_TYPE
+            call doAllTheThings [Main]
+                args
+                    int 13 [Int]
+                    str "choice" [String]

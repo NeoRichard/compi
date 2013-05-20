@@ -1,0 +1,7 @@
+program
+    class Main
+        method main : SELF_TYPE
+            id self [Main]
+    class SubMain : Main
+        method main : SELF_TYPE
+            id self [SubMain]

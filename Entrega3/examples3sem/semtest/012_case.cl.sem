@@ -1,0 +1,28 @@
+program
+    class Being
+        field SELF_TYPE o
+    class Human
+        field SELF_TYPE o
+    class Dog
+        field SELF_TYPE o
+    class Candy
+        field SELF_TYPE o
+    class CrazyOldMan
+        field SELF_TYPE o
+    class Elemental
+        field SELF_TYPE o
+    class Main
+        field Object person
+        method main : String
+            instanceof [String]
+                id person [Object]
+                case Human finn
+                    str "mathematical" [String]
+                case Dog jake
+                    str "woah, dude!" [String]
+                case Candy bubblegum
+                    str "my loyal candy people!" [String]
+                case CrazyOldMan iceking
+                    str "let's go, günther" [String]
+                case Elemental flamePrincess
+                    str "fwhoosh!" [String]

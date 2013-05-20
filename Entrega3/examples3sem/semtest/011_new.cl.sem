@@ -1,0 +1,6 @@
+program
+    class Main
+        method main : Object
+            new WorldOrder [WorldOrder]
+    class WorldOrder
+        field Object o

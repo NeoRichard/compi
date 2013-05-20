@@ -1,0 +1,15 @@
+program
+    class Main
+        field Bool plot
+        field Int num
+        method main : Int
+            block [Int]
+                assign plot [Bool]
+                    unary isvoid [Bool]
+                        id plot [Bool]
+                assign plot [Bool]
+                    unary not [Bool]
+                        bool true [Bool]
+                assign num [Int]
+                    unary ~ [Int]
+                        int 18374 [Int]
