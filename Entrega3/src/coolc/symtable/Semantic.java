@@ -11,6 +11,7 @@ import java.util.*;
 public class Semantic {
 
 	static SymTable t;     
+	static String currentType;
 
     
 
@@ -32,9 +33,10 @@ public class Semantic {
 
     private static void print(ClassDef c) {
 
+    	currentType = c.getType();
+    	
     	/*
 		String id = c.getType();
-	
 		if(t.getClasses().get(id) != null)
 		{
 			System.out.println("Duplicate class "+id);
