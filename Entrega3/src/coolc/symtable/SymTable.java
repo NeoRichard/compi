@@ -679,14 +679,15 @@ public class SymTable {
 
 
 			String name = ((IdExpr)e).getId();
+			if(name.equalsIgnoreCase("self"))
+				;
+			else
 			if(cs.find(name) != null)
 			{
 				System.out.println("Duplicate var " + name);
 				return;
 			}
-
-
-			if(findId(cs, name) == null)
+			else if(findId(cs, name) == null)
 			{
 				System.out.println("Undefined variable " + name);
 				return;

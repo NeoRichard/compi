@@ -44,8 +44,10 @@ public class Semantic {
 		
         printIndent(1);
 //        System.out.printf("class %s", c.getType());
-        if( c.getSuper() != null ) {
+        String superClass = c.getSuper();
+        if( superClass != null ) {
 //            System.out.printf(" : %s", c.getSuper());
+        	checkErrorSuperClass(superClass);
         }
 //        System.out.println();
 
@@ -63,7 +65,9 @@ public class Semantic {
             for(Variable var: m.getParams()) {
     //            System.out.printf("%s %s -> ", var.getType(), var.getId());
 
-            	
+
+            	String type = var.getType();
+            	checkErrorClass(type);
             	
                 if( var.getValue() != null ){
                     throw new RuntimeException("WTF? initializing parameter definition?");
@@ -104,6 +108,18 @@ public class Semantic {
         	{
         		System.out.println(" Undefined class "+type);
         	}
+        }
+	}
+
+
+    private static void checkErrorSuperClass(String s) {
+		// TODO Auto-generated method stub
+
+    	
+        if(s.equalsIgnoreCase("String")  || s.equalsIgnoreCase("bool")
+				|| s.equalsIgnoreCase("int")
+				) {
+        		System.out.println(" Can't inherit from "+s);
         }
 	}
 
@@ -192,6 +208,9 @@ public class Semantic {
         else if(e instanceof NewExpr) 
         {
 //            System.out.printf("new %s\n",((NewExpr)e).getType());
+
+            String type = ((NewExpr)e).getType();
+            checkErrorClass(type);
         }
         else if(e instanceof UnaryExpr) {
             UnaryExpr expr = (UnaryExpr)e;
@@ -210,6 +229,9 @@ public class Semantic {
             print(caseExpr.getValue(), indent+1);
 
             for(Case c : caseExpr.getCases()) {
+                String type = c.getType();
+                checkErrorClass(type);
+
                 printIndent(indent+1);
     //            System.out.printf("case %s %s\n", c.getType(), c.getId());
                 print(c.getValue(), indent+2);
@@ -224,6 +246,11 @@ public class Semantic {
             for(Variable var : let.getDecl()) {
                 printIndent(indent+2);
     //            System.out.printf("%s %s\n", var.getType(), var.getId());
+                String type = var.getType();
+                checkErrorClass(type);
+
+                
+                
                 if(var.getValue() != null) {
                     print(var.getValue(), indent+3);
                 }
