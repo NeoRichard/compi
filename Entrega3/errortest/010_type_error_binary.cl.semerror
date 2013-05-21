@@ -10,6 +10,8 @@
 15:16 Expected Int, received String
 16:18 Expected String, received Bool
 17:12 Expected Int, received Main
+
+
 program
     class Main
         method main : SELF_TYPE
