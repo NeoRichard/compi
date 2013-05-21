@@ -1,169 +1,22 @@
-package coolc;
+package coolc.symtable;
 
 import coolc.parser.*;
 import coolc.symtable.Semantic;
-import coolc.symtable.SemanticPrint;
 import coolc.symtable.SymTable;
 import coolc.ast.*;
 
 import java.io.*;
 import java.util.*;
 
-public class Coolc {
-
-    public static void printInstructions() {
-        System.out.println(
-            "Usage Coolc <action> file1 file2 ... filen\n" +
-            "Available actions: \n" +
-            "scan - scans each files and outputs a token list\n" +
-            "parse - parses each file and outputs the syntax tree\n"+
-            "symtable - print the symtable \n" +
-            "semantic - check semantic and print sintax tree with types \n"
-            );
-    }
-
-    public static void main(String[] args) throws FileNotFoundException, IOException {
-
-        if (args.length < 2) {
-            printInstructions();
-            return;
-        }
+public class SemanticPrint {
 
 
-        String action = args[0];
-
-        List<String> files = Arrays.asList(args).subList(1, args.length);
-
-        switch(action) {
-
-            case "scan":
-                scan(files);
-                break;
-
-            case "parse":
-                parse(files);
-                break;
-                
-            case "symtable":
-            	symtable(files);
-                break;
-                
-            case "semantic":
-            	semantic(files);
-                break;
-
-            default:
-                printInstructions();
-                return;
-        }
 
 
-    }
-
-    private static void scan(List<String> files) throws FileNotFoundException, IOException {
-
-        for(String filename: files) {
-            File f = new File(filename);
-            Reader r = new FileReader(f);
-            Lexer lex = new Lexer(r);
-            Random rand = new Random();
-
-            for(int token = lex.yylex(); token != Parser.EOF; token = lex.yylex()) {
-
-                Position pos = lex.getStartPos();
-
-                switch(token) {
-
-                    case Parser.ID:
-                        System.out.printf("%s:%2d:%2d  Id<%s>\n", f.getPath(), pos.line, pos.column, lex.getLVal());
-                        break;
-
-                    case Parser.INTEGER:
-                        System.out.printf("%s:%2d:%2d  Int<%s>\n", f.getPath(), pos.line, pos.column, lex.getLVal());
-                        break;
-                        
-
-                    case Parser.BOOL:
-                        System.out.printf("%s:%2d:%2d  Boolean<%s>\n", f.getPath(), pos.line, pos.column, (boolean)lex.getLVal() ? "True" : "False");
-                        break;
-                        
-                    case Parser.TYPE:
-                        System.out.printf("%s:%2d:%2d  Type<%s>\n", f.getPath(), pos.line, pos.column, lex.getLVal());
-                        break;
-
-                    case Parser.STRING:
-                        String strval =((String)lex.getLVal()).replace("\n","").replace("\b", "").replace("\t", "").replace(">", "");
-                        strval = strval.substring(0, Math.min(strval.length(), 20));
-
-                        System.out.printf("%s:%2d:%2d  String<%s>\n", f.getPath(), pos.line, pos.column, strval);
-                        break;
-
-                    default:
-                        System.out.printf("%s:%2d:%2d  %s\n", f.getPath(), pos.line, pos.column, Parser.getTokenName(token));
-                        break;
-                }
-
-            }
-        }
-    }
 
     
-
-    
-
-    private static void semantic(List<String> files) throws FileNotFoundException, IOException { 
-
-        for(String filename: files) {
-            File f = new File(filename);
-            Reader r = new FileReader(f);
-            Lexer lex = new Lexer(r);
-            Parser p = new Parser(lex);
-            System.err.printf("semantic %s\n", filename);
-            p.parse();            
-//        	SymTable st = new SymTable(p.getRoot());  
-            Semantic t = new Semantic(p.getRoot());   
-            SemanticPrint sp = new SemanticPrint(p.getRoot()); 
-        }
-    }
-
-    
-
-    private static void symtable(List<String> files) throws FileNotFoundException, IOException { 
-
-        for(String filename: files) {
-            File f = new File(filename);
-            Reader r = new FileReader(f);
-            Lexer lex = new Lexer(r);
-            Parser p = new Parser(lex);
-            System.err.printf("symtable %s\n", filename);
-            p.parse();        
-            
-        	SymTable t = new SymTable(p.getRoot());        	
-        	t.print();
-
-        }
-    }
-    
-    
-    private static void parse(List<String> files) throws FileNotFoundException, IOException { 
-
-        for(String filename: files) {
-            File f = new File(filename);
-            Reader r = new FileReader(f);
-            Lexer lex = new Lexer(r);
-
-            Parser p = new Parser(lex);
-
-            System.err.printf("parsing %s\n", filename);
-
-            p.parse();
-
-            print(p.getRoot());
-        }
-
-    }
-
-    private static void print(Program root) {
+    public SemanticPrint(Program root) {
+    	System.out.println();
         System.out.println("program");
         for(ClassDef c: root) {            
             print(c);
@@ -335,14 +188,14 @@ public class Coolc {
             Object value = ((ValueExpr)e).getValue();
 
             if(value instanceof String) {
-                System.out.printf("str \"%s\"\n", ((String)value).replace("\n", "\\n")
+                System.out.printf("str \"%s\" [String]\n", ((String)value).replace("\n", "\\n")
                     .replace("\t", "\\t").replace("\f", "\\f").replace("\b", "\\b"));
             }
             else if(value instanceof Integer) {
-                System.out.printf("int %d\n", value);
+                System.out.printf("int %d [Int]\n", value);
             }
             else if(value instanceof Boolean) {
-                System.out.printf("bool %s\n", value);
+                System.out.printf("bool %s\n  [Bool]", value);
             }
             else {
                 throw new RuntimeException(String.format("Unsupported constant type %s\n", e.getClass()));
