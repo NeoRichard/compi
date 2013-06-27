@@ -2,6 +2,7 @@ package coolc;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 import coolc.ast.*;
 import coolc.infrastructure.ClassScope;
@@ -10,7 +11,7 @@ import coolc.infrastructure.SymTable;
 
 public class CodegenPrinter {
 
-	boolean file_output = true;
+	boolean file_output = false;
 	
     private Program _root;
     private boolean _printTypes;
@@ -41,7 +42,7 @@ public class CodegenPrinter {
         
     	if(file_output){
 	    	try {
-				System.setOut( new PrintStream("/home/komandox/Escritorio/Compiladores/4/out.ll"));
+				System.setOut( new PrintStream("/home/richard/workspace/EntregaFinal/salida/output2.ll"));
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -73,6 +74,9 @@ public class CodegenPrinter {
         	current_class = c;
             printClass(c);
         }
+        System.out.println("declare i8* @malloc(i64)");
+
+        /*
         
         
         System.out.println();
@@ -105,20 +109,73 @@ public class CodegenPrinter {
 	        
 	          
         }
+        */
     }
 
     private void printClass(ClassDef c) {
         //printIndent(1);
-        System.out.println("%" + c.getType() + "= type { i8* }");
+    	/*
+    	 * ANTES
+    	 */
+//        System.out.println("%" + c.getType() + "= type { i8* }");
+        String myClass = c.getType();
+        int lengthClass = myClass.length()+1;
+        System.out.println("%" + myClass + "= type {");
+        
+        ArrayList<String> typeList = new ArrayList<>();
 
+        for(Feature f: c.getBody()) {
+        	if(f instanceof Variable){
+        		Variable variable = (Variable)f;
+        		String type = variable.getType();
+        		if(type.equalsIgnoreCase("Int")){
+        			type = "i32";
+        		}else if(type.equalsIgnoreCase("String")){
+        			type = "i8*";
+        		}else if(type.equalsIgnoreCase("Bool")){
+        			type = "i1";
+        		}
+        		typeList.add(type);
+        	}
+        }
+        if(typeList.size() >0){
+        	System.out.print("  "+typeList.get(0));
+        }
+        for(int i = 1 ; i < typeList.size() ; i++){
+        	System.out.print(",\n  "+typeList.get(i));        	
+        }        
+        System.out.println("\n}");
+        
         //System.out.printf("class %s", c.getType());
         if( c.getSuper() != null ) {
             //System.out.printf(" : %s", c.getSuper());
         }
         //System.out.println();
         
-        
+
+        String baseClass = "define %"+myClass+"* @new"+myClass+"() {" +
+        		"\n    ; "+myClass+"* ptr = ("+myClass+"*)malloc(sizeof("+myClass+"))" +
+        		"\n    %vptr = call i8* @malloc( 64 ptrtoint (%"+myClass+"* getelementptr (%"+myClass+"* null, i32 1) to i64) )" +
+        		"\n    %ptr = bitcast i8* %vptr to %"+myClass+"* " +
+        		"\n    ; ptr->type = @.type."+myClass+"" +
+        		"\n    %typePtr = getelementptr %"+myClass+"* %ptr, i32 0, i32 0" +
+        		"\n    store i8* bitcast( ["+lengthClass+" x i8]* @.type."+myClass+" to i8*), i8** %typePtr" +
+        		"\n    ;" +
+        		"\n    ; aquí se deben inicializar los fields" +
+        		"\n    ; del objeto recién creado" +
+        		"\n    ;" +
+        		"\n    ret %"+myClass+"* %ptr" +
+        		"\n}";
+        System.out.println(baseClass);
         classScope = _symTable.findClass(c.getType());
+/*
+classScope = _symTable.findClass(c.getType());
+classScope.fieldList // lista de fields
+*/
+        /*
+         * AL FINAL
+         */
+        System.out.println("@.type."+myClass+" = private constant ["+lengthClass+" x i8] c\"MiClase\\00\"");
     }
     
     

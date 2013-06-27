@@ -7,6 +7,25 @@ import coolc.ast.*;
 import java.io.*;
 import java.util.*;
 
+
+/*
+ * 
+ * Paso a seguir:
+ * 1.- Traducir cada clase a type (diapo 3)
+- después de leer la clase, imprimir para cada variable, el tipo (PRINT SOLO PARA IMPRIMIR ESTO)
+
+classScope = _symTable.findClass(c.getType())
+classScope.fieldList // lista de fields
+
+
+2.- Agregar el template 
+a) declare i8* @malloc(i64) // SOLO AL FINAL FINAL
+b) para cada clase agregar el template adaptado (class_template.ll), reemplazando MiClase por la clase,
+modificar línea 10: ptrtopoint -> i64 ptrtopoint
+
+ * 
+ */
+
 public class Coolc {
 
     public static void printInstructions() {
@@ -16,7 +35,8 @@ public class Coolc {
             "scan - scans each files and outputs a token list\n" +
             "parse - parses each file and outputs the syntax tree\n" +
             "symtable - generates and prints the symbol table\n" +
-            "semantic - performs semanic analysis\n"
+            "semantic - performs semanic analysis\n" +
+            "codegen - generates codegenii \n"
             );
     }
 
