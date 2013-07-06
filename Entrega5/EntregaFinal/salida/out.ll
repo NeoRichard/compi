@@ -1,8 +1,8 @@
 @true = global i1 1
 @false = global i1 0
 @zero = global i32 0
-@vars_0_c = constant [36 x i8] c"What a terrible night to be cursed!\0A"
-@vars_0 = global i8* bitcast([36 x i8]* @vars_0_c to i8*)
+@vars_0_c = constant [21 x i8] c"Vengo de un nuevo IO\0A"
+@vars_0 = global i8* bitcast([21 x i8]* @vars_0_c to i8*)
 
 %Object = type { i8* }
 %IO = type { i8* }
@@ -11,7 +11,8 @@
 
 %Program= type {
     i8*,
-    %Brocoli
+    i8*,
+    %IO
 };
 
 define %Program* @newProgram() {
@@ -26,34 +27,10 @@ define %Program* @newProgram() {
 }
 ;;;print(ClassDef c)
 define %Program* @Program_main(%Program* %m) {
-        %_tmp_1 = bitcast %Program* %m to %IO*
-    call %Program* @Main_print(%Main* null, )
-    ret %Program* %m
-}
-
-@.type.Brocoli = private constant [7 x i8] c"Brocoli"
-
-%Brocoli= type {
-    i8*,
-
-};
-
-define %Brocoli* @newBrocoli() {
-    %vptr = call i8* @malloc( i64 ptrtoint (%Brocoli* getelementptr (%Brocoli* null, i32 1) to i64) )
-    %ptr = bitcast i8* %vptr to %Brocoli* 
-    %typePtr = getelementptr %Brocoli* %ptr, i32 0, i32 0
-    store i8* bitcast( [7 x i8]* @.type.Brocoli to i8*), i8** %typePtr
-    ;
-    ; inicializacion de los los fields del objeto recién creado
-
-    ret %Brocoli* %ptr
-}
-;;;print(ClassDef c)
-define %Brocoli* @Brocoli_print(%Brocoli* %m,  %iostream) {
-        %_tmp_1 = bitcast %Brocoli* %m to %IO*
+        %_tmp_1 = bitcast %Program* %m to %Object*
     %lvars_1 = load i8** @vars_0
     call %IO* @IO_out_string(%IO* null, i8* %lvars_1)
-    ret %Brocoli* %m
+    ret %Program* %m
 }
 
 

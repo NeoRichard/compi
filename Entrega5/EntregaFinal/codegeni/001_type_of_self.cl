@@ -1,15 +1,8 @@
 class Program {
 
-	verdura : Brocoli <- new Brocoli;
+	iostream : IO <- new IO;
 
 	main() : Object {
-		verdura.print(new IO)
-	};
-};
-
-class Brocoli {
-
-	print(iostream : IO) : Object {
-		iostream.out_string("What a terrible night to be cursed!\n")
+		iostream.out_string("Vengo de un nuevo IO\n")
 	};
 };

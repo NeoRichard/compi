@@ -19,7 +19,11 @@ public class ClassDef extends Node {
 
     public ClassDef(String type, String parent, FeatureList body) {
         _type = type;
+        // ->
         _super = parent;
+        if(parent == null)
+        		_super = "Object";
+        // <-
         _body = body;
     }
 

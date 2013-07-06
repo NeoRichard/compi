@@ -81,7 +81,6 @@ public class CodegenPrinter {
 		defineMainClass();
 
 
-		if(file_output){
 			System.out.println();
 			System.out.println("declare %Object* @Object_abort(%Object*)");
 			System.out.println("declare i8* @Object_type_name(%Object*)");
@@ -95,10 +94,6 @@ public class CodegenPrinter {
 			System.out.println("declare i32 @strcmp(i8*, i8*)");
 			System.out.println("declare i8* @malloc(i64)");
 
-
-
-
-		}
 
 	}
 
@@ -136,6 +131,7 @@ public class CodegenPrinter {
 
 	private void printClass(ClassDef c) {
 		//printIndent(1);
+		int index = 0;
 		String myClass = c.getType();
 		int lengthClass = myClass.length();
 		System.out.println("@.type."+myClass+" = private constant ["+lengthClass+" x i8] c\""+myClass+"\"");
@@ -145,6 +141,8 @@ public class CodegenPrinter {
 		System.out.println("    i8*,");
 
 		ArrayList<String> typeList = new ArrayList<>();
+		typeList.add("i8*");
+		index++;
 
 		for(Feature f: c.getBody()) {
 			if(f instanceof Variable){
@@ -159,7 +157,10 @@ public class CodegenPrinter {
 				}else{
 					type = "%"+type;
 				}
+
+//				classScope.getField(variable.getId()).index  = index++; // lista de fields
 				typeList.add(type);
+				
 			}
 		}
 		if(typeList.size() >0){
@@ -255,7 +256,7 @@ classScope.fieldList // lista de fields
 
 			String superClass = current_class.getSuper();
 			if(current_class.getSuper() == null )
-				superClass  = "IO";
+				superClass  = "Object";
 			System.out.println("    %_tmp_1 = bitcast %"+current_class.getType()+"* %m to %"+superClass+"*");
 			print(m.getBody(), 3);
 
@@ -502,6 +503,11 @@ classScope.fieldList // lista de fields
 				System.out.println("%" + getNextLocalVars() + " = call i8* @String_substr(i8* %" + name_var_callee + ", " + argumentos + ")");
 
 			}
+            // Object
+            else if(callname.equals("type_name")){  
+                System.out.println("%" + getNextLocalVars() + " = call i8* @Object_type_name(%Object* %_tmp_1)");
+
+            }
 			else{
 
 				//      	System.out.println(call.getName());
@@ -829,7 +835,11 @@ classScope.fieldList // lista de fields
 					printout(1,"%" + localvar + " = load i8* %" + globalvar);
 				}
 				else{
-					printout(1,"%" + localvar + " = load i8** @" + globalvar);
+					//printout(1,"%" + localvar + " = load i8** @" + globalvar);
+					printout(1,"getelementptr inbounds %T* %ptr, i32 0, i32 n");
+					
+					
+
 				}
 
 			}

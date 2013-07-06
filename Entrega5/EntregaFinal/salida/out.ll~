@@ -1,8 +1,9 @@
 @true = global i1 1
 @false = global i1 0
 @zero = global i32 0
-
-
+@vari_0 = global i32 115000
+@vars_0_c = constant [17 x i8] c"La superficie es "
+@vars_0 = global i8* bitcast([17 x i8]* @vars_0_c to i8*)
 
 %Object = type { i8* }
 %IO = type { i8* }
@@ -11,7 +12,8 @@
 
 %Program= type {
     i8*,
-    %IO
+    %IO,
+    i32
 };
 
 define %Program* @newProgram() {
@@ -26,9 +28,13 @@ define %Program* @newProgram() {
 }
 ;;;print(ClassDef c)
 define %Program* @Program_main(%Program* %m) {
-        %_tmp_1 = bitcast %Program* %m to %IO*
-    %lvars_1 = call i8* @Main_type_name(%Main* null )
+        %_tmp_1 = bitcast %Program* %m to %Object*
+    %lvari_1 = load i32* @vari_0
+    store i32 %lvari_1, i32* @surface
+    %lvars_1 = load i8** @vars_0
     call %IO* @IO_out_string(%IO* null, i8* %lvars_1)
+    %lvari_2 = load i32* @surface
+    call %IO* @IO_out_int(%Object* %_tmp_1, i32 %lvari_2)
     ret %Program* %m
 }
 
