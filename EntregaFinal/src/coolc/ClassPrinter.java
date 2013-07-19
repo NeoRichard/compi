@@ -121,29 +121,41 @@ public class ClassPrinter {
         print(m.getBody(), 3);*/
 
 		String returnValue = m.getType();
-		if(returnValue.equalsIgnoreCase("SELF_TYPE") || returnValue.equalsIgnoreCase("Object"))
-			returnValue = mainClass;
-
-		// %IO* @out_string(%IO* %self, i8* %x)
-
-
-
-		String content = "define %"+returnValue+"* @"+mainClass+"_"+m.getName()+"(" ;
-		if(m.getParams().size()>0){
-			content += refactorType( (m.getParams().get(0).getType())) + " %"+ (m.getParams().get(0).getId());
+		if(returnValue.equalsIgnoreCase("SELF_TYPE") || returnValue.equalsIgnoreCase("Object")){
+			returnValue = "%"+mainClass+"*";
+		}else if (returnValue.equalsIgnoreCase("Int") ){
+			returnValue = "i32";
+		}else if (returnValue.equalsIgnoreCase("Bool") ){
+			returnValue = "i1";
+		}else if (returnValue.equalsIgnoreCase("String") ){
+			returnValue = "i8*";
 		}else{
-			content += ("%"+mainClass+"* %m");
+			returnValue = "%"+mainClass+"*";	
 		}
-		for(int i = 0 ; i < m.getParams().size() ; i++)
-			content += refactorType( (m.getParams().get(i).getType())) + " %"+ (m.getParams().get(i).getId());
+
+		String content = "define "+returnValue+" @"+mainClass+"_"+m.getName()+"(" ;
+		content += "%"+mainClass+"* %m";
+
+		if(m.getParams().size()>0){
+			for(int i = 0 ; i < m.getParams().size() ; i++)
+				content += ", "+ refactorType( (m.getParams().get(i).getType())) + " %"+ (m.getParams().get(i).getId());
+		}
 
 		content +=") {\n";
 		content += "    %_tmp_1 = bitcast %"+mainClass+"* %m to %IO*\n" ;
 		System.out.println(content);
 
 		print(m.getBody(), 3);
-		System.out.println( "\n    ret %Main* %m");
-
+		
+		if (m.getType().equalsIgnoreCase("Int") ){
+			System.out.println( "\n    ret i32 %local_int"+intCount);
+		}else if (m.getType().equalsIgnoreCase("Bool") ){
+			System.out.println( "\n    ret i1 %local_bool"+boolCount);
+		}else if (m.getType().equalsIgnoreCase("String") ){
+			System.out.println( "\n    ret i8* %local_string"+stringCount);
+		}else{
+			System.out.println( "\n    ret %Main* %m");
+		}
 		System.out.println("}");
 
 	}
@@ -537,6 +549,19 @@ store i32 %local_int3, i32* @entero
 				}
 				else if(nameMethod.equalsIgnoreCase("length")){
 					System.out.println("    %local_int"+(++intCount)+" = call i32 @String_length( i8* %local_string"+(stringCount)+")");		
+				}
+				else {
+					if(type.equalsIgnoreCase("Int")){
+						System.out.println("    %local_int"+ (intCount+1) +" = call i32 @Main_"+nameMethod+"(%Main* null, i32 %local_int"+ (intCount) +")");
+						intCount++;
+					} else if(type.equalsIgnoreCase("Bool")){
+						System.out.println("    %local_bool"+ (boolCount+1) +" = call i32 @Main_"+nameMethod+"(%Main* null, i1 %local_bool"+ (boolCount) +")");
+						boolCount++;
+					} else if(type.equalsIgnoreCase("String")){
+						System.out.println("    %local_string"+ (stringCount+1) +" = call i32 @Main_"+nameMethod+"(%Main* null, i8* %local_string"+ (stringCount) +")");
+						stringCount++;
+					}
+					
 				}
 
 			}
