@@ -546,7 +546,7 @@ public class ConstantPrinter {
 		else if(e instanceof UnaryExpr) {
 			UnaryExpr expr = (UnaryExpr)e;
 
-			printTag(String.format("unary %s", operator(expr.getOp())), e);
+//			printTag(String.format("unary %s", operator(expr.getOp())), e);
 			print(expr.getValue(), indent + 1);
 		}
 		else if(e instanceof BinaryExpr) {

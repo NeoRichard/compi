@@ -720,8 +720,26 @@ store i32 %local_int3, i32* @entero
 		else if(e instanceof UnaryExpr) {
 			UnaryExpr expr = (UnaryExpr)e;
 
-			printTag(String.format("unary %s", operator(expr.getOp())), e);
+
+
+			String op = operator(expr.getOp());
+			//			System.out.println("OP: "+op);
+			String operation = "";
 			print(expr.getValue(), indent + 1);
+
+			if(op.equalsIgnoreCase("NOT")){
+				String var = "%local_int"+intCount;
+				printIndent(1);
+				System.out.println("%local_int"+(++intCount)+" = icmp eq i1 " + var + ", 0");
+			}else if(op.equalsIgnoreCase("~")){
+				String var = "%local_int"+intCount;
+				printIndent(1);
+				System.out.println("%local_int"+(++intCount)+" = mul i32 " + var + ", -1");
+				printIndent(1);
+				System.out.println("%local_int"+(++intCount)+" = sub i32 -1, " + var + "");
+			}
+
+
 		}
 		else if(e instanceof BinaryExpr) {
 			BinaryExpr expr = (BinaryExpr)e;
@@ -752,26 +770,26 @@ store i32 %local_int3, i32* @entero
 				}
 				else if(expr.getLeft().getExprType().equals("Int")){
 					operation = "icmp eq";
-					
+
 				}
 
 			}else if(op.equalsIgnoreCase("<")){
-			
+
 				print(expr.getLeft(), indent + 1);   
 				String var1 = "%local_int"+intCount;
 				print(expr.getRight(), indent + 1); 
 				String var2 = "%local_int"+intCount;
-								
+
 				System.out.println("    %local_bool"+(++boolCount)+" = icmp slt i32 "+var1+",  "+var2+"");
 				return;
 			}
 			else if(op.equalsIgnoreCase("<=")){
-				
+
 				print(expr.getLeft(), indent + 1);   
 				String var1 = "%local_int"+intCount;
 				print(expr.getRight(), indent + 1); 
 				String var2 = "%local_int"+intCount;
-								
+
 				System.out.println("    %local_bool"+(++boolCount)+" = icmp sle i32 "+var1+",  "+var2+"");
 				return;
 			}
