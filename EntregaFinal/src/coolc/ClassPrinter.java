@@ -407,6 +407,36 @@ public class ClassPrinter {
 //			System.out.println("AssignExpr....");
 			String id = "@"+( (AssignExpr)e ).getId();
 			Expr ex = ( (AssignExpr)e ).getValue();
+			if(ex instanceof BinaryExpr)
+			{
+				
+				BinaryExpr binEx = (BinaryExpr)ex;
+				
+				System.out.println(";; BinaryExpr");		
+				String type = binEx.getExprType();
+				
+				print((binEx), indent+1);
+				System.out.println(";; <--BinaryExpr");
+				
+
+				if(type.equalsIgnoreCase("Int")){
+					System.out.println("    store i32 %local_int"+intCount+", i32* "+id);
+					intCount++;			
+				}/*
+				else if(type.equalsIgnoreCase("Bool")){
+					System.out.println("%local_bool"+(++boolCount)+" = load i1* "+boolList.get(value));
+					System.out.println("store i1 %local_bool"+(boolCount)+", i1* "+id);
+					boolCount++;			
+				} else if(type.equalsIgnoreCase("String")){
+					System.out.println("%local_string"+(++stringCount)+" = load i8* "+stringList.get(value));
+					System.out.println("store i8 %local_string"+(stringCount)+", i8* "+id);
+					boolCount++;			
+				}*/
+				
+				
+			}else if(ex instanceof ValueExpr)
+			{
+				System.out.println(";; ValueExpr");
 			Object value = ((ValueExpr) ex).getValue().toString();
 			String type =  ( (AssignExpr)e ).getExprType();
 
@@ -431,7 +461,7 @@ store i32 %local_int3, i32* @entero
 				System.out.println("store i8 %local_string"+(stringCount)+", i8* "+id);
 				boolCount++;			
 			}
-			
+		}
 			
 		}
 		else if(e instanceof DispatchExpr) {
@@ -495,14 +525,14 @@ store i32 %local_int3, i32* @entero
 				// ESTA BIEN ?
 				// %nuevo_string = @String_concat( i8* %<último string>, i8* %<penúltimo string>)
 				if(nameMethod.equalsIgnoreCase("concat")){
-					System.out.println("    %local_string"+(++stringCount)+" = i8* @String_concat( i8* %local_string"+(stringCount-2)+", i8* %local_string"+(stringCount-1)+")");		
+					System.out.println("    %local_string"+(++stringCount)+" = call i8* @String_concat( i8* %local_string"+(stringCount-2)+", i8* %local_string"+(stringCount-1)+")");		
 				}
-				else if(nameMethod.equalsIgnoreCase("String_substr")){
+				else if(nameMethod.equalsIgnoreCase("substr")){
 					// ESTA BIEN EL ORDEN????
-					System.out.println("    %local_string"+(++stringCount)+" = i8* @String_substr( i8* %local_string"+(stringCount-1)+", i32 %local_int"+(intCount)+", i32 %local_int"+(intCount-1)+")");		
+					System.out.println("    %local_string"+(++stringCount)+" = call i8* @String_substr( i8* %local_string"+(stringCount-1)+", i32 %local_int"+(intCount)+", i32 %local_int"+(intCount-1)+")");		
 				}
 				else if(nameMethod.equalsIgnoreCase("length")){
-					System.out.println("    %local_int"+(++intCount)+" = i32 @String_length( i8* %local_string"+(stringCount)+")");		
+					System.out.println("    %local_int"+(++intCount)+" = call i32 @String_length( i8* %local_string"+(stringCount)+")");		
 				}
 
 			}
