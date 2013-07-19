@@ -25,7 +25,7 @@ public class ClassPrinter {
 
 	LinkedHashMap<Integer, String> ifList = new LinkedHashMap<Integer, String>();
 	private int ifCount = 0;
-	
+
 	private int stringCount = 0;
 	private int intCount = 0;
 	private int boolCount = 0;
@@ -50,7 +50,7 @@ public class ClassPrinter {
 		this.stringFieldList = constant.getStringFieldList();
 		this.intFieldList = constant.getIntFieldList();
 		this.boolFieldList = constant.getBoolFieldList(); 
-		
+
 	}
 
 
@@ -90,7 +90,7 @@ public class ClassPrinter {
 		System.out.println(content);
 	}
 
-/*
+	/*
 	public void callString(String s){
 		String stringContent = s;
 		int stringCount = 1;
@@ -108,7 +108,7 @@ public class ClassPrinter {
 	}
 
 	public void defineFunction(Method m) {
-/*
+		/*
         System.out.printf("method %s : ", m.getName());
         for(Variable var: m.getParams()) {
             System.out.printf("%s %s -> ", var.getType(), var.getId());
@@ -119,13 +119,13 @@ public class ClassPrinter {
         }
         System.out.println(m.getType());
         print(m.getBody(), 3);*/
-        
+
 		String returnValue = m.getType();
 		if(returnValue.equalsIgnoreCase("SELF_TYPE") || returnValue.equalsIgnoreCase("Object"))
 			returnValue = mainClass;
 
 		// %IO* @out_string(%IO* %self, i8* %x)
-		
+
 
 
 		String content = "define %"+returnValue+"* @"+mainClass+"_"+m.getName()+"(" ;
@@ -141,7 +141,7 @@ public class ClassPrinter {
 		content += "    %_tmp_1 = bitcast %"+mainClass+"* %m to %IO*\n" ;
 		System.out.println(content);
 
-        print(m.getBody(), 3);
+		print(m.getBody(), 3);
 		System.out.println( "\n    ret %Main* %m");
 
 		System.out.println("}");
@@ -174,7 +174,7 @@ public class ClassPrinter {
 		System.out.println(content);
 
 	}
-*/
+	 */
 	public void defineBinary()
 	{
 
@@ -214,8 +214,8 @@ public class ClassPrinter {
 		for(ClassDef c: _root) {   
 			print(c);
 		}
-		
-		
+
+
 		printLibraries();
 	}
 
@@ -249,27 +249,28 @@ public class ClassPrinter {
 		mainClass = c.getType();
 		String content = "%"+c.getType()+" = type { i8* }\n\n";
 		System.out.println(content);
-/*
+		/*
 		for(Feature f: c.getBody()) {
 			print(f);
 		}
-		*/
+		 */
 	}
 
 
 	public void printLibraries(){
 		String content = // "DESCOMENTAR";
-		
+
 				"declare %Object* @Object_abort(%Object*) \n" +
-						"declare i8* @Object_type_name(%Object*) \n" +
-						"declare %IO* @IO_out_string(%IO*, i8*) \n" +
-						"declare %IO* @IO_out_int(%IO*, i32 ) \n" +
-						"declare i8* @IO_in_string(%IO* )\n" +
-						"declare i32 @IO_in_int(%IO* )\n" +
-						"declare i32 @String_length(i8*) \n" +
-						"declare i8* @String_concat(i8*, i8*) \n" +
-						"declare i8* @String_substr(i8*, i32, i32 ) ";
-						
+				"declare i8* @Object_type_name(%Object*) \n" +
+				"declare %IO* @IO_out_string(%IO*, i8*) \n" +
+				"declare %IO* @IO_out_int(%IO*, i32 ) \n" +
+				"declare i8* @IO_in_string(%IO* )\n" +
+				"declare i32 @IO_in_int(%IO* )\n" +
+				"declare i32 @String_length(i8*) \n" +
+				"declare i8* @String_concat(i8*, i8*) \n" +
+				"declare i8* @String_substr(i8*, i32, i32 ) \n" +
+				"declare i32 @strcmp(i8*, i8*)";
+
 		System.out.println(content);
 	}
 	/*
@@ -283,7 +284,7 @@ public class ClassPrinter {
 						"}\n";
 
 
-		
+
 //- <className>_main
 		String mainMethod = 
 				"define %Main* @"+className+"_main(%"+className+"* %m) {\n" +
@@ -293,7 +294,7 @@ public class ClassPrinter {
 						"}\n";
 		System.out.println(content + "\n" + mainMethod);
 	}
-*/
+	 */
 
 	private void print(ClassDef c) {
 		// printIndent(1);
@@ -330,9 +331,9 @@ public class ClassPrinter {
 		else if (f instanceof Variable) {
 			Variable var = (Variable)f;
 			// printIndent(2);
-			
+
 			// FALTA AQUI: field Int count
-//			System.out.printf("field %s %s\n", var.getType(), var.getId());
+			//			System.out.printf("field %s %s\n", var.getType(), var.getId());
 			if( var.getValue() != null ) {
 				//print(var.getValue(), 3);
 			}
@@ -377,8 +378,8 @@ public class ClassPrinter {
 		// printIndent(indent);
 
 		if(e instanceof Block) {
-//			printTag("block", e);
-//			System.out.println("block");
+			//			printTag("block", e);
+			//			System.out.println("block");
 
 			for(Expr child: ((Block)e).getStatements()) {
 				print(child, indent+1);
@@ -403,21 +404,21 @@ public class ClassPrinter {
 		}
 		else if(e instanceof AssignExpr) {
 
-//			printTag(String.format("assign %s", ((AssignExpr)e).getId()), e);
-//			System.out.println("AssignExpr....");
+			//			printTag(String.format("assign %s", ((AssignExpr)e).getId()), e);
+			//			System.out.println("AssignExpr....");
 			String id = "@"+( (AssignExpr)e ).getId();
 			Expr ex = ( (AssignExpr)e ).getValue();
 			if(ex instanceof BinaryExpr)
 			{
-				
+
 				BinaryExpr binEx = (BinaryExpr)ex;
-				
+
 				System.out.println(";; BinaryExpr");		
 				String type = binEx.getExprType();
-				
+
 				print((binEx), indent+1);
 				System.out.println(";; <--BinaryExpr");
-				
+
 
 				if(type.equalsIgnoreCase("Int")){
 					System.out.println("    store i32 %local_int"+intCount+", i32* "+id);
@@ -432,40 +433,40 @@ public class ClassPrinter {
 					System.out.println("store i8 %local_string"+(stringCount)+", i8* "+id);
 					boolCount++;			
 				}*/
-				
-				
+
+
 			}else if(ex instanceof ValueExpr)
 			{
 				System.out.println(";; ValueExpr");
-			Object value = ((ValueExpr) ex).getValue().toString();
-			String type =  ( (AssignExpr)e ).getExprType();
+				Object value = ((ValueExpr) ex).getValue().toString();
+				String type =  ( (AssignExpr)e ).getExprType();
 
-			print(((AssignExpr)e).getValue(), indent+1);
-			/*
-			 * 
+				print(((AssignExpr)e).getValue(), indent+1);
+				/*
+				 * 
 %local_int3 = load i32* @int1
 store i32 %local_int3, i32* @entero
 %local_int4 = load i32* @entero
-			 */
+				 */
 
-			if(type.equalsIgnoreCase("Int")){
-				System.out.println("%local_int"+(++intCount)+" = load i32* "+intList.get(value));
-				System.out.println("store i32 %local_int"+(intCount)+", i32* "+id);
-				intCount++;			
-			} else if(type.equalsIgnoreCase("Bool")){
-				System.out.println("%local_bool"+(++boolCount)+" = load i1* "+boolList.get(value));
-				System.out.println("store i1 %local_bool"+(boolCount)+", i1* "+id);
-				boolCount++;			
-			} else if(type.equalsIgnoreCase("String")){
-				System.out.println("%local_string"+(++stringCount)+" = load i8* "+stringList.get(value));
-				System.out.println("store i8 %local_string"+(stringCount)+", i8* "+id);
-				boolCount++;			
+				if(type.equalsIgnoreCase("Int")){
+					System.out.println("%local_int"+(++intCount)+" = load i32* "+intList.get(value));
+					System.out.println("store i32 %local_int"+(intCount)+", i32* "+id);
+					intCount++;			
+				} else if(type.equalsIgnoreCase("Bool")){
+					System.out.println("%local_bool"+(++boolCount)+" = load i1* "+boolList.get(value));
+					System.out.println("store i1 %local_bool"+(boolCount)+", i1* "+id);
+					boolCount++;			
+				} else if(type.equalsIgnoreCase("String")){
+					System.out.println("%local_string"+(++stringCount)+" = load i8* "+stringList.get(value));
+					System.out.println("store i8 %local_string"+(stringCount)+", i8* "+id);
+					boolCount++;			
+				}
 			}
-		}
-			
+
 		}
 		else if(e instanceof DispatchExpr) {
-			
+
 			DispatchExpr call = (DispatchExpr)e;
 			// metodo
 			StringBuilder out = new StringBuilder();
@@ -476,7 +477,7 @@ store i32 %local_int3, i32* @entero
 
 			String nameMethod = (call.getName());
 
-			
+
 			if(call.getType() != null) {
 				out.append(" as ").append(call.getType());
 			}
@@ -503,22 +504,22 @@ store i32 %local_int3, i32* @entero
 			}
 			else if(nameMethod.equalsIgnoreCase("out_int")){
 
-					String content = "";
-					System.out.println("    call %IO* @IO_out_int(%IO* %_tmp_1, i32 %local_int"+intCount+")");	
-					System.out.println(content);
-				}
+				String content = "";
+				System.out.println("    call %IO* @IO_out_int(%IO* %_tmp_1, i32 %local_int"+intCount+")");	
+				System.out.println(content);
+			}
 			else if(nameMethod.equalsIgnoreCase("in_string")){
-				
+
 
 				System.out.println( "    %local_string"+stringCount+" = call i8* @IO_in_string(%IO* %_tmp_1)");
-//					System.out.println("    call %IO* @IO_out_string(%IO* %_tmp_1, i8* %local_string"+stringCount+")");		
-				}	
+				//					System.out.println("    call %IO* @IO_out_string(%IO* %_tmp_1, i8* %local_string"+stringCount+")");		
+			}	
 			else if(nameMethod.equalsIgnoreCase("in_int")){
-				
+
 
 				System.out.println( "    %local_int"+intCount+" = call i32 @IO_in_int(%IO* %_tmp_1)");
-//					System.out.println("    call %IO* @IO_out_string(%IO* %_tmp_1, i8* %local_string"+stringCount+")");		
-				}						
+				//					System.out.println("    call %IO* @IO_out_string(%IO* %_tmp_1, i8* %local_string"+stringCount+")");		
+			}						
 			else{
 				// METODOS DE STRINGS
 				// FUNCIONES DE STRINGS
@@ -529,7 +530,10 @@ store i32 %local_int3, i32* @entero
 				}
 				else if(nameMethod.equalsIgnoreCase("substr")){
 					// ESTA BIEN EL ORDEN????
-					System.out.println("    %local_string"+(++stringCount)+" = call i8* @String_substr( i8* %local_string"+(stringCount-1)+", i32 %local_int"+(intCount)+", i32 %local_int"+(intCount-1)+")");		
+					System.out.println("    %local_string"+(stringCount+1)+" = call i8* @String_substr( i8* %local_string"+(stringCount)+", i32 %local_int"+(intCount)+", i32 %local_int"+(intCount-1)+")");		
+					stringCount++;
+
+
 				}
 				else if(nameMethod.equalsIgnoreCase("length")){
 					System.out.println("    %local_int"+(++intCount)+" = call i32 @String_length( i8* %local_string"+(stringCount)+")");		
@@ -539,10 +543,10 @@ store i32 %local_int3, i32* @entero
 		}
 		else if(e instanceof IfExpr) {
 			IfExpr cond = (IfExpr)e;
-			
 
 
-//			printTag("if", e);
+
+			//			printTag("if", e);
 			print(cond.getCond(), indent+1);
 			String type = cond.getExprType();
 			int auxIf = ifCount++;
@@ -551,8 +555,8 @@ store i32 %local_int3, i32* @entero
 			System.out.println("    %ptr_if"+auxIf+" = alloca i1");
 			System.out.println("    store i1 "+id+", i1* %ptr_if"+auxIf+"");
 			System.out.println("    %cond"+auxIf+" = load i1* %ptr_if"+auxIf+"");
-			
-			
+
+
 
 			if(type.equalsIgnoreCase("Int")){
 				System.out.println("    %ptr_int"+auxIf+" = alloca i32* ");
@@ -561,14 +565,14 @@ store i32 %local_int3, i32* @entero
 			} else if(type.equalsIgnoreCase("String")){
 				System.out.println("    %ptr_string"+auxIf+" = alloca i8*");
 			}
-			
+
 			/*
 
 //		    System.out.println("    %local_bool"+(boolCount+1)+" = load i1* %local_bool"+(boolList.get(key)));
 			String value = boolList.get(id);
 
 			System.out.println("    %cond"+auxIf+" = load i1* "+id);
-			*/
+			 */
 			/*
 			 * PENDIENTE REVISAR STRING
 			 */
@@ -581,12 +585,12 @@ store i32 %local_int3, i32* @entero
 			}
 			else if(type.equalsIgnoreCase("String")){
 				// PENDIENTE STRING 
-//				result = "%v1 = alloca i32";
+				//				result = "%v1 = alloca i32";
 			}
 			System.out.println(result);
 			System.out.println("br i1 %cond"+auxIf+", label %IfEqual"+auxIf+", label %IfUnequal"+auxIf+"");
 			System.out.println();
-			
+
 			System.out.println("IfEqual"+auxIf+":");
 			print(cond.getTrue(), indent+1);
 			System.out.println("");			
@@ -605,7 +609,7 @@ store i32 %local_int3, i32* @entero
 
 			System.out.println("br label %EndIf"+auxIf);
 			System.out.println();
-			
+
 			System.out.println("IfUnequal"+auxIf+":");
 			print(cond.getFalse(), indent+1);
 			System.out.println("");
@@ -618,7 +622,7 @@ store i32 %local_int3, i32* @entero
 				result = "store i1 %local_bool"+boolCount+", i1* %v1\n";
 			}
 			System.out.println(result);	
-			*/
+			 */
 			if(type.equalsIgnoreCase("Int")){
 				result = "store i32 %local_int"+intCount+", i32* %v1\n";
 				System.out.println(result);			
@@ -627,7 +631,7 @@ store i32 %local_int3, i32* @entero
 				result = "store i1 %local_bool"+boolCount+", i1* %v1\n";
 				System.out.println(result);			
 			}else  if(type.equalsIgnoreCase("String")){	
-			System.out.println("    store i8* %local_string"+stringCount+", i8** %ptr_string"+auxIf+"");
+				System.out.println("    store i8* %local_string"+stringCount+", i8** %ptr_string"+auxIf+"");
 			}
 			System.out.println("br label %EndIf"+auxIf);
 
@@ -644,20 +648,20 @@ store i32 %local_int3, i32* @entero
 				result = "    %local_bool"+(++boolCount)+" = load i1*  %v1";
 			}
 			System.out.println(result);
-			
-/*
+
+			/*
 			System.out.println("    %local_bool"+(boolCount +1)+" = load i1*  %local_bool"+(boolCount ));
 			boolCount++;
-			
-			
+
+
 			String variable = boolList.get(value.toString());
 			System.out.println("    %local_bool"+(++boolCount )+" = load i1* "+variable);
 //			System.out.println("    %local_bool"+(++boolCount )+" = load i1* "+id);
-			
+
 			// var0 = i1
 			// si var0 = 1 -> goto IF_THEN1, goto ELSE1
-			
-			
+
+
 			//			assert "Bool".equals(cond.getCond().getExprType());
 
 			// printIndent(indent);
@@ -671,25 +675,25 @@ store i32 %local_int3, i32* @entero
 
 			// IF_THEN1: 
 			print(cond.getTrue(), indent+1);
-			
+
 			// goto END_IF1
-			
+
 			// ELSE:
 			print(cond.getFalse(), indent+1);
-			
+
 			// END_IF1:
 			// 
-			
-			
-			
+
+
+
 //			System.out.println("ES: "+(cond.getCond()));
 			boolean b = true; // Boolean.parseBoolean(cond.getCond().toString());
 			Expr ex = (cond.getCond());
 			String type = ex.getExprType();
-			*/
-			
-			
-	/*		
+			 */
+
+
+			/*		
 			Object value = ((ValueExpr)e).getValue();
 
 			if(value instanceof Boolean) {
@@ -698,12 +702,12 @@ store i32 %local_int3, i32* @entero
 				if(b){
 					print(cond.getTrue(), indent+1);
 				}else{
-	
+
 					print(cond.getFalse(), indent+1);
 				}
 			}
-*/
-			
+			 */
+
 
 		}
 		else if(e instanceof NewExpr) 
@@ -721,9 +725,9 @@ store i32 %local_int3, i32* @entero
 		}
 		else if(e instanceof BinaryExpr) {
 			BinaryExpr expr = (BinaryExpr)e;
-//			printTag(String.format("binary %s", operator(expr.getOp())), e);
+			//			printTag(String.format("binary %s", operator(expr.getOp())), e);
 			String op = operator(expr.getOp());
-//			System.out.println("OP: "+op);
+			//			System.out.println("OP: "+op);
 			String operation = "";
 			if(op.equalsIgnoreCase("+")){
 				operation = "add";
@@ -734,10 +738,42 @@ store i32 %local_int3, i32* @entero
 			}else if(op.equalsIgnoreCase("/")){
 				operation = "sdiv";
 			}else if(op.equalsIgnoreCase("=")){
-				operation = "sdiv";
-			}else
-			{
-//				System.out.println("OPERATION: "+op);
+
+				if(expr.getLeft().getExprType().equals("String")){
+					print(expr.getLeft(), indent + 1);   
+					String var1 = "%local_string"+stringCount;
+					print(expr.getRight(), indent + 1); 
+					String var2 = "%local_string"+stringCount;
+
+					String content = "%local_int"+(++intCount)+" = call i32 @strcmp(i8* "+var1+", i8*"+var2+")";
+					System.out.println("    "+content);
+					System.out.println(" %local_bool"+(++boolCount)+" = icmp eq i32 0, %local_int"+intCount);
+					return;
+				}
+				else if(expr.getLeft().getExprType().equals("Int")){
+					operation = "icmp eq";
+					
+				}
+
+			}else if(op.equalsIgnoreCase("<")){
+			
+				print(expr.getLeft(), indent + 1);   
+				String var1 = "%local_int"+intCount;
+				print(expr.getRight(), indent + 1); 
+				String var2 = "%local_int"+intCount;
+								
+				System.out.println("    %local_bool"+(++boolCount)+" = icmp slt i32 "+var1+",  "+var2+"");
+				return;
+			}
+			else if(op.equalsIgnoreCase("<=")){
+				
+				print(expr.getLeft(), indent + 1);   
+				String var1 = "%local_int"+intCount;
+				print(expr.getRight(), indent + 1); 
+				String var2 = "%local_int"+intCount;
+								
+				System.out.println("    %local_bool"+(++boolCount)+" = icmp sle i32 "+var1+",  "+var2+"");
+				return;
 			}
 
 			print(expr.getLeft(), indent + 1);   
@@ -746,7 +782,7 @@ store i32 %local_int3, i32* @entero
 			String var2 = "%local_int"+intCount;
 			String content = "%local_int"+(++intCount)+" = "+operation+" i32 "+var1+", "+var2;
 			System.out.println("    "+content);
-			
+
 		}
 		else if (e instanceof CaseExpr) {
 			CaseExpr caseExpr = ((CaseExpr)e);
@@ -782,7 +818,7 @@ store i32 %local_int3, i32* @entero
 			String id = "@" + ((IdExpr)e).getId();
 			String type = ((IdExpr)e).getExprType();
 
-//			System.out.println("ID: "+id + " es "+type);
+			//			System.out.println("ID: "+id + " es "+type);
 
 			if(type.equalsIgnoreCase("Int")){
 				System.out.println("    %local_int"+(++intCount )+" = load i32* "+id);
@@ -790,8 +826,8 @@ store i32 %local_int3, i32* @entero
 			else if(type.equalsIgnoreCase("String")){
 				// PREGUNTAR 
 				String value = stringFieldList.get(id);
-//				System.out.println("id es: "+id);
-//				System.out.println("Value es: "+value);
+				//				System.out.println("id es: "+id);
+				//				System.out.println("Value es: "+value);
 				System.out.println("    %local_string"+(++stringCount )+" = getelementptr ["+(value.length()+1)+" x i8]* "+id+", i8 0, i8 0");
 
 			}
@@ -801,13 +837,13 @@ store i32 %local_int3, i32* @entero
 				System.out.println();
 				System.out.println("    %local_bool"+(++boolCount )+" = load i1* "+id);
 			}
-			
-/*
+
+			/*
 			if(value instanceof String) {
 				String variable = stringList.get(value);
 				System.out.println("    %local_string"+(++stringCount )+" = getelementptr ["+(((String)(value)).length()+1)+" x i8]* "+variable+", i8 0, i8 0");
 
-				
+
 			}
 			else if(value instanceof Integer) {
 				String variable = intList.get( value.toString() );
@@ -821,13 +857,13 @@ store i32 %local_int3, i32* @entero
 				String variable = boolList.get(value.toString());
 				System.out.println("    %local_bool"+(++boolCount )+" = load i1* "+variable);
 			}
-			*/
+			 */
 		}
 		else if(e instanceof ValueExpr) {
 			Object value = ((ValueExpr)e).getValue();
-// http://lists.cs.uiuc.edu/pipermail/llvmdev/2010-June/032621.html
+			// http://lists.cs.uiuc.edu/pipermail/llvmdev/2010-June/032621.html
 			// PHI instruction
-// FORO			%.tmp_if_ret3 = phi %IO* [ %.tmp_out_ret3, %.ifTrue0 ], [ %.tmp_out_ret4, %.ifFalse0 ]
+			// FORO			%.tmp_if_ret3 = phi %IO* [ %.tmp_out_ret3, %.ifTrue0 ], [ %.tmp_out_ret4, %.ifFalse0 ]
 
 			if(value instanceof String) {
 
@@ -838,12 +874,12 @@ store i32 %local_int3, i32* @entero
 				String variable = stringList.get(value);
 				System.out.println("    %local_string"+(++stringCount )+" = getelementptr ["+stringLength+" x i8]* "+variable+", i8 0, i8 0");
 
-				
-                /*
+
+				/*
 				value =  ((String)value).replace("\n", "\\n")
 						.replace("\t", "\\t").replace("\f", "\\f").replace("\b", "\\b");
 				                System.out.println(String.format("str \"%s\"", value));
-*/
+				 */
 				//                printTag(String.format("str \"%s\"", value), e);
 			}
 			else if(value instanceof Integer) {
@@ -855,8 +891,8 @@ store i32 %local_int3, i32* @entero
 				//                assert "Bool".equals(e.getExprType());
 				//                printTag(String.format("bool %s", value), e);
 				//            	System.out.println(String.format("bool %s", value)+ e);
-	
-	 			String variable = boolList.get(value.toString());
+
+				String variable = boolList.get(value.toString());
 				System.out.println("    %local_bool"+(++boolCount )+" = load i1* "+variable);
 			}
 			else {
