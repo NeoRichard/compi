@@ -1,6 +1,5 @@
 package coolc;
 
-import java.beans.Expression;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
@@ -143,8 +142,34 @@ public class ClassPrinter {
 
 		content +=") {\n";
 		content += "    %_tmp_1 = bitcast %"+mainClass+"* %m to %IO*\n" ;
+		
 		System.out.println(content);
+		int countParam = 0;
 
+		if(m.getParams().size()>0){
+			for(int i = 0 ; i < m.getParams().size() ; i++){
+
+				if (m.getParams().get(i).getType().equalsIgnoreCase("Int") ){
+					
+		System.out.println("\n    %ptr_param"+countParam+" = alloca i32" +
+				"\n    store i32 %"+ (m.getParams().get(i).getId())+", i32* %ptr_param"+countParam +
+				"\n    %local_int"+(++intCount)+" = load i32* %ptr_param"+countParam);			
+					
+				}else if (m.getParams().get(i).getType().equalsIgnoreCase("Bool") ){
+//					System.out.println( "\n    ret i1 %local_bool"+boolCount);
+				}else if (m.getParams().get(i).getType().equalsIgnoreCase("String") ){
+//					System.out.println( "\n    ret i8* %local_string"+stringCount);
+				}else{
+					System.out.println( "\n    ;;;; PARAMETRO NO BASICO");
+				}
+				countParam++;
+				
+				
+				content += ", "+ refactorType( (m.getParams().get(i).getType())) + " %"+ (m.getParams().get(i).getId());
+			}
+		}
+		
+		
 		print(m.getBody(), 3);
 		
 		if (m.getType().equalsIgnoreCase("Int") ){
@@ -551,6 +576,45 @@ store i32 %local_int3, i32* @entero
 					System.out.println("    %local_int"+(++intCount)+" = call i32 @String_length( i8* %local_string"+(stringCount)+")");		
 				}
 				else {
+					
+					String pars = "";
+
+					if (call.getArgs().size() > 0) {
+
+						int localInt = intCount;
+						int localBool= boolCount;
+						int localString= stringCount;
+						
+						for(Expr arg: call.getArgs()) {
+							
+							if(arg.getExprType().equalsIgnoreCase("Int")){								
+								pars = (" , i32 %local_int"+ (localInt) ) + pars;
+								localInt--;
+							} else if(arg.getExprType().equalsIgnoreCase("Bool")){
+								pars = (" , i1 %local_bool"+ (localBool) ) + pars;
+								localBool--;
+							} else if(arg.getExprType().equalsIgnoreCase("String")){
+								pars = (" , i8* %local_string"+ (localString) ) + pars;
+								localString--;
+							}
+						}
+					}
+					
+					pars = "%Main* null" + pars;
+					
+					
+					if(type.equalsIgnoreCase("Int")){
+						System.out.println("    %local_int"+ (intCount+1) +" = call i32 @Main_"+nameMethod+"("+pars+")");
+						intCount++;
+					} else if(type.equalsIgnoreCase("Bool")){
+						System.out.println("    %local_bool"+ (boolCount+1) +" = call i32 @Main_"+nameMethod+"("+pars+")");
+						boolCount++;
+					} else if(type.equalsIgnoreCase("String")){
+						System.out.println("    %local_string"+ (stringCount+1) +" = call i32 @Main_"+nameMethod+"("+pars+")");
+						stringCount++;
+					}
+					
+					/*
 					if(type.equalsIgnoreCase("Int")){
 						System.out.println("    %local_int"+ (intCount+1) +" = call i32 @Main_"+nameMethod+"(%Main* null, i32 %local_int"+ (intCount) +")");
 						intCount++;
@@ -560,7 +624,7 @@ store i32 %local_int3, i32* @entero
 					} else if(type.equalsIgnoreCase("String")){
 						System.out.println("    %local_string"+ (stringCount+1) +" = call i32 @Main_"+nameMethod+"(%Main* null, i8* %local_string"+ (stringCount) +")");
 						stringCount++;
-					}
+					}*/
 					
 				}
 
@@ -603,10 +667,10 @@ store i32 %local_int3, i32* @entero
 			 */
 			String result = "";
 			if(type.equalsIgnoreCase("Int")){
-				result = "%v1 = alloca i32";
+				result = "%v"+auxIf+" = alloca i32";
 			}
 			else if(type.equalsIgnoreCase("Bool")){
-				result = "%v1 = alloca i1";
+				result = "%v"+auxIf+" = alloca i1";
 			}
 			else if(type.equalsIgnoreCase("String")){
 				// PENDIENTE STRING 
@@ -621,11 +685,11 @@ store i32 %local_int3, i32* @entero
 			System.out.println("");			
 
 			if(type.equalsIgnoreCase("Int")){
-				result = "    store i32 %local_int"+intCount+", i32* %v1\n";
+				result = "    store i32 %local_int"+intCount+", i32* %v"+auxIf+"\n";
 				System.out.println(result);			
 			}
 			else if(type.equalsIgnoreCase("Bool")){
-				result = "    store i1 %local_bool"+boolCount+", i1* %v1\n";
+				result = "    store i1 %local_bool"+boolCount+", i1* %v"+auxIf+"\n";
 				System.out.println(result);			
 			}
 			else if(type.equalsIgnoreCase("String")){
@@ -649,11 +713,11 @@ store i32 %local_int3, i32* @entero
 			System.out.println(result);	
 			 */
 			if(type.equalsIgnoreCase("Int")){
-				result = "store i32 %local_int"+intCount+", i32* %v1\n";
+				result = "store i32 %local_int"+intCount+", i32* %v"+auxIf+"\n";
 				System.out.println(result);			
 			}
 			else if(type.equalsIgnoreCase("Bool")){
-				result = "store i1 %local_bool"+boolCount+", i1* %v1\n";
+				result = "store i1 %local_bool"+boolCount+", i1* %v"+auxIf+"\n";
 				System.out.println(result);			
 			}else  if(type.equalsIgnoreCase("String")){	
 				System.out.println("    store i8* %local_string"+stringCount+", i8** %ptr_string"+auxIf+"");
@@ -667,10 +731,10 @@ store i32 %local_int3, i32* @entero
 				System.out.println("    %local_string"+(++stringCount)+" = load i8** %ptr_string"+auxIf+"");
 			}
 			else if(type.equalsIgnoreCase("Int")){
-				result = "    %local_int"+(++intCount)+" = load i32*  %v1";
+				result = "    %local_int"+(++intCount)+" = load i32*  %v"+auxIf+"";
 			}
 			else if(type.equalsIgnoreCase("Bool")){
-				result = "    %local_bool"+(++boolCount)+" = load i1*  %v1";
+				result = "    %local_bool"+(++boolCount)+" = load i1*  %v"+auxIf+"";
 			}
 			System.out.println(result);
 
@@ -794,8 +858,16 @@ store i32 %local_int3, i32* @entero
 					return;
 				}
 				else if(expr.getLeft().getExprType().equals("Int")){
-					operation = "icmp eq";
+//					operation = "icmp eq";
 
+
+					print(expr.getLeft(), indent + 1);   
+					String var1 = "%local_int"+intCount;
+					print(expr.getRight(), indent + 1); 
+					String var2 = "%local_int"+intCount;
+
+					System.out.println("    %local_bool"+(++boolCount)+" = icmp eq i32 "+var1+",  "+var2+"");
+					return;
 				}
 
 			}else if(op.equalsIgnoreCase("<")){
@@ -865,6 +937,7 @@ store i32 %local_int3, i32* @entero
 
 			if(type.equalsIgnoreCase("Int")){
 				System.out.println("    %local_int"+(++intCount )+" = load i32* "+id);
+				System.out.println(";; 886 "+e.getClass());
 			}
 			else if(type.equalsIgnoreCase("String")){
 				// PREGUNTAR 
