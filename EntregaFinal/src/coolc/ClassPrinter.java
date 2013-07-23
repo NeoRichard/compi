@@ -817,9 +817,12 @@ store i32 %local_int3, i32* @entero
 			print(expr.getValue(), indent + 1);
 
 			if(op.equalsIgnoreCase("NOT")){
-				String var = "%local_int"+intCount;
+				String var = "%local_bool"+boolCount;
 				printIndent(1);
-				System.out.println("%local_int"+(++intCount)+" = icmp eq i1 " + var + ", 0");
+				System.out.println("%local_bool"+(++boolCount)+" = icmp eq i1 " + var + ", 0");
+				
+				
+
 			}else if(op.equalsIgnoreCase("~")){
 				String var = "%local_int"+intCount;
 				printIndent(1);
