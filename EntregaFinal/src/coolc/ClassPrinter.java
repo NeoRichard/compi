@@ -444,47 +444,43 @@ public class ClassPrinter {
 			//			printTag(String.format("assign %s", ((AssignExpr)e).getId()), e);
 			//			System.out.println("AssignExpr....");
 			String id = "@"+( (AssignExpr)e ).getId();
-			Expr ex = ( (AssignExpr)e ).getValue();
+
+			AssignExpr assign = ((AssignExpr)e);
+            print(assign.getValue(), indent+1);
+
+        	if(assign.getExprType().equals("Int")){
+        		printIndent(1);
+        		System.out.println("store i32 %local_int"+intCount +", i32* " + id);
+        	}
+        	else if(assign.getExprType().equals("String")){
+        		printIndent(1);
+        		System.out.println("store i8* %local_string"+stringCount +", i8** " + id);
+        	}
+        	else if(assign.getExprType().equals("Bool")){
+        		printIndent(1);
+        		System.out.println("store i1 %local_bool"+boolCount +", i1* " + id);
+        	}
+			
+			/*
 			if(ex instanceof BinaryExpr)
 			{
-
 				BinaryExpr binEx = (BinaryExpr)ex;
-
 				System.out.println(";; BinaryExpr");		
 				String type = binEx.getExprType();
-
 				print((binEx), indent+1);
 				System.out.println(";; <--BinaryExpr");
-
-
 				if(type.equalsIgnoreCase("Int")){
 					System.out.println("    store i32 %local_int"+intCount+", i32* "+id);
 					intCount++;			
-				}/*
-				else if(type.equalsIgnoreCase("Bool")){
-					System.out.println("%local_bool"+(++boolCount)+" = load i1* "+boolList.get(value));
-					System.out.println("store i1 %local_bool"+(boolCount)+", i1* "+id);
-					boolCount++;			
-				} else if(type.equalsIgnoreCase("String")){
-					System.out.println("%local_string"+(++stringCount)+" = load i8* "+stringList.get(value));
-					System.out.println("store i8 %local_string"+(stringCount)+", i8* "+id);
-					boolCount++;			
-				}*/
-
-
-			}else if(ex instanceof ValueExpr)
+				}
+			}
+			else if(ex instanceof ValueExpr)
 			{
 				System.out.println(";; ValueExpr");
 				Object value = ((ValueExpr) ex).getValue().toString();
 				String type =  ( (AssignExpr)e ).getExprType();
 
 				print(((AssignExpr)e).getValue(), indent+1);
-				/*
-				 * 
-%local_int3 = load i32* @int1
-store i32 %local_int3, i32* @entero
-%local_int4 = load i32* @entero
-				 */
 
 				if(type.equalsIgnoreCase("Int")){
 					System.out.println("%local_int"+(++intCount)+" = load i32* "+intList.get(value));
@@ -500,6 +496,7 @@ store i32 %local_int3, i32* @entero
 					boolCount++;			
 				}
 			}
+			*/
 
 		}
 		else if(e instanceof DispatchExpr) {
@@ -607,10 +604,10 @@ store i32 %local_int3, i32* @entero
 						System.out.println("    %local_int"+ (intCount+1) +" = call i32 @Main_"+nameMethod+"("+pars+")");
 						intCount++;
 					} else if(type.equalsIgnoreCase("Bool")){
-						System.out.println("    %local_bool"+ (boolCount+1) +" = call i32 @Main_"+nameMethod+"("+pars+")");
+						System.out.println("    %local_bool"+ (boolCount+1) +" = call i1 @Main_"+nameMethod+"("+pars+")");
 						boolCount++;
 					} else if(type.equalsIgnoreCase("String")){
-						System.out.println("    %local_string"+ (stringCount+1) +" = call i32 @Main_"+nameMethod+"("+pars+")");
+						System.out.println("    %local_string"+ (stringCount+1) +" = call i8* @Main_"+nameMethod+"("+pars+")");
 						stringCount++;
 					}
 					
@@ -939,15 +936,16 @@ store i32 %local_int3, i32* @entero
 			//			System.out.println("ID: "+id + " es "+type);
 
 			if(type.equalsIgnoreCase("Int")){
-				System.out.println("    %local_int"+(++intCount )+" = load i32* "+id);
-				System.out.println(";; 886 "+e.getClass());
+				System.out.println("    %local_int"+(++intCount )+" = load i32* "+id +(";; 886 "+e.getClass()) );
+
 			}
 			else if(type.equalsIgnoreCase("String")){
 				// PREGUNTAR 
 				String value = stringFieldList.get(id);
 				//				System.out.println("id es: "+id);
 				//				System.out.println("Value es: "+value);
-				System.out.println("    %local_string"+(++stringCount )+" = getelementptr ["+(value.length()+1)+" x i8]* "+id+", i8 0, i8 0");
+//				System.out.println("    %local_string"+(++stringCount )+" = getelementptr ["+(value.length()+1)+" x i8]* "+id+", i8 0, i8 0");
+				System.out.println("    %local_string"+(++stringCount )+" = load i8** "+id);
 
 			}
 			else if(type.equalsIgnoreCase("Bool")){

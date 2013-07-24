@@ -387,10 +387,14 @@ public class ConstantPrinter {
 					s = v.getValue().toString();
 				}
 				String stringContent = s;
-				int stringLength = s.length()+1;
-				String content = id + (" = constant ["+(stringLength)+" x i8] c\""+stringContent+"\\00\"");
+				int stringLength = s.length();
+//				String content = id + (" = constant ["+(stringLength)+" x i8] c\""+stringContent+"\\00\"");
+				
 
-				System.out.println(content);
+            	System.out.println("@" + var.getId() + "_c = constant [" + stringLength + " x i8] c\"" + stringContent + "\"");
+            	System.out.println("@" + var.getId() + " = global i8* bitcast([" + stringLength + " x i8]* @" + var.getId() + "_c to i8*)");
+
+//				System.out.println(content);
 				stringFieldList.put(id, s);
 
 			}else if(type.equalsIgnoreCase("Int")){	
