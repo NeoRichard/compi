@@ -859,14 +859,23 @@ public class ClassPrinter {
 				}
 				else if(expr.getLeft().getExprType().equals("Int")){
 //					operation = "icmp eq";
-
-
 					print(expr.getLeft(), indent + 1);   
 					String var1 = "%local_int"+intCount;
 					print(expr.getRight(), indent + 1); 
 					String var2 = "%local_int"+intCount;
 
 					System.out.println("    %local_bool"+(++boolCount)+" = icmp eq i32 "+var1+",  "+var2+"");
+					return;
+				}
+
+				else if(expr.getLeft().getExprType().equals("Bool")){
+//					operation = "icmp eq";
+					print(expr.getLeft(), indent + 1);   
+					String var1 = "%local_bool"+boolCount;
+					print(expr.getRight(), indent + 1); 
+					String var2 = "%local_bool"+boolCount;
+
+					System.out.println("    %local_bool"+(++boolCount)+" = icmp eq i1 "+var1+",  "+var2+"");
 					return;
 				}
 
