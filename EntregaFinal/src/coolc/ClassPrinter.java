@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import coolc.ast.*;
+import coolc.infrastructure.ClassScope;
+import coolc.infrastructure.MethodScope;
+import coolc.infrastructure.SymTable;
 
 
 public class ClassPrinter {
@@ -28,6 +31,11 @@ public class ClassPrinter {
 	private int stringCount = 0;
 	private int intCount = 0;
 	private int boolCount = 0;
+	
+
+    private SymTable _symTable;
+    ClassScope classScope;
+    MethodScope methodScope;
 
 	public ClassPrinter(Program root) {
 		this(root, false);
@@ -38,6 +46,8 @@ public class ClassPrinter {
 		_printTypes = printTypes;
 		clases = new ArrayList<>();
 
+    	
+        _symTable = new SymTable(root);
 
 		ConstantPrinter constant = new ConstantPrinter(root);
 		constant.print();
@@ -103,10 +113,18 @@ public class ClassPrinter {
 	}*/
 
 	public String refactorType(String t){
+		if (t.equalsIgnoreCase("Int") ){
+			return "i32";
+		}else if (t.equalsIgnoreCase("Bool") ){
+			return "i1";
+		}else if (t.equalsIgnoreCase("String") ){
+			return "i8*";
+		}
 		return "i32";
 	}
 
 	public void defineFunction(Method m) {
+        methodScope = classScope.getMethod(m.getName());
 		/*
         System.out.printf("method %s : ", m.getName());
         for(Variable var: m.getParams()) {
@@ -136,9 +154,12 @@ public class ClassPrinter {
 		content += "%"+mainClass+"* %m";
 
 		if(m.getParams().size()>0){
-			for(int i = 0 ; i < m.getParams().size() ; i++)
+			for(int i = 0 ; i < m.getParams().size() ; i++){
+//				content += ", "+ refactorType( (m.getParams().get(i).getType())) + " %"+ (m.getParams().get(i).getId());
 				content += ", "+ refactorType( (m.getParams().get(i).getType())) + " %"+ (m.getParams().get(i).getId());
+				}
 		}
+	
 
 		content +=") {\n";
 		content += "    %_tmp_1 = bitcast %"+mainClass+"* %m to %IO*\n" ;
@@ -286,6 +307,8 @@ public class ClassPrinter {
 		mainClass = c.getType();
 		String content = "%"+c.getType()+" = type { i8* }\n\n";
 		System.out.println(content);
+
+        classScope = _symTable.findClass(c.getType());
 		/*
 		for(Feature f: c.getBody()) {
 			print(f);
@@ -443,6 +466,7 @@ public class ClassPrinter {
 
 			//			printTag(String.format("assign %s", ((AssignExpr)e).getId()), e);
 			//			System.out.println("AssignExpr....");
+			
 			String id = "@"+( (AssignExpr)e ).getId();
 
 			AssignExpr assign = ((AssignExpr)e);
@@ -585,13 +609,16 @@ public class ClassPrinter {
 						for(Expr arg: call.getArgs()) {
 							
 							if(arg.getExprType().equalsIgnoreCase("Int")){								
-								pars = (" , i32 %local_int"+ (localInt) ) + pars;
+//								pars = (" , i32 %local_int"+ (localInt) ) + pars;
+								pars += (" , i32 %local_int"+ (localInt) );
 								localInt--;
 							} else if(arg.getExprType().equalsIgnoreCase("Bool")){
-								pars = (" , i1 %local_bool"+ (localBool) ) + pars;
+//								pars = (" , i1 %local_bool"+ (localBool) ) + pars;
+								pars += (" , i1 %local_bool"+ (localBool) ) ;
 								localBool--;
 							} else if(arg.getExprType().equalsIgnoreCase("String")){
-								pars = (" , i8* %local_string"+ (localString) ) + pars;
+								pars += (" , i8* %local_string"+ (localString) ) ;
+//								pars = (" , i8* %local_string"+ (localString) ) + pars;
 								localString--;
 							}
 						}
@@ -606,9 +633,13 @@ public class ClassPrinter {
 					} else if(type.equalsIgnoreCase("Bool")){
 						System.out.println("    %local_bool"+ (boolCount+1) +" = call i1 @Main_"+nameMethod+"("+pars+")");
 						boolCount++;
-					} else if(type.equalsIgnoreCase("String")){
+					} else if(type.equalsIgnoreCase("String") ){
 						System.out.println("    %local_string"+ (stringCount+1) +" = call i8* @Main_"+nameMethod+"("+pars+")");
 						stringCount++;
+					}else if(type.equalsIgnoreCase("Object") ){
+						System.out.println("    %local_string"+ (stringCount+1) +" = call %"+mainClass+"* @Main_"+nameMethod+"("+pars+")");
+						stringCount++;
+						
 					}
 					
 					/*
@@ -831,6 +862,7 @@ public class ClassPrinter {
 
 		}
 		else if(e instanceof BinaryExpr) {
+
 			BinaryExpr expr = (BinaryExpr)e;
 			//			printTag(String.format("binary %s", operator(expr.getOp())), e);
 			String op = operator(expr.getOp());
@@ -939,15 +971,40 @@ public class ClassPrinter {
 		}
 		else if(e instanceof IdExpr) {
 			//            printTag(String.format("id %s", ((IdExpr)e).getId()), e);
-			String id = "@" + ((IdExpr)e).getId();
+//			String id = "@" + ((IdExpr)e).getId();
+			String id = ((IdExpr)e).getId();
 			String type = ((IdExpr)e).getExprType();
 
 			//			System.out.println("ID: "+id + " es "+type);
 
 			if(type.equalsIgnoreCase("Int")){
-				System.out.println("    %local_int"+(++intCount )+" = load i32* "+id +(";; 886 "+e.getClass()) );
-
+                if(methodScope.hasParamField(id)){
+        			System.out.println("    %local_int"+(++intCount )+" = add i32 %"+id  + ", 0");
+                }
+                else{
+//                	printout(1,"%" + localvar + " = load i32* @" + globalvar);
+        			System.out.println("    %local_int"+(++intCount )+" = load i32* @"+id );
+                }				
+	//			System.out.println("    %local_int"+(++intCount )+" = load i32* "+id +(";; 886 "+e.getClass()) );
 			}
+			else if(type.equalsIgnoreCase("String")){
+                if(methodScope.hasParamField(id)){
+                	System.out.println("    %local_string"+(++stringCount )+" = load i8* %" + id);
+                }
+                else{
+        			System.out.println("    %local_string"+(++stringCount )+" = load i8** @"+id );
+                }				
+			}else if(type.equalsIgnoreCase("Bool")){
+                if(methodScope.hasParamField(id)){
+        			System.out.println("    %local_bool"+(++boolCount )+" = icmp eq i1 %"+id  + ", 1");
+                }
+                else{
+//                	printout(1,"%" + localvar + " = load i32* @" + globalvar);
+        			System.out.println("    %local_bool"+(++boolCount )+" = load i1* @"+id );
+                }				
+	//			System.out.println("    %local_int"+(++intCount )+" = load i32* "+id +(";; 886 "+e.getClass()) );
+			}
+			/*
 			else if(type.equalsIgnoreCase("String")){
 				// PREGUNTAR 
 				String value = stringFieldList.get(id);
@@ -962,7 +1019,7 @@ public class ClassPrinter {
 				String value = boolFieldList.get(id);
 				System.out.println();
 				System.out.println("    %local_bool"+(++boolCount )+" = load i1* "+id);
-			}
+			}*/
 
 			/*
 			if(value instanceof String) {
