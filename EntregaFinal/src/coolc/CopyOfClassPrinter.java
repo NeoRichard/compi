@@ -5,11 +5,10 @@ import java.util.LinkedHashMap;
 
 import coolc.ast.*;
 import coolc.infrastructure.ClassScope;
-import coolc.infrastructure.MethodScope;
-import coolc.infrastructure.SymTable;
+import coolc.infrastructure.*;
 
 
-public class ClassPrinter {
+public class CopyOfClassPrinter {
 
 	private Program _root;
 	private boolean _printTypes;
@@ -17,6 +16,13 @@ public class ClassPrinter {
 	ArrayList<String>clases;
 	String mainClass="";
 
+	String localString= "local_string";
+	String localInt= "local_int";
+	String localBool = "local_bool";
+
+	ClassDef current_class = null;
+	ClassDef main_class = null;
+	
 	LinkedHashMap<String, String> stringList = new LinkedHashMap<String, String>();
 	LinkedHashMap<String, String> intList = new LinkedHashMap<String, String>();
 	LinkedHashMap<String, String> boolList = new LinkedHashMap<String, String>();
@@ -31,17 +37,17 @@ public class ClassPrinter {
 	private int stringCount = 0;
 	private int intCount = 0;
 	private int boolCount = 0;
-
+	
 
     private SymTable _symTable;
     ClassScope classScope;
     MethodScope methodScope;
 
-	public ClassPrinter(Program root) {
+	public CopyOfClassPrinter(Program root) {
 		this(root, false);
 	}
 
-	public ClassPrinter(Program root, boolean printTypes) {
+	public CopyOfClassPrinter(Program root, boolean printTypes) {
 		_root = root;
 		_printTypes = printTypes;
 		clases = new ArrayList<>();
@@ -120,9 +126,14 @@ public class ClassPrinter {
 		}else if (t.equalsIgnoreCase("String") ){
 			return "i8*";
 		}
-		return "i32";
+		else if(t.equals("SELF_TYPE") || t.equals("Object")){
+			return "%" + current_class.getType() + "*";
+		}
+		return "";
 	}
 
+
+	
 	public void defineFunction(Method m) {
         methodScope = classScope.getMethod(m.getName());
 		/*
@@ -161,11 +172,9 @@ public class ClassPrinter {
 				}
 		}
 		content += pars;
-
-
 		content +=") {\n";
 		content += "    %_tmp_1 = bitcast %"+mainClass+"* %m to %IO*\n" ;
-
+		
 		System.out.println(content);
 		int countParam = 0;
 
@@ -173,11 +182,11 @@ public class ClassPrinter {
 			for(int i = 0 ; i < m.getParams().size() ; i++){
 
 				if (m.getParams().get(i).getType().equalsIgnoreCase("Int") ){
-
+					
 		System.out.println("\n    %ptr_param"+countParam+" = alloca i32" +
 				"\n    store i32 %"+ (m.getParams().get(i).getId())+", i32* %ptr_param"+countParam +
 				"\n    %local_int"+(++intCount)+" = load i32* %ptr_param"+countParam);			
-
+					
 				}else if (m.getParams().get(i).getType().equalsIgnoreCase("Bool") ){
 //					System.out.println( "\n    ret i1 %local_bool"+boolCount);
 				}else if (m.getParams().get(i).getType().equalsIgnoreCase("String") ){
@@ -186,15 +195,15 @@ public class ClassPrinter {
 					System.out.println( "\n    ;;;; PARAMETRO NO BASICO");
 				}
 				countParam++;
-
-
+				
+				
 				content += ", "+ refactorType( (m.getParams().get(i).getType())) + " %"+ (m.getParams().get(i).getId());
 			}
 		}
-
-
+		
+		
 		print(m.getBody(), 3);
-
+		
 		if (m.getType().equalsIgnoreCase("Int") ){
 			System.out.println( "\n    ret i32 %local_int"+intCount);
 		}else if (m.getType().equalsIgnoreCase("Bool") ){
@@ -202,7 +211,7 @@ public class ClassPrinter {
 		}else if (m.getType().equalsIgnoreCase("String") ){
 			System.out.println( "\n    ret i8* %local_string"+stringCount);
 		}else{
-			System.out.println( "\n    ret %Main* %m");
+			System.out.println( "\n    ret "+returnValue+" %m");
 		}
 		System.out.println("}");
 
@@ -257,66 +266,276 @@ public class ClassPrinter {
     	printVariables();
     	printMethods(mainClass);
 		 */
-
-
 		//		printClasses(c);
 		printBasic();
-
-		for(ClassDef c: _root) {   
-			printClasses(c);    
-			//			            print2(c);
-			//			printClasses(c);
-			//	    	printConstans(c);
+		findMainClass(_root);
+		for(ClassDef c: _root) {
+			current_class = c;
+			printClasses(c);
 		}
+		defineIO();
+
 		printMain();        
 
 
 		for(ClassDef c: _root) {   
+			current_class = c;
 			print(c);
 		}
 
-
 		printLibraries();
+	}
+
+	private void defineIO() {
+		// TODO Auto-generated method stub
+
+        System.out.println();
+        System.out.println("define %IO* @newIO() {");
+        System.out.println("    %vptr = call i8* @malloc( i64 ptrtoint (%IO* getelementptr (%IO* null, i32 1) to i64) )");
+        System.out.println("    %ptr = bitcast i8* %vptr to %IO*");
+        System.out.println("    %typePtr = getelementptr %IO* %ptr, i32 0, i32 0");
+        System.out.println("    store i8* bitcast( [2 x i8]* @.type.IO to i8*), i8** %typePtr");
+        System.out.println("    ret %IO* %ptr");
+        System.out.println("}");
+        System.out.println();
 	}
 
 	private void printBasic() {
 		String content =
 				"%Object = type { i8* }\n" +
-						"%IO = type { i8* }\n";
+						"%IO = type { i8* }\n" +
+						"@.type.IO = private constant [2 x i8] c\"IO\"";
 		System.out.println(content);
 	}
 
 	private void printMain() {
 
 		String content = "define i32 @main() {\n" +
-				"    call %Main* @"+mainClass+"_main(%Main* null)\n"+
+				"    %ptr = call %"+mainClass+"* @new"+mainClass+"()\n"+
+				"    call %"+mainClass+"* @"+mainClass+"_main(%"+mainClass+"* %ptr)\n"+
 				"    ret i32 0\n"+
 				"}";
 		System.out.println(content);
-
 	}
 
-	private void printClasses(ClassDef c) {
-		// printIndent(1);
-		/*
-        System.out.printf("class %s", c.getType());
-        if( c.getSuper() != null ) {
+	private void findMainClass(Program _root2) {
+		for(ClassDef c: _root2) { 
+			for(Feature f : c.getBody()) {
+				if(f instanceof Method) {
+					Method m = (Method)f;
+					if(m.getName().equalsIgnoreCase("main"))
+					{
+						main_class = c;
+						mainClass = main_class.getType();
+						return;
+					}
+				}
+			}			
+		}
+	}
 
-        	System.out.printf(" : %s", c.getSuper());
-        }
+	private void defineMainClass() {
+		// TODO Auto-generated method stub
+
+		findMainClass(_root);
+
         System.out.println();
-		 */
+        System.out.println("define i32 @main() {");
+        printIndent(1);
+        System.out.println("%ptr = call %"+main_class.getType()+"* @new"+main_class.getType()+"();");
+        
+        printIndent(1);
+        System.out.println("call %" + main_class.getType() + "* @" + main_class.getType() + "_main(%" + main_class.getType() + "* %ptr)");
+
+        printIndent(1);
+        System.out.println("ret i32 0");
+        System.out.println("}");
+        System.out.println();
+	}
+	private void printClasses(ClassDef c) {
+
+		int index = 0;
+		String myClass = c.getType();
+		int lengthClass = myClass.length();
+		System.out.println("@.type."+myClass+" = private constant ["+lengthClass+" x i8] c\""+myClass+"\"");
+		System.out.println();
+
+		System.out.println("%" + myClass + "= type {");
+//		System.out.println("    i8*,");
+
+		ArrayList<String> typeList = new ArrayList<>();
+		typeList.add("i8*");
+		index++;
+/*		
 		mainClass = c.getType();
 		String content = "%"+c.getType()+" = type { i8* }\n\n";
 		System.out.println(content);
-
+*/
         classScope = _symTable.findClass(c.getType());
-		/*
+        
+        
+        
+        
+        
+        
+        
+
 		for(Feature f: c.getBody()) {
-			print(f);
+			if(f instanceof Variable){
+				Variable variable = (Variable)f;
+				String type = variable.getType();
+				if(type.equalsIgnoreCase("Int")){
+					type = "i32";
+				}else if(type.equalsIgnoreCase("String")){
+					type = "i8*";
+				}else if(type.equalsIgnoreCase("Bool")){
+					type = "i1";
+				}else{
+					type = "%"+type+"*";
+				}
+
+//				classScope.getField(variable.getId()).index  = index++; // lista de fields
+				typeList.add(type);
+				
+			}
 		}
+		if(typeList.size() >0){
+			System.out.print("    "+typeList.get(0));
+		}
+		for(int i = 1 ; i < typeList.size() ; i++){
+			System.out.print(",\n    "+typeList.get(i));        	
+		}        
+		System.out.println("\n};");
+
+		//System.out.printf("class %s", c.getType());
+		if( c.getSuper() != null ) {
+			//System.out.printf(" : %s", c.getSuper());
+		}
+		System.out.println();
+
+
+
+		String baseClass = "define %"+myClass+"* @new"+myClass+"() {" +
+				//        		"\n    ; "+myClass+"* ptr = ("+myClass+"*)malloc(sizeof("+myClass+"))" +
+				"\n    %vptr = call i8* @malloc( i64 ptrtoint (%"+myClass+"* getelementptr (%"+myClass+"* null, i32 1) to i64) )" +
+				"\n    %ptr = bitcast i8* %vptr to %"+myClass+"* " +
+				//        		"\n    ; ptr->type = @.type."+myClass+"" +
+				"\n    %typePtr = getelementptr %"+myClass+"* %ptr, i32 0, i32 0" +
+				"\n    store i8* bitcast( ["+lengthClass+" x i8]* @.type."+myClass+" to i8*), i8** %typePtr" +
+				"\n    ; inicializacion de los los fields del objeto recién creado";
+		System.out.println(baseClass);
+		 for(Feature f: c.getBody()) {
+		    	if (f instanceof Variable){
+		    		printFields((Variable)f);
+		    	}
+	        }
+
+//		System.out.println("LOCALES");
+
+
+		/*
+classScope.fieldList // lista de fields
 		 */
+		System.out.println(
+				"    ret %"+myClass+"* %ptr" +
+				"\n}");
+
+//		classScope = _symTable.findClass(c.getType());
+//		print(c);
+        
+        
+        
+        
+        
+        
 	}
+
+
+	private void printFields(Variable var) {
+		// TODO Auto-generated method stub
+
+    	if(var.getValue() instanceof NewExpr){
+    		
+    		NewExpr valueexpr = (NewExpr)var.getValue();
+    		
+	    	Field field = classScope.getField(var.getId());
+	        String value = "";
+	        
+            System.out.println("    %" + getNextLocalString() + " = getelementptr %" + current_class.getType() +"* %ptr, i32 0, i32 " + field.index);
+            System.out.println("    %ptr_"+ field.index +" = call %" + field.getType() +"* @new" + field.getType() + "();");
+            System.out.println("    store %" + field.getType() +"* %ptr_" + field.index + ", %" + field.getType() +"** %" + getLocalString());
+
+            
+    	}
+	}
+/*
+    private void printFields(Variable var){
+    	
+    	if(var.getValue() instanceof NewExpr){
+    		
+    		NewExpr valueexpr = (NewExpr)var.getValue();
+    		
+	    	Field field = classScope.getField(var.getId());
+	        String value = "";
+	        
+            System.out.println("    %" + getNextLocalVars() + " = getelementptr %" + current_class.getType() +"* %ptr, i32 0, i32 " + field.iposition);
+            System.out.println("    %ptr_"+ field.iposition +" = call %" + field.getType() +"* @new" + field.getType() + "();");
+            System.out.println("    store %" + field.getType() +"* %ptr_" + field.iposition + ", %" + field.getType() +"** %" + getLocalVars());
+
+            
+    	}
+    	if(var.getValue() instanceof ValueExpr){
+	    	ValueExpr valueexpr = (ValueExpr)var.getValue();
+	
+	    	Field field = classScope.getField(var.getId());
+	    	
+	        String value = "";
+	        
+	        if(var.getType().equals("Int")){
+	            if( var.getValue() != null ) {
+	                value = valueexpr.getValue().toString();
+	            }
+	            else{
+	            	value = "0";
+	            }
+	        
+	            System.out.println("    %" + getNextLocalVari() + " = getelementptr %" + current_class.getType() +"* %ptr, i32 0, i32 " + field.iposition);
+	            System.out.println("    store i32 " + value + ", i32* %" + getLocalVari());
+	        }
+	        
+	        else if(var.getType().equals("String")){
+	            if( var.getValue() != null ) {
+	                value = valueexpr.getValue().toString();
+	            }
+	            else{
+	            	
+	            	value = "";
+	            }
+	        
+	            System.out.println("    %" + getNextLocalVars() + " = getelementptr %" + current_class.getType() +"* %ptr, i32 0, i32 " + field.iposition);
+	            System.out.println("    store i8* bitcast( [" + value.length() + " x i8]* @" + var.getId() +"_c to i8*), i8** %" + getLocalVars());
+	            
+	        }
+	        
+	        else if(var.getType().equals("Bool")){
+	            if( var.getValue() != null ) {
+	                value = valueexpr.getValue().toString();
+	            }
+	            else{
+	            	value = "0";
+	            }
+	        
+	            System.out.println("    %" + getNextLocalVarb() + " = getelementptr %" + current_class.getType() +"* %ptr, i32 0, i32 " + field.iposition);
+	            System.out.println("    store i1 " + value + ", i1* %" + getLocalVarb());
+	        }
+	        
+	        else{
+	        	
+	        	
+	            
+	        }
+    	}
+    }*/
 
 
 	public void printLibraries(){
@@ -325,13 +544,14 @@ public class ClassPrinter {
 				"declare %Object* @Object_abort(%Object*) \n" +
 				"declare i8* @Object_type_name(%Object*) \n" +
 				"declare %IO* @IO_out_string(%IO*, i8*) \n" +
-				"declare %IO* @IO_out_int(%IO*, i32 ) \n" +
-				"declare i8* @IO_in_string(%IO* )\n" +
-				"declare i32 @IO_in_int(%IO* )\n" +
+				"declare %IO* @IO_out_int(%IO*, i32) \n" +
+				"declare i8* @IO_in_string(%IO*)\n" +
+				"declare i32 @IO_in_int(%IO*)\n" +
 				"declare i32 @String_length(i8*) \n" +
 				"declare i8* @String_concat(i8*, i8*) \n" +
-				"declare i8* @String_substr(i8*, i32, i32 ) \n" +
-				"declare i32 @strcmp(i8*, i8*)";
+				"declare i8* @String_substr(i8*, i32, i32) \n" +
+				"declare i32 @strcmp(i8*, i8*) \n" +
+				"declare i8* @malloc(i64)";
 
 		System.out.println(content);
 	}
@@ -468,7 +688,7 @@ public class ClassPrinter {
 
 			//			printTag(String.format("assign %s", ((AssignExpr)e).getId()), e);
 			//			System.out.println("AssignExpr....");
-
+			
 			String id = "@"+( (AssignExpr)e ).getId();
 
 			AssignExpr assign = ((AssignExpr)e);
@@ -486,7 +706,7 @@ public class ClassPrinter {
         		printIndent(1);
         		System.out.println("store i1 %local_bool"+boolCount +", i1* " + id);
         	}
-
+			
 			/*
 			if(ex instanceof BinaryExpr)
 			{
@@ -551,7 +771,7 @@ public class ClassPrinter {
 				print(call.getExpr(), indent+2);
 			}
 			String pars = "";
-
+			
 			if (call.getArgs().size() > 0) {
 				// printIndent(indent+1);
 				// System.out.println("args");
@@ -604,7 +824,7 @@ public class ClassPrinter {
 					System.out.println("    %local_int"+(++intCount)+" = call i32 @String_length( i8* %local_string"+(stringCount)+")");		
 				}
 				else {
-
+					
 /*
 					if (call.getArgs().size() > 0) {
 
@@ -625,8 +845,8 @@ public class ClassPrinter {
 					}
 					*/
 					pars = "%Main* null" + pars;
-
-
+					
+					
 					if(type.equalsIgnoreCase("Int")){
 						System.out.println("    %local_int"+ (intCount+1) +" = call i32 @Main_"+nameMethod+"("+pars+")");
 						intCount++;
@@ -639,9 +859,9 @@ public class ClassPrinter {
 					}else if(type.equalsIgnoreCase("Object") ){
 						System.out.println("    %local_string"+ (stringCount+1) +" = call %"+mainClass+"* @Main_"+nameMethod+"("+pars+")");
 						stringCount++;
-
+						
 					}
-
+					
 					/*
 					if(type.equalsIgnoreCase("Int")){
 						System.out.println("    %local_int"+ (intCount+1) +" = call i32 @Main_"+nameMethod+"(%Main* null, i32 %local_int"+ (intCount) +")");
@@ -653,7 +873,7 @@ public class ClassPrinter {
 						System.out.println("    %local_string"+ (stringCount+1) +" = call i32 @Main_"+nameMethod+"(%Main* null, i8* %local_string"+ (stringCount) +")");
 						stringCount++;
 					}*/
-
+					
 				}
 
 			}
@@ -848,8 +1068,8 @@ public class ClassPrinter {
 				String var = "%local_bool"+boolCount;
 				printIndent(1);
 				System.out.println("%local_bool"+(++boolCount)+" = icmp eq i1 " + var + ", 0");
-
-
+				
+				
 
 			}else if(op.equalsIgnoreCase("~")){
 				String var = "%local_int"+intCount;
@@ -1055,9 +1275,8 @@ public class ClassPrinter {
 				value =  ((String)value).replace("\n", "\\0A")
 						.replace("\t", "\\09").replace("\f", "\\0c").replace("\b", "\\08");
 				String variable = stringList.get(value);
-//				System.out.println("    %local_string"+(++stringCount )+" = getelementptr ["+stringLength+" x i8]* "+variable+", i8 0, i8 0");
-				stringCount ++;
-				System.out.println("    %local_string"+(stringCount )+" = load i8** "+variable);
+				System.out.println("    %local_string"+(++stringCount )+" = getelementptr ["+stringLength+" x i8]* "+variable+", i8 0, i8 0");
+				System.out.println("    %local_string"+(++stringCount )+" = load i8**  "+variable);
 
 
 				/*
@@ -1095,6 +1314,30 @@ public class ClassPrinter {
 
 		}
 
+	}
+	public String getLocalInt(){
+		return localInt + (intCount);
+	}
+
+	public String getNextLocalInt(){
+		return localInt + (++intCount);
+	}
+
+
+	public String getLocalString(){
+		return localString + (stringCount);
+	}
+
+	public String getNextLocalString(){
+		return localString+ (++stringCount);
+	}
+
+	public String getLocalBool(){
+		return localBool+ (boolCount);
+	}
+
+	public String getNextLocalBool(){
+		return localBool+ (++boolCount);
 	}
 
 
