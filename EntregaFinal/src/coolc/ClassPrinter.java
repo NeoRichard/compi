@@ -152,13 +152,15 @@ public class ClassPrinter {
 
 		String content = "define "+returnValue+" @"+mainClass+"_"+m.getName()+"(" ;
 		content += "%"+mainClass+"* %m";
+		String pars = "";
 
 		if(m.getParams().size()>0){
 			for(int i = 0 ; i < m.getParams().size() ; i++){
 //				content += ", "+ refactorType( (m.getParams().get(i).getType())) + " %"+ (m.getParams().get(i).getId());
-				content += ", "+ refactorType( (m.getParams().get(i).getType())) + " %"+ (m.getParams().get(i).getId());
+				pars += ", "+ refactorType( (m.getParams().get(i).getType())) + " %"+ (m.getParams().get(i).getId())  ;
 				}
 		}
+		content += pars;
 	
 
 		content +=") {\n";
@@ -548,11 +550,20 @@ public class ClassPrinter {
 				//				System.out.println("callee");
 				print(call.getExpr(), indent+2);
 			}
+			String pars = "";
+			
 			if (call.getArgs().size() > 0) {
 				// printIndent(indent+1);
 				// System.out.println("args");
 				for(Expr arg: call.getArgs()) {
 					print(arg, indent+2);
+					if(arg.getExprType().equalsIgnoreCase("Int")){								
+						pars += (" , i32 %local_int"+ (intCount) ) ;
+					} else if(arg.getExprType().equalsIgnoreCase("Bool")){
+						pars += (" , i1 %local_bool"+ (boolCount) ) ;
+					} else if(arg.getExprType().equalsIgnoreCase("String")){
+						pars += (" , i8* %local_string"+ (stringCount) ) ;
+					}
 				}
 			}
 
@@ -579,16 +590,12 @@ public class ClassPrinter {
 				//					System.out.println("    call %IO* @IO_out_string(%IO* %_tmp_1, i8* %local_string"+stringCount+")");		
 			}						
 			else{
-				// METODOS DE STRINGS
-				// FUNCIONES DE STRINGS
-				// ESTA BIEN ?
-				// %nuevo_string = @String_concat( i8* %<último string>, i8* %<penúltimo string>)
 				if(nameMethod.equalsIgnoreCase("concat")){
 					System.out.println("    %local_string"+(++stringCount)+" = call i8* @String_concat( i8* %local_string"+(stringCount-2)+", i8* %local_string"+(stringCount-1)+")");		
 				}
 				else if(nameMethod.equalsIgnoreCase("substr")){
 					// ESTA BIEN EL ORDEN????
-					System.out.println("    %local_string"+(stringCount+1)+" = call i8* @String_substr( i8* %local_string"+(stringCount)+", i32 %local_int"+(intCount)+", i32 %local_int"+(intCount-1)+")");		
+					System.out.println("    %local_string"+(stringCount+1)+" = call i8* @String_substr( i8* %local_string"+(stringCount)+", i32 %local_int"+(intCount-1)+", i32 %local_int"+(intCount)+")");		
 					stringCount++;
 
 
@@ -598,8 +605,7 @@ public class ClassPrinter {
 				}
 				else {
 					
-					String pars = "";
-
+/*
 					if (call.getArgs().size() > 0) {
 
 						int localInt = intCount;
@@ -609,21 +615,15 @@ public class ClassPrinter {
 						for(Expr arg: call.getArgs()) {
 							
 							if(arg.getExprType().equalsIgnoreCase("Int")){								
-//								pars = (" , i32 %local_int"+ (localInt) ) + pars;
-								pars += (" , i32 %local_int"+ (localInt) );
-								localInt--;
+								pars = (" , i32 %local_int"+ (intCount) ) + pars;
 							} else if(arg.getExprType().equalsIgnoreCase("Bool")){
-//								pars = (" , i1 %local_bool"+ (localBool) ) + pars;
-								pars += (" , i1 %local_bool"+ (localBool) ) ;
-								localBool--;
+								pars = (" , i1 %local_bool"+ (boolCount) ) + pars;
 							} else if(arg.getExprType().equalsIgnoreCase("String")){
-								pars += (" , i8* %local_string"+ (localString) ) ;
-//								pars = (" , i8* %local_string"+ (localString) ) + pars;
-								localString--;
+								pars = (" , i8* %local_string"+ (stringCount) ) + pars;
 							}
 						}
 					}
-					
+					*/
 					pars = "%Main* null" + pars;
 					
 					
