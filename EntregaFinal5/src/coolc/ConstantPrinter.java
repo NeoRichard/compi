@@ -372,11 +372,11 @@ public class ConstantPrinter {
 					s = v.getValue().toString();
 				}
 				String stringContent = s;
-				int stringLength = s.length();
+				int stringLength = s.length() + 1;
 //				String content = id + (" = constant ["+(stringLength)+" x i8] c\""+stringContent+"\\00\"");
 
 
-            	System.out.println("@" + var.getId() + "_c = constant [" + stringLength + " x i8] c\"" + stringContent + "\"");
+            	System.out.println("@" + var.getId() + "_c = constant [" + stringLength + " x i8] c\"" + stringContent + "\\00\"");
             	System.out.println("@" + var.getId() + " = global i8* bitcast([" + stringLength + " x i8]* @" + var.getId() + "_c to i8*)");
 
 //				System.out.println(content);
@@ -528,7 +528,9 @@ public class ConstantPrinter {
 		else if(e instanceof NewExpr) 
 		{
 			NewExpr newExpr = (NewExpr)e;
-			printTag(String.format("new %s",newExpr.getType()), e);
+			
+			// AQUI SE IMPRIME NEW FIELD new IO
+//			printTag(String.format("new %s",newExpr.getType()), e);
 
 //			assert newExpr.getType().equals(e.getExprType()) : String.format("Incompatible types %s %s", newExpr.getType(), e.getExprType());
 		}
@@ -586,7 +588,7 @@ public class ConstantPrinter {
 						.replace("\t", "\\t").replace("\f", "\\f").replace("\b", "\\b");
 				*/
 
-				int stringLength = ((String)value).length();
+				int stringLength = ((String)value).length() + 1;
 				value =  ((String)value).replace("\n", "\\0A")
 						.replace("\t", "\\09").replace("\f", "\\0c").replace("\b", "\\08");
 
@@ -598,7 +600,7 @@ public class ConstantPrinter {
 
 //				String content = (prefix+(++stringCount)+" = constant ["+(stringLength)+" x i8] c\""+stringContent+"\\00\"\n");
 				stringCount++;
-            	System.out.println(prefix+(stringCount) + "_c = constant [" + stringLength + " x i8] c\"" + stringContent + "\"");
+            	System.out.println(prefix+(stringCount) + "_c = constant [" + stringLength + " x i8] c\"" + stringContent + "\\00\"");
             	System.out.println(prefix+(stringCount) + " = global i8* bitcast([" + stringLength + " x i8]* "+prefix+(stringCount) + "_c to i8*)");
 
 				
