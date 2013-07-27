@@ -7,6 +7,7 @@ import java.util.*;
 public class Field extends Scope {
     
     private String _type;
+    public int index = 0;
 
     public String getType() {
         return _type;

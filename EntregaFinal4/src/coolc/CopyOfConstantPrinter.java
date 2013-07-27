@@ -6,13 +6,15 @@ import java.util.LinkedHashMap;
 import coolc.ast.*;
 
 
-public class ConstantPrinter {
+public class CopyOfConstantPrinter {
 
 	private Program _root;
 	private boolean _printTypes;
 
 	ArrayList<String>clases;
 	String mainClass="Main";
+	
+	ClassDef current_class = null;
 
 	public LinkedHashMap<String, String> getStringList() {
 		return stringList;
@@ -39,7 +41,7 @@ public class ConstantPrinter {
 	LinkedHashMap<String, String> intFieldList = new LinkedHashMap<String, String>();
 	LinkedHashMap<String, String> boolFieldList = new LinkedHashMap<String, String>();
 
-	public ConstantPrinter(Program root) {
+	public CopyOfConstantPrinter(Program root) {
 		this(root, false);
 	}
 
@@ -55,19 +57,34 @@ public class ConstantPrinter {
 		return boolFieldList;
 	}
 
-	public ConstantPrinter(Program root, boolean printTypes) {
+	public CopyOfConstantPrinter(Program root, boolean printTypes) {
 		_root = root;
 		_printTypes = printTypes;
 		clases = new ArrayList<>();
-
-
+		
+		
 
 	}
 
+	//    public void printString(String s){
+	public void defineString2(String s){
+		String stringContent = s;
+
+		String prefix = "@str";
+		int stringLength = s.length()+1;
+
+		s =  ((String)s).replace("\n", "\\0A")
+				.replace("\t", "\\09").replace("\f", "\\0c").replace("\b", "\\08");
+		
+		String content = (prefix+(++stringCount)+" = constant ["+(stringLength)+" x i8] c\""+stringContent+"\\00\"\n");
+
+		stringList.put(s, prefix+stringCount);
+		System.out.println(content);
+	}
 
 	public void defineInt(String value){
-
-
+		
+		
 		String prefix = "@int";
 		String content = prefix+(++intCount)+" = global i32 " + value;
 		System.out.println(content);
@@ -150,12 +167,32 @@ public class ConstantPrinter {
 		System.out.println(content);
 	}
 
+	public String getCurrentClass(){
+		return "%" + current_class.getType() + "*";
+	}
+
+	public String getCurrentSuperClass(){
+		return "%" + current_class.getSuper() + "*";
+	}
 	public String refactorType(String t){
-		return "i32";
+		if(t.equals("String")){
+
+		}
+		else if(t.equals("Int")){
+			return "i32";
+		}
+		else if(t.equals("Bool")){
+			return "i1";
+		}
+		else if(t.equals("SELF_TYPE")){
+			return "%" + current_class.getType() + "*";
+		}
+
+		return "";
 	}
 
 	public void defineFunction2(String returnValue, Method m) {
-
+		
 // %IO* @out_string(%IO* %self, i8* %x)
 
 		String content = "%"+returnValue+"* @"+m.getName()+"(" ;
@@ -172,9 +209,9 @@ public class ConstantPrinter {
 		System.out.println(content);
 
 	}
-
+	
 	public void defineFunction2(DispatchExpr m) {
-
+		
 		// %IO* @out_string(%IO* %self, i8* %x)
 
 				String content = "%"+m.getType()+"* @"+m.getName()+"(" ;
@@ -188,7 +225,7 @@ public class ConstantPrinter {
 				{
 					String paramType2 = (m.getArgs().get(i).getExprType());
 					content += refactorType( paramType2) + " %";
-
+					
 				}
 				}
 				content +=		") {\n" + 
@@ -224,7 +261,8 @@ public class ConstantPrinter {
 
 		System.out.println("@true = global i1 1\n"+
 							"@false = global i1 0");
-		for(ClassDef c: _root) {            
+		for(ClassDef c: _root) {               
+			current_class = c;       
 			            print(c);
 //			printClasses(c);
 //	    	printConstans(c);
@@ -361,7 +399,7 @@ public class ConstantPrinter {
 			if( var.getValue() != null ) {
 				//print(var.getValue(), 3);
 			}
-
+			
 			String type = var.getType();
 			if(type.equalsIgnoreCase("String")){
 				String id = "@"+var.getId();
@@ -372,11 +410,11 @@ public class ConstantPrinter {
 					s = v.getValue().toString();
 				}
 				String stringContent = s;
-				int stringLength = s.length() + 1;
+				int stringLength = s.length();
 //				String content = id + (" = constant ["+(stringLength)+" x i8] c\""+stringContent+"\\00\"");
+				
 
-
-            	System.out.println("@" + var.getId() + "_c = constant [" + stringLength + " x i8] c\"" + stringContent + "\\00\"");
+            	System.out.println("@" + var.getId() + "_c = constant [" + stringLength + " x i8] c\"" + stringContent + "\"");
             	System.out.println("@" + var.getId() + " = global i8* bitcast([" + stringLength + " x i8]* @" + var.getId() + "_c to i8*)");
 
 //				System.out.println(content);
@@ -585,26 +623,26 @@ public class ConstantPrinter {
 				value =  ((String)value).replace("\n", "\\n")
 						.replace("\t", "\\t").replace("\f", "\\f").replace("\b", "\\b");
 				*/
-
-				int stringLength = ((String)value).length() + 1;
+				stringList.put((String) value, "str"+stringCount );
+//                stringList.put(stringContent, prefix+stringCount);
+                
+				int stringLength = ((String)value).length();
 				value =  ((String)value).replace("\n", "\\0A")
 						.replace("\t", "\\09").replace("\f", "\\0c").replace("\b", "\\08");
-
-
+				
+/*
 				String stringContent = (String) value;
-
-				String prefix = "@str";
-
-
-//				String content = (prefix+(++stringCount)+" = constant ["+(stringLength)+" x i8] c\""+stringContent+"\\00\"\n");
-				stringCount++;
-            	System.out.println(prefix+(stringCount) + "_c = constant [" + stringLength + " x i8] c\"" + stringContent + "\\00\"");
-            	System.out.println(prefix+(stringCount) + " = global i8* bitcast([" + stringLength + " x i8]* "+prefix+(stringCount) + "_c to i8*)");
-
-				
-				
+				String prefix = "@str";				
+				String content = (prefix+(++stringCount)+" = constant ["+(stringLength)+" x i8] c\""+stringContent+"\\00\"\n");				
 				stringList.put(stringContent, prefix+stringCount);
-//				System.out.println(content);
+				System.out.println(content);
+				*/
+
+            	System.out.println("@str" + stringCount + "_c = constant [" + stringLength + " x i8] c\"" + value + "\"");
+            	System.out.println("@str" + stringCount + " = global i8* bitcast([" + stringLength + " x i8]* @str" + stringCount + "_c to i8*)");
+            	stringCount++;			
+				
+				
 				//                System.out.println(String.format("str \"%s\"", value));
 
 				//                printTag(String.format("str \"%s\"", value), e);
@@ -622,9 +660,9 @@ public class ConstantPrinter {
 				//                printTag(String.format("bool %s", value), e);
 				//            	System.out.println(String.format("bool %s", value)+ e);
 				defineBool(String.format("%s", value));
-
-
-
+				
+				
+				
 			}
 			else {
 				throw new RuntimeException(String.format("Unsupported constant type %s\n", e.getClass()));

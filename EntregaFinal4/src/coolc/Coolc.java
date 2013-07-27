@@ -212,7 +212,7 @@ public class Coolc {
             SemanticAnalizer analizer = new SemanticAnalizer(p.getRoot());
 
 //            analizer.printErrors();
-            if(  true)
+            if( ! true)
         	try {
     			System.setOut(new PrintStream(new FileOutputStream("/home/richard/Escritorio/Entrega4/output.ll")));
     		} catch (FileNotFoundException e) {

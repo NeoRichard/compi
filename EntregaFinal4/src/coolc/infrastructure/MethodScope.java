@@ -15,6 +15,16 @@ public class MethodScope extends Scope {
         return _params;
     }
 
+    public boolean hasParamField(String name) {
+    	/*
+    	System.out.println("name: "+name);
+    	System.out.println("_params.contains(name);: "+_params.contains(name));
+    	System.out.println("_params.contains(@name);: "+_params.contains("@"+name));
+    	System.out.println("_params.contains(%name);: "+_params.contains("%"+name));
+*/
+    	return _params.contains(name);
+    }
+
     
     public MethodScope(ClassScope parent, String returnType, Node node) {
         super(parent);
