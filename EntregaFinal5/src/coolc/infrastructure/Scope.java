@@ -10,6 +10,9 @@ public class Scope {
     private Node _node;
 
     private List<Scope> _scopes;
+    
+    private int indexField = 0;
+    
     public List<Scope> getScopes() {
         return _scopes;
     }
@@ -38,6 +41,7 @@ public class Scope {
             throw new RuntimeException(String.format("Field %s already defined in this scope", name));
         }
         _fields.put(name, field);
+        field.index = indexField++;
     }
 
     public Field getLocalField(String name) {

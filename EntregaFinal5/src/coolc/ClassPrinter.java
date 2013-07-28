@@ -342,8 +342,13 @@ public class ClassPrinter {
         classScope = _symTable.findClass(c.getType());
         */
 
-		int index = 0;
 		String myClass = c.getType();
+
+		classScope = _symTable.findClass(c.getType());
+        if(classScope.getMethod("main") != null){
+        	mainClass = myClass;
+        }
+        
 		int lengthClass = myClass.length() + 1;
 		System.out.println("@.type."+myClass+" = private constant ["+lengthClass+" x i8] c\""+myClass+"\\00\"");
 		System.out.println();
@@ -352,8 +357,8 @@ public class ClassPrinter {
 
 		ArrayList<String> typeList = new ArrayList<>();
 		typeList.add("i8*");
-		index++;
 
+//		System.out.println("; REVISAR ESTO + .index");
 		for(Feature f: c.getBody()) {
 			if(f instanceof Variable){
 				Variable variable = (Variable)f;
@@ -372,9 +377,8 @@ public class ClassPrinter {
 			}
 		}
 		
-		if(typeList.size() >0){
-			System.out.print("    "+typeList.get(0));
-		}
+		System.out.print("    "+typeList.get(0));
+		
 		for(int i = 1 ; i < typeList.size() ; i++){
 			System.out.print(",\n    "+typeList.get(i));        	
 		}        
@@ -398,13 +402,10 @@ public class ClassPrinter {
 				"\n    ; inicializacion de los los fields del objeto recién creado";
 		System.out.println(baseClass);
 
-		classScope = _symTable.findClass(c.getType());
-        if(classScope.getMethod("main") != null){
-        	mainClass = myClass;
-        }
 	    for(Feature f: c.getBody()) {
 	    	if (f instanceof Variable){
-	    		printFields((Variable)f, index);
+	    		
+	    		printFields( (Variable)f );
 	    	}
         }
 	    
@@ -426,27 +427,40 @@ classScope.fieldList // lista de fields
 	}
 
 
-	private void printFields(Variable var, int index) {
+	private void printFields(Variable var) {
 		// TODO Auto-generated method stub
     	if(var.getValue() instanceof NewExpr){
     		NewExpr valueexpr = (NewExpr)var.getValue();
     		
 	    	Field field = classScope.getField(var.getId());
-			field.index = index;
-	        String value = "";
+			int index = field.index;
+
+			String value = "";
 	        
             System.out.println("    %" + getNextLocalString() + " = getelementptr %" + currentClass.getType() +"* %ptr, i32 0, i32 " + index);
             System.out.println("    %ptr_"+ index +" = call %" + field.getType() +"* @new" + field.getType() + "();");
             System.out.println("    store %" + field.getType() +"* %ptr_" + index + ", %" + field.getType() +"** %" + getLocalString() );
-
 	        /*
             System.out.println("    %" + getNextLocalString() + " = getelementptr %" + currentClass.getType() +"* %ptr, i32 0, i32 " + field.iposition);
             System.out.println("    %ptr_"+ field.iposition +" = call %" + field.getType() +"* @new" + field.getType() + "();");
             System.out.println("    store %" + field.getType() +"* %ptr_" + field.iposition + ", %" + field.getType() +"** %" + getLocalString() );
 */
-            
     	}
     	// FALTAN LOS OTROS TIPOS DE FIELDS
+    	else if(var.getValue() instanceof ValueExpr){
+	    	ValueExpr valExpr = (ValueExpr)var.getValue();
+	    	Field field = classScope.getField(var.getId());
+	    	String value = "0";
+	    	String type = var.getType();
+	    	if(type.equalsIgnoreCase("Int")){
+	    		if(var.getValue() != null){
+	    			value = valExpr.getValue().toString();
+	    		}
+	    	}
+	    	System.out.println("    %"+getNextLocalInt() + " = getelementptr %"+currentClass.getType() + "* %ptr, i32 0, i32 "+field.index);
+	    	System.out.println("    store i32 "+value +", i32* %" + getLocalInt());
+    		
+    	}
     	
 	}
 
@@ -636,13 +650,24 @@ classScope.fieldList // lista de fields
 			//			System.out.println("AssignExpr....");
 
 			String id = "@"+( (AssignExpr)e ).getId();
+			
 
 			AssignExpr assign = ((AssignExpr)e);
             print(assign.getValue(), indent+1);
 
         	if(assign.getExprType().equals("Int")){
+        		Field field1 = classScope.getField(assign.getId());
+        		int index1 =  field1.index;
         		printIndent(1);
-        		System.out.println("store i32 %local_int"+intCount +", i32* " + id);
+//        		System.out.println("store i32 %local_int"+intCount +", i32* " + id);
+        		String var1 = getLocalInt();
+
+            	String varname = assign.getId();
+            	Field field = classScope.getField(varname);
+            	
+        		String var2 = getNextLocalInt();
+        		System.out.println( "%" + var2+" = getelementptr inbounds %Program* %m, i32 0, i32 "+index1);
+        		System.out.println("    store i32 %"+var1+", i32* %" + var2);
         	}
         	else if(assign.getExprType().equals("String")){
         		printIndent(1);
