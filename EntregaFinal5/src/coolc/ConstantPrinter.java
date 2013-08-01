@@ -439,8 +439,8 @@ public class ConstantPrinter {
 			else {
 				System.out.print(" ERROR");
 			}
+			System.out.println();
 		}
-		System.out.println();
 	}
 
 
@@ -550,25 +550,24 @@ public class ConstantPrinter {
 		else if (e instanceof CaseExpr) {
 			CaseExpr caseExpr = ((CaseExpr)e);
 
-			printTag("instanceof", e);
+//			printTag("instanceof", e);
 			print(caseExpr.getValue(), indent+1);
 
 			for(Case c : caseExpr.getCases()) {
 				// printIndent(indent+1);
-				System.out.printf("case %s %s\n", c.getType(), c.getId());
 				print(c.getValue(), indent+2);
 			}
 
 		}
 		else if (e instanceof LetExpr) {
 			LetExpr let = (LetExpr)e;
-			printTag("let", e);
+			printTag(";; let", e);
 
 			// printIndent(indent+1);
-			System.out.println("vars");
+			System.out.println(";;; vars");
 			for(Variable var : let.getDecl()) {
 				// printIndent(indent+2);
-				System.out.printf("%s %s\n", var.getType(), var.getId());
+				System.out.printf(";;;;; -> %s %s\n", var.getType(), var.getId());
 				if(var.getValue() != null) {
 					print(var.getValue(), indent+3);
 				}

@@ -3,6 +3,8 @@ package coolc;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
+import org.omg.CORBA.IdentifierHelper;
+
 import coolc.ast.*;
 import coolc.infrastructure.*;
 
@@ -25,6 +27,7 @@ public class ClassPrinter {
 
 	LinkedHashMap<Integer, String> ifList = new LinkedHashMap<Integer, String>();
 	private int ifCount = 0;
+	private int caseCount = 0;
 
 	private int stringCount = 0;
 	private int intCount = 0;
@@ -139,7 +142,8 @@ public class ClassPrinter {
 
 
 	public void defineFunction(Method m) {
-		methodScope = classScope.getMethod(m.getName());
+		String methodName = m.getName();
+		methodScope = classScope.getMethod(methodName);
 		/*
         System.out.printf("method %s : ", m.getName());
         for(Variable var: m.getParams()) {
@@ -153,7 +157,10 @@ public class ClassPrinter {
         print(m.getBody(), 3);*/
 
 		String returnValue = m.getType();
-		if(returnValue.equalsIgnoreCase("SELF_TYPE") || returnValue.equalsIgnoreCase("Object")){
+//		System.out.println(";; " + methodName + " -> " + returnValue );
+		if(returnValue.equalsIgnoreCase("SELF_TYPE") 
+				//|| returnValue.equalsIgnoreCase("Object")
+				){
 			//			returnValue = "%"+currentClass.getType()+"*";
 			returnValue = "%"+ currentClassName +"*";			
 		}else if (returnValue.equalsIgnoreCase("Int") ){
@@ -163,7 +170,17 @@ public class ClassPrinter {
 		}else if (returnValue.equalsIgnoreCase("String") ){
 			returnValue = "i8*";
 		}else{
-			//			returnValue = "%"+currentClass.getType()+"*";	
+			if(returnValue.equalsIgnoreCase("Object")
+					){
+				//			returnValue = "%"+currentClass.getType()+"*";
+				returnValue = "%Object*";	
+			}else{
+
+				//			returnValue = "%"+currentClass.getType()+"*";	
+				returnValue = "%"+ returnValue +"*";	
+			}
+		}
+		if(methodName.equalsIgnoreCase("main")){	
 			returnValue = "%"+ currentClassName +"*";	
 		}
 
@@ -191,21 +208,32 @@ public class ClassPrinter {
 		if(m.getParams().size()>0){
 			for(int i = 0 ; i < m.getParams().size() ; i++){
 
-				if (m.getParams().get(i).getType().equalsIgnoreCase("Int") ){
+				String type = m.getParams().get(i).getType();
+				if (type.equalsIgnoreCase("Int") ){
 
 					System.out.println("\n    %ptr_param"+countParam+" = alloca i32" +
 							"\n    store i32 %"+ (m.getParams().get(i).getId())+", i32* %ptr_param"+countParam +
 							"\n    %local_int"+(++intCount)+" = load i32* %ptr_param"+countParam);			
 
-				}else if (m.getParams().get(i).getType().equalsIgnoreCase("Bool") ){
+				}else if (type.equalsIgnoreCase("Bool") ){
 					System.out.println(";; TERMINAR BOOL");
+					System.out.println("\n    %ptr_param"+countParam+" = alloca i1" +
+							"\n    store i1 %"+ (m.getParams().get(i).getId())+", i1* %ptr_param"+countParam +
+							"\n    %local_bool"+(++boolCount)+" = load i1* %ptr_param"+countParam);
 					//					System.out.println( "\n    ret i1 %local_bool"+boolCount);
-				}else if (m.getParams().get(i).getType().equalsIgnoreCase("String") ){
+				}else if (type.equalsIgnoreCase("String") ){
 					//					System.out.println( "\n    ret i8* %local_string"+stringCount);
 					System.out.println(";; TERMINAR STRING");
+					System.out.println("\n    %ptr_param"+countParam+" = alloca i8*" +
+							"\n    store i8* %"+ (m.getParams().get(i).getId())+", i8** %ptr_param"+countParam +
+							"\n    %local_str"+(++stringCount)+" = load i8** %ptr_param"+countParam);
 				}else{
 					//					System.out.println( "    ;;;; PARAMETRO NO BASICO");
 					System.out.println(";; TERMINAR OTRO");
+
+					System.out.println("\n    %ptr_param"+countParam+" = alloca %"+type+"*" +
+							"\n    store %"+type+"* %"+ (m.getParams().get(i).getId())+", %"+type+"** %ptr_param"+countParam +
+							"\n    %local_ptr"+(++ptrCount)+" = load %"+type+"** %ptr_param"+countParam);
 				}
 				countParam++;
 
@@ -223,9 +251,24 @@ public class ClassPrinter {
 		}else if (m.getType().equalsIgnoreCase("String") ){
 			System.out.println( "\n    ret i8* %local_string"+stringCount);
 		}else{
-			//			System.out.println( "\n    ret %"+mainClass+"* %m");
-			//			System.out.println( "\n    ret %"+currentClass.getType()+"* %m");
-			System.out.println( "\n    ret %"+ currentClassName +"* %m");			
+			if(m.getParams() != null ){
+				if( m.getParams().size() > 0){
+					if(!m.getParams().get(0).getType().equalsIgnoreCase(returnValue)){
+						System.out.println("    %_1 = bitcast %"+ currentClassName +"* %m to " + returnValue );
+						System.out.println( "\n    ret "+ returnValue +" %_1");		
+						System.out.println("}");
+
+						return;
+					}
+				}
+				//			System.out.println( "\n    ret %"+mainClass+"* %m");
+				//			System.out.println( "\n    ret %"+currentClass.getType()+"* %m");
+				System.out.println( "\n    ret "+ returnValue +" %m");	
+				System.out.println("}");
+
+				return;
+			}
+
 		}
 		System.out.println("}");
 	}
@@ -276,7 +319,8 @@ public class ClassPrinter {
 		for(ClassDef c: _root) {   
 			currentClass = c;
 			currentClassName = c.getType();
-			print(c);
+			if(c != null)
+				print(c);
 		}
 
 
@@ -332,6 +376,7 @@ public class ClassPrinter {
 			mainClass = myClass;
 		}
 
+//		System.out.println(";;;;;;3; myClass: "+myClass);
 		int lengthClass = myClass.length() + 1;
 		System.out.println("@.type."+myClass+" = private constant ["+lengthClass+" x i8] c\""+myClass+"\\00\"");
 		System.out.println();
@@ -375,6 +420,7 @@ public class ClassPrinter {
 
 
 
+
 		String baseClass = "define %"+myClass+"* @new"+myClass+"() {" +
 				//        		"\n    ; "+myClass+"* ptr = ("+myClass+"*)malloc(sizeof("+myClass+"))" +
 				"\n    %vptr = call i8* @malloc( i64 ptrtoint (%"+myClass+"* getelementptr (%"+myClass+"* null, i32 1) to i64) )" +
@@ -384,14 +430,12 @@ public class ClassPrinter {
 				"\n    store i8* bitcast( ["+lengthClass+" x i8]* @.type."+myClass+" to i8*), i8** %typePtr" +
 				"\n    ; inicializacion de los los fields del objeto recién creado";
 		System.out.println(baseClass);
-
 		for(Feature f: c.getBody()) {
 			if (f instanceof Variable){
 
 				printFields( (Variable)f );
 			}
 		}
-
 
 		//		System.out.println("LOCALES");
 
@@ -412,7 +456,9 @@ classScope.fieldList // lista de fields
 
 	private void printFields(Variable var) {
 		// TODO Auto-generated method stub
+		//		System.out.println("("+ var.getClass() +")");
 		if(var.getValue() instanceof NewExpr){
+			System.out.println("; inicializando Objeto");
 			NewExpr valueexpr = (NewExpr)var.getValue();
 
 			Field field = classScope.getField(var.getId());
@@ -421,7 +467,7 @@ classScope.fieldList // lista de fields
 			String value = "";
 
 			//            System.out.println("    %" + getNextLocalString() + " = getelementptr %" + currentClass.getType() +"* %ptr, i32 0, i32 " + index);
-			System.out.println("    %" + getNextLocalString() + " = getelementptr %" + currentClassName +"* %ptr, i32 0, i32 " + index);
+			System.out.println("    %" + getNextLocalString() + " = getelementptr inbounds %" + currentClassName +"* %ptr, i32 0, i32 " + index);
 			System.out.println("    %ptr_"+ index +" = call %" + field.getType() +"* @new" + field.getType() + "();");
 			System.out.println("    store %" + field.getType() +"* %ptr_" + index + ", %" + field.getType() +"** %" + getLocalString() );
 			/*
@@ -431,56 +477,88 @@ classScope.fieldList // lista de fields
 			 */
 		}
 		// FALTAN LOS OTROS TIPOS DE FIELDS
-		else if(var.getValue() instanceof ValueExpr){
-			ValueExpr valExpr = (ValueExpr)var.getValue();
+		else //if(var.getValue() instanceof ValueExpr)
+		{
+			//			ValueExpr valExpr = (ValueExpr)var.getValue();
 			Field field = classScope.getField(var.getId());
 			String value = "0";
-			String type = var.getType();
+			String type = var.getType();;
 			if(type.equalsIgnoreCase("Int")){
+				System.out.println("; inicializando Int");
 				if(var.getValue() != null){
-					value = valExpr.getValue().toString();
+					value = var.getValue().toString();
 				}
+
 				//	    	System.out.println("    %"+getNextLocalInt() + " = getelementptr %"+currentClass.getType() + "* %ptr, i32 0, i32 "+field.index);
-				System.out.println("    %"+getNextLocalInt() + " = getelementptr %"+ currentClassName + "* %ptr, i32 0, i32 "+field.index);
+				System.out.println("    %"+getNextLocalInt() + " = getelementptr inbounds %"+ currentClassName + "* %ptr, i32 0, i32 "+field.index);
 				System.out.println("    store i32 "+value +", i32* %" + getLocalInt());
 
 			}
 
 			else if(var.getType().equals("String")){
+				System.out.println("; inicializando String");
 				if( var.getValue() != null ) {
-					value = valExpr.getValue().toString();
+					value = var.getValue().toString();
+					if(var.getValue() instanceof ValueExpr)
+					{
+						Object o = ((ValueExpr)var.getValue()).getValue();
+						if(o instanceof String) {							
+							value = o.toString();
+						}
+						System.out.println("; o: "+o.toString());
+					}
 				}
 				else{
+					if(var.getId() != null){
 
-					value = "";
+						if(var.getValue() == null)
+							value = "";
+						else
+							value = var.getValue().toString();
+
+					}
+					else{
+						value = "";
+					}
 				}
+				System.out.println(";;;; 2value: "+value);
 				int stringLength = value.length() + 1;
 
 				//	            System.out.println("    %" + getNextLocalString() + " = getelementptr %" + currentClass.getType() +"* %ptr, i32 0, i32 " + field.index);
-				System.out.println("    %" + getNextLocalString() + " = getelementptr %" + currentClassName +"* %ptr, i32 0, i32 " + field.index);
+				System.out.println("    %" + getNextLocalString() + " = getelementptr inbounds %" + currentClassName +"* %ptr, i32 0, i32 " + field.index);
 				System.out.println("    store i8* bitcast( [" + stringLength + " x i8]* @" + var.getId() +"_c to i8*), i8** %" + getLocalString());
 
 			}
 
 			else if(var.getType().equals("Bool")){
+				System.out.println("; inicializando bool");
 				if( var.getValue() != null ) {
-					value = valExpr.getValue().toString();
+
+					ValueExpr valueexpr = (ValueExpr)var.getValue();
+
+					value = valueexpr.getValue().toString() ; 	//var.getValue().toString();
+					if(value.equalsIgnoreCase("true")){
+						value ="1";
+					}else{
+						value = "0";
+					}
+
 				}
 				else{
 					value = "0";
 				}
 
 				//	            System.out.println("    %" + getNextLocalBool() + " = getelementptr %" + currentClass.getType() +"* %ptr, i32 0, i32 " + field.index);
-				System.out.println("    %" + getNextLocalBool() + " = getelementptr %" + currentClassName +"* %ptr, i32 0, i32 " + field.index);
+				System.out.println("    %" + getNextLocalBool() + " = getelementptr inbounds %" + currentClassName +"* %ptr, i32 0, i32 " + field.index);
 				System.out.println("    store i1 " + value + ", i1* %" + getLocalBool());
 			}
 
 			else{
-
-
+				System.out.println("; ---- inicializando POR DEFAULT Objeto de tipo: "+type);
 
 			}
 		}
+		System.out.println("; fin inicializacion");
 
 	}
 
@@ -576,15 +654,16 @@ classScope.fieldList // lista de fields
 						if( f2 instanceof Method ){
 							Method m2 = (Method)f2;
 							String s2 = m2.getName();
-							System.out.println(";;;;;;; s1: "+ s1 + " - s2: "+s2);
+//							System.out.println(";;;;;;; s1: "+ s1 + " - s2: "+s2);
 							if( s1.equalsIgnoreCase( s2 ) )
 							{
 								write = false;
+								break;
 							}
 						}
 					}
 					if(write){
-					defineFunction(m1);
+						defineFunction(m1);
 					}
 				}
 			}
@@ -664,7 +743,7 @@ classScope.fieldList // lista de fields
 	}
 
 	private void printTag(String tag, Expr e) {
-		System.out.print(tag);
+		System.out.println(tag);
 		if(_printTypes) {
 			String type = e.getExprType();
 			if(type != null) {
@@ -674,7 +753,7 @@ classScope.fieldList // lista de fields
 				//				System.out.print(" ERROR");
 			}
 		}
-		System.out.println();
+//		System.out.println();
 	}
 
 
@@ -728,8 +807,8 @@ classScope.fieldList // lista de fields
 				//        		System.out.println("store i32 %local_int"+intCount +", i32* " + id);
 				String var1 = getLocalInt();
 
-				String varname = assign.getId();
-				Field field = classScope.getField(varname);
+				//				String varname = assign.getId();
+				//				Field field = classScope.getField(varname);
 
 				String var2 = getNextLocalInt();
 				System.out.println( "%" + var2+" = getelementptr inbounds %Program* %m, i32 0, i32 "+index1);
@@ -789,12 +868,40 @@ classScope.fieldList // lista de fields
 			StringBuilder out = new StringBuilder();
 
 			//			out.append("call ").append(call.getName());
-			String type = call.getExprType();
+			String originType = ( call.getExprType() );
+			String returnType = refactorType( call.getExprType() );
+
+
 			//			System.out.println(type);
 
 			String nameMethod = (call.getName());
 
+//			System.out.println(";;;; llamando + " + nameMethod );
+			
+			/*
+			if (call.getArgs().size() > 0) {
+				// printIndent(indent+1);
+				// System.out.println("args");
+				for(Expr arg: call.getArgs()) {
+					print(arg, indent+2);
+					if(arg.getExprType().equalsIgnoreCase("Int")){								
+						System.out.println("-------- , i32 %local_int"+ (intCount) ) ;
+					} else if(arg.getExprType().equalsIgnoreCase("Bool")){
+						System.out.println ("-------- , i1 %local_bool"+ (boolCount) ) ;
+					} else if(arg.getExprType().equalsIgnoreCase("String")){
+						System.out.println ("-------- , i8* %local_string"+ (stringCount) ) ;
+					} else {
+						System.out.println ("-------- , %"+ ( arg.getExprType() )+"* %"+ ( getLocalPtr() ) ) ;
+					}
+				}
+			}*/
+
+			/*
 			String returnType = call.getExpr().getExprType();
+			String type2 = call.getExpr().toString();
+			System.out.println(";---  = "+type2);
+			 */
+
 
 			if(call.getType() != null) {
 				out.append(" as ").append(call.getType());
@@ -815,6 +922,7 @@ classScope.fieldList // lista de fields
 				// System.out.println("args");
 				for(Expr arg: call.getArgs()) {
 					print(arg, indent+2);
+
 					if(arg.getExprType().equalsIgnoreCase("Int")){								
 						pars += (" , i32 %local_int"+ (intCount) ) ;
 					} else if(arg.getExprType().equalsIgnoreCase("Bool")){
@@ -838,14 +946,10 @@ classScope.fieldList // lista de fields
 				System.out.println(content);
 			}
 			else if(nameMethod.equalsIgnoreCase("in_string")){
-
-
 				System.out.println( "    %local_string"+stringCount+" = call i8* @IO_in_string(%IO* %_tmp_1)");
 				//					System.out.println("    call %IO* @IO_out_string(%IO* %_tmp_1, i8* %local_string"+stringCount+")");		
 			}	
 			else if(nameMethod.equalsIgnoreCase("in_int")){
-
-
 				System.out.println( "    %local_int"+intCount+" = call i32 @IO_in_int(%IO* %_tmp_1)");
 				//					System.out.println("    call %IO* @IO_out_string(%IO* %_tmp_1, i8* %local_string"+stringCount+")");		
 			}						
@@ -869,6 +973,8 @@ classScope.fieldList // lista de fields
 
 				}
 				else {
+//					System.out.println(";; ------------------- Dentro del else");
+
 
 					/*
 					if (call.getArgs().size() > 0) {
@@ -889,24 +995,129 @@ classScope.fieldList // lista de fields
 						}
 					}
 					 */
-					pars = "%"+returnType+"* null" + pars;
 
+					String type = ";;; instancia de UnaryExpr";
+					Expr callExp = call.getExpr();
+					if( callExp != null ){
+						type = callExp.getExprType();
+					}else{
+						type = currentClassName;
+					}
+//					System.out.println(";;;; type: "+type);
 
-					if(type.equalsIgnoreCase("Int")){
-						System.out.println("    %local_int"+ (intCount+1) +" = call i32 @Main_"+nameMethod+"("+pars+")");
-						intCount++;
-					} else if(type.equalsIgnoreCase("Bool")){
-						System.out.println("    %local_bool"+ (boolCount+1) +" = call i1 @Main_"+nameMethod+"("+pars+")");
-						boolCount++;
-					} else if(type.equalsIgnoreCase("String") ){
-						//						System.out.println("; --- aaaaaa: " + (call.getExprType() ) );
-						//						System.out.println("; --- bbbb: " + ( returnType ));
-						System.out.println("    %local_string"+ (stringCount+1) +" = call i8* @"+( returnType )+"_"+nameMethod+"("+pars+")");
-						stringCount++;
-					}else if(type.equalsIgnoreCase("Object") ){
-						System.out.println("    %"+getNextLocalPtr() +" = call %"+returnType+"* @"+returnType+"_"+nameMethod+"("+pars+")");
+					pars = "";
+					Method m = getParamsTypes(nameMethod, type);	
+					if(call.getArgs() == null)
+					{
+						System.out.println("aaaaaaaaaaaa");
+					}if(m.getParams() == null)
+					{
+						System.out.println("nnnnnnnn");
+					}
+					//					System.out.println(";; TAMAÑOS: c: "+call.getArgs().size() + " - m: " +m.getParams().size()  );
+					if (call.getArgs().size() > 0) {
+						// printIndent(indent+1);
+						// System.out.println("args");
+						int i = 0;
+						for(Expr arg: call.getArgs()) {
+							print(arg, indent+2);
+
+							if(arg.getExprType().equalsIgnoreCase("Int")){								
+								//pars += (" , i32 %local_int"+ (intCount) ) ;							
+								pars += ", i32 %"+ getLocalInt(); 
+							} else if(arg.getExprType().equalsIgnoreCase("Bool")){
+								//pars += (" , i1 %local_bool"+ (boolCount) ) ;						
+								pars += ", i1 %"+ getLocalBool(); 
+							} else if(arg.getExprType().equalsIgnoreCase("String")){
+								//pars += (" , i8* %local_string"+ (stringCount) ) ;						
+								pars += ", i8* %"+ getLocalString(); 
+							} else {
+								String p = (m.getParams().get(i).getType());
+								String a = arg.getExprType();
+								
+								if( p.equalsIgnoreCase(a) ){
+									pars += (" , %"+ ( a )+"* %"+ ( getLocalPtr() ) ) ;
+								}else{
+									/*
+									System.out.println(";;; a:= "+a);
+									System.out.println(";;; p:= "+p);
+									*/
+									if( a.equalsIgnoreCase("IO") && p.equalsIgnoreCase("Object") ){
+										pars += (" , %"+ ( p )+"* %"+ ( getLocalPtr() ) ) ;
+										break;
+									}
+
+									String v1 = "%" + getLocalPtr();
+									String v2 = "%" + ( getNextLocalPtr() );
+
+									// AGREGAR ESPACIO
+									// AGREGAR IDENTACION
+									System.out.println(v2+" = bitcast %"+a+"* "+( v1)+" to %"+p+"*");
+									pars += (" , %"+ ( p )+"* "+ v2 ) ;
+
+								}
+							}
+
+							i++;
+						}
+					}
+					/*			
+					if(m.getParams().size() > 0 ){
+						for(int i = 0 ; i < m.getParams().size() ; i++){
+							String p = (m.getParams().get(i).getType());
+							System.out.println(";; ["+i+"] = "+p);
+						}
+					}*/
+					/*
+					if(call.getExpr() != null){
+							call.getExpr().getExprType();; //type; 	//currentClassName;
+					}
+					 */
+					/*
+					if(type.equalsIgnoreCase("Object")){
+						Expr arg1 = call.getArgs().get(0);
+						returnType = currentClassName; //arg1.getExprType();					
+						System.out.println(";;;-- "+returnType);
+					}
+					 */
+					/*
+					if(call.getExpr() != null)	{
+						returnType = call.getExpr().getExprType();
+					}else
+					{
+						System.out.println("; ESTe CASO");
+
 					}
 
+					 */
+					pars = "%"+type+"* null" + pars;
+
+
+					if(originType.equalsIgnoreCase("Int")){
+						System.out.println("    %local_int"+ (intCount+1) +" = call i32 @Main_"+nameMethod+"("+pars+")");
+						intCount++;
+					} else if(originType.equalsIgnoreCase("Bool")){
+						System.out.println("    %local_bool"+ (boolCount+1) +" = call i1 @Main_"+nameMethod+"("+pars+")");
+						boolCount++;
+					} else if(originType.equalsIgnoreCase("String") ){
+						//						System.out.println("; --- aaaaaa: " + (call.getExprType() ) );
+						//						System.out.println("; --- bbbb: " + ( returnType ));
+						System.out.println(";; AQUI3");
+						System.out.println("    %local_string"+ (stringCount+1) +" = call i8* @"+( type )+"_"+nameMethod+"("+pars+")");
+						stringCount++;
+					}else if(originType.equalsIgnoreCase("Object") ){
+//						System.out.println(";; AQUI2");
+						System.out.println("    %"+getNextLocalPtr() +" = call "+returnType+" @"+type+"_"+nameMethod+"("+pars+")");
+					}else{
+						System.out.println(";; AQUI1");
+						System.out.println("    %"+getNextLocalPtr() +" = call "+returnType+" @"+type+"_"+nameMethod+"("+pars+")");
+
+					}
+					/*
+					System.out.print(";;;;;;; originType <-> " + originType);
+					System.out.println(";;;;;;; returnType <-> " + returnType);
+					System.out.println(";; <------------------- FIN del else");
+*/
 					/*
 					if(type.equalsIgnoreCase("Int")){
 						System.out.println("    %local_int"+ (intCount+1) +" = call i32 @Main_"+nameMethod+"(%Main* null, i32 %local_int"+ (intCount) +")");
@@ -939,6 +1150,7 @@ classScope.fieldList // lista de fields
 			System.out.println("    %cond"+auxIf+" = load i1* %ptr_if"+auxIf+"");
 
 
+			System.out.println("; type 1009: " + type);
 
 			if(type.equalsIgnoreCase("Int")){
 				System.out.println("    %ptr_int"+auxIf+" = alloca i32* ");
@@ -1124,6 +1336,22 @@ classScope.fieldList // lista de fields
 				System.out.println("%local_int"+(++intCount)+" = mul i32 " + var + ", -1");
 				printIndent(1);
 				System.out.println("%local_int"+(++intCount)+" = sub i32 -1, " + var + "");
+			}else if(op.equalsIgnoreCase("isvoid")){
+				Expr valExp = ((UnaryExpr) e).getValue();
+				String type = valExp.getExprType();
+				if(isBasic(type)){
+					System.out.println("%" + getNextLocalBool() +" = icmp eq i1 1, 0");
+				}else
+				{
+					System.out.print("; Tipo no basico: " + type);
+					if(valExp instanceof IdExpr){
+						IdExpr idExp = (IdExpr)valExp;
+						String id = idExp.getId();
+						System.out.println(" --> id: "+id);
+						System.out.println("%" + getNextLocalBool() +" = icmp eq i1 1, 1");
+					}
+				}
+
 			}
 
 
@@ -1208,16 +1436,68 @@ classScope.fieldList // lista de fields
 
 		}
 		else if (e instanceof CaseExpr) {
+//			System.out.println(";;; --- aqui CaseExpr");
 			CaseExpr caseExpr = ((CaseExpr)e);
 
-			printTag("instanceof", e);
+			//			printTag("instanceof", e);
 			print(caseExpr.getValue(), indent+1);
-
-			for(Case c : caseExpr.getCases()) {
-				// printIndent(indent+1);
-				System.out.printf("case %s %s\n", c.getType(), c.getId());
-				print(c.getValue(), indent+2);
+			String exType = caseExpr.getExprType();
+			String id = caseExpr.getExprType();
+			Expr o = caseExpr.getValue();
+			String paramType = "";
+			if(o instanceof IdExpr)
+			{
+				IdExpr ie = (IdExpr)o;
+				paramType = ie.getExprType();
+			}else{
+				paramType = o.toString();
 			}
+			
+			
+			
+			int auxCase = caseCount++;
+			int auxCount = 0;
+			/*
+			String id = "%local_bool" + (boolCount);
+			System.out.println("    %ptr_if"+auxCase+" = alloca i1");
+			System.out.println("    store i1 "+id+", i1* %ptr_if"+auxCase+"");
+			System.out.println("    %cond"+auxCase+" = load i1* %ptr_if"+auxCase+"");
+			if(type.equalsIgnoreCase("Int")){
+				System.out.println("    %ptr_int"+auxCase+" = alloca i32* ");
+			} else if(type.equalsIgnoreCase("Bool")){
+				System.out.println("    %ptr_bool"+auxCase+" = alloca i1* ");
+			} else if(type.equalsIgnoreCase("String")){
+				System.out.println("    %ptr_string"+auxCase+" = alloca i8*");
+			}*/
+			String ifID = "";
+					
+			
+			for(Case c : caseExpr.getCases()) {
+				ifID = auxCase + "_" + auxCount++;
+				// printIndent(indent+1);
+				String caseClass = c.getType();
+				String caseId = c.getId();
+				Expr ex = caseExpr.getValue(); 
+				/*
+				System.out.println(";;;;;====== type: " + exType );
+				System.out.println(";;;; caseClass: " + caseClass + " - caseId: " + caseId);
+*/
+				
+				// CAMBIAR POR i32 @strcmp(i8*, i8*)
+				System.out.println("  %case_aux" + ifID + "  = icmp eq i32  "+auxCount+", 2 ;;;;;;;;;;;; CAMBIAME CAMBIAR POR i32 @strcmp(i8*, i8*) ;;;;;;;");
+
+				System.out.println("br i1 %case_aux" + ifID + ", label %CaseEqual" + ifID + ", label %CaseUnequal" + ifID );
+				System.out.println("CaseEqual" + ifID + ":");
+				
+				
+//				System.out.printf(";;; case type: %s , id-> %s\n", c.getType(), c.getId());
+				print(c.getValue(), indent+2);
+				System.out.println("br label %EndCase" + auxCase + "_0" );
+				System.out.println("CaseUnequal" + ifID + ":");
+			}
+			System.out.println("br label %EndCase" + auxCase + "_0");
+			System.out.println("; Para finalizar");
+			System.out.println("EndCase" + auxCase + "_0:");
 
 		}
 		else if (e instanceof LetExpr) {
@@ -1247,6 +1527,15 @@ classScope.fieldList // lista de fields
 
 
 			IdExpr id = ((IdExpr)e);
+			if(id.getId().equalsIgnoreCase("iostream")){
+//				System.out.println(";--- iostream");
+				return;
+			}
+			if(id.getExprType() == null){       
+				System.out.println(";--- id.getExprType");
+				return; 		
+
+			}
 
 			if(id.getExprType().equals("Int")){        		
 
@@ -1259,9 +1548,13 @@ classScope.fieldList // lista de fields
 				else{
 					// %_tmp_ptr_2 = getelementptr inbounds %Arbol* %self, i32 0, i32 1
 					Field field = classScope.getField(globalvar);
-					System.out.println("    %" + localvar + " = getelementptr inbounds %"+ classScope.getClassType() +"* %m, i32 0, i32 " + field.index);
-					System.out.println("    %" + getNextLocalInt() + " = load i32* %" + localvar);
-					//printout(1,"%" + localvar + " = load i32* @" + globalvar);
+					if(field != null){
+						System.out.println("    %" + localvar + " = getelementptr inbounds %"+ classScope.getClassType() +"* %m, i32 0, i32 " + field.index);
+						System.out.println("    %" + getNextLocalInt() + " = load i32* %" + localvar);
+						//printout(1,"%" + localvar + " = load i32* @" + globalvar);
+					}else{
+						System.out.println(";-- variable local: "+globalvar);
+					}
 				}
 
 			}
@@ -1312,9 +1605,14 @@ classScope.fieldList // lista de fields
 
 					Field field = classScope.getField(globalvar);
 
-					if(!field.getType().equals("SELF_TYPE")){
-						System.out.println("    %" + localvar + " = getelementptr inbounds %"+ classScope.getClassType() +"* %m, i32 0, i32 " + field.index);
-						System.out.println("    %" + getNextLocalPtr() + " = load %" + field.getType() +"** %" + localvar);
+					if(field != null) {
+						if(!field.getType().equals("SELF_TYPE")){
+							System.out.println("    %" + localvar + " = getelementptr inbounds %"+ classScope.getClassType() +"* %m, i32 0, i32 " + field.index);
+							System.out.println("    %" + getNextLocalPtr() + " = load %" + field.getType() +"** %" + localvar);
+						}
+					}else
+					{
+						System.out.println("; -------- FUe null field, globalvar: " + globalvar );
 					}
 
 				}
@@ -1448,6 +1746,46 @@ classScope.fieldList // lista de fields
 
 	}
 
+
+	private Method getParamsTypes(String nameMethod, String classMethod) {
+		// TODO Auto-generated method stub
+		if(classMethod.equalsIgnoreCase("") || classMethod.equalsIgnoreCase("Object"))
+			return null;
+//		System.out.println(";.......m: " + nameMethod + " - C: "+classMethod);
+
+		ClassDef methodClass = null;
+		String s2 = classMethod;
+		for(ClassDef c: _root) {  
+			String s1 = c.getType();
+//			System.out.println(";;;; s1 "+s1+ " - "+ s2 + "s2");
+			if(s1.equalsIgnoreCase( s2 )){
+				methodClass = c;
+				break;
+			}
+		}
+		if(methodClass == null)
+			return null;
+		for(Feature f: methodClass.getBody()) {
+			if(f instanceof Method) {
+				Method m = (Method)f;
+				String m1 = m.getName();
+				String m2 = nameMethod;
+//				System.out.println(";;;; m1 "+m1+ " - "+ m2 + "m2");
+				if(m1.equalsIgnoreCase( m2 )){
+					return m;			
+				}
+			}			
+		}
+//		System.out.println(";;; NO HUBO MATCH C:" + classMethod + " , m: " + nameMethod);
+		return getParamsTypes(nameMethod, methodClass.getSuper());
+	}
+
+	private boolean isBasic(String t) {
+		// TODO Auto-generated method stub
+		if(t.equalsIgnoreCase("Int") || t.equalsIgnoreCase("Bool") || t.equalsIgnoreCase("String") )
+			return true;
+		return false;
+	}
 
 	public String operator(UnaryOp op) {
 		switch(op) {
