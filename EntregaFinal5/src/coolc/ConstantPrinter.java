@@ -463,12 +463,12 @@ public class ConstantPrinter {
 
 			assert "Object".equals(loop.getExprType()) : "while type must be Object";
 
-			printTag("while", e);
+//			printTag("while", e);
 
 			print(loop.getCond(), indent+1);
 
 			// printIndent(indent);
-			System.out.println("loop");
+//			System.out.println("loop");
 
 			print(loop.getValue(), indent+1);
 
