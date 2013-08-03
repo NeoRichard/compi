@@ -46,6 +46,7 @@ public class ClassPrinter {
 	private SymTable _symTable;
 	ClassScope classScope;
 	MethodScope methodScope;
+	Scope currentScope;
 
 	public ClassPrinter(Program root) {
 		this(root, false);
@@ -144,6 +145,7 @@ public class ClassPrinter {
 	public void defineFunction(Method m) {
 		String methodName = m.getName();
 		methodScope = classScope.getMethod(methodName);
+		currentScope = methodScope;
 		/*
         System.out.printf("method %s : ", m.getName());
         for(Variable var: m.getParams()) {
@@ -157,7 +159,7 @@ public class ClassPrinter {
         print(m.getBody(), 3);*/
 
 		String returnValue = m.getType();
-//		System.out.println(";; " + methodName + " -> " + returnValue );
+		//		System.out.println(";; " + methodName + " -> " + returnValue );
 		if(returnValue.equalsIgnoreCase("SELF_TYPE") 
 				//|| returnValue.equalsIgnoreCase("Object")
 				){
@@ -229,7 +231,7 @@ public class ClassPrinter {
 							"\n    %local_str"+(++stringCount)+" = load i8** %ptr_param"+countParam);
 				}else{
 					//					System.out.println( "    ;;;; PARAMETRO NO BASICO");
-					System.out.println(";; TERMINAR OTRO");
+					//					System.out.println(";; TERMINAR OTRO");
 
 					System.out.println("\n    %ptr_param"+countParam+" = alloca %"+type+"*" +
 							"\n    store %"+type+"* %"+ (m.getParams().get(i).getId())+", %"+type+"** %ptr_param"+countParam +
@@ -238,7 +240,7 @@ public class ClassPrinter {
 				countParam++;
 
 				content += ", "+ refactorType( (m.getParams().get(i).getType())) + " %"+ (m.getParams().get(i).getId());
-				System.out.println(";; TERMINAR FINAL");
+				//				System.out.println(";; TERMINAR FINAL");
 			}
 		}
 
@@ -376,7 +378,7 @@ public class ClassPrinter {
 			mainClass = myClass;
 		}
 
-//		System.out.println(";;;;;;3; myClass: "+myClass);
+		//		System.out.println(";;;;;;3; myClass: "+myClass);
 		int lengthClass = myClass.length() + 1;
 		System.out.println("@.type."+myClass+" = private constant ["+lengthClass+" x i8] c\""+myClass+"\\00\"");
 		System.out.println();
@@ -654,7 +656,7 @@ classScope.fieldList // lista de fields
 						if( f2 instanceof Method ){
 							Method m2 = (Method)f2;
 							String s2 = m2.getName();
-//							System.out.println(";;;;;;; s1: "+ s1 + " - s2: "+s2);
+							//							System.out.println(";;;;;;; s1: "+ s1 + " - s2: "+s2);
 							if( s1.equalsIgnoreCase( s2 ) )
 							{
 								write = false;
@@ -680,20 +682,32 @@ classScope.fieldList // lista de fields
 
 
 	private ClassDef getFatherClass(String className) {
-		// TODO Auto-generated method stub
-
 		for(ClassDef c: _root) {  
-			if(className.equalsIgnoreCase(c.getType()))
+			if(className != null)
 			{
-				currentClass = c;
-				return c;
+				if(className.equalsIgnoreCase(c.getType()))
+				{
+					currentClass = c;
+					return c;
+				}
 			}
-			//			            print2(c);
-			//			printClasses(c);
-			//	    	printConstans(c);
 		}
-
 		return null;
+	}
+
+
+	private ArrayList getChildClass(String className) {
+		ArrayList<ClassDef> list = new ArrayList<>();
+		for(ClassDef c: _root) {  
+			if(className != null)
+			{
+				if(className.equalsIgnoreCase(c.getSuper()))
+				{
+					list.add(c);
+				}
+			}
+		}
+		return list;
 	}
 
 	private void print(Feature f) {
@@ -753,7 +767,7 @@ classScope.fieldList // lista de fields
 				//				System.out.print(" ERROR");
 			}
 		}
-//		System.out.println();
+		//		System.out.println();
 	}
 
 
@@ -862,22 +876,29 @@ classScope.fieldList // lista de fields
 
 		}
 		else if(e instanceof DispatchExpr) {
+			//			System.out.println(";;; -------->");
 
 			DispatchExpr call = (DispatchExpr)e;
-			// metodo
 			StringBuilder out = new StringBuilder();
-
 			//			out.append("call ").append(call.getName());
 			String originType = ( call.getExprType() );
 			String returnType = refactorType( call.getExprType() );
-
-
 			//			System.out.println(type);
-
 			String nameMethod = (call.getName());
 
-//			System.out.println(";;;; llamando + " + nameMethod );
-			
+
+			String type = ";;; instancia de UnaryExpr";
+			Expr callExp = call.getExpr();
+			if( callExp != null ){
+				type = callExp.getExprType();
+			}else{
+				type = currentClassName;
+			}
+			//			System.out.println(";;;; type: "+type);
+
+			String pars = "";
+			Method m = getParamsTypes(nameMethod, type);	
+			//			System.out.println(";;;; llamando + " + nameMethod );			
 			/*
 			if (call.getArgs().size() > 0) {
 				// printIndent(indent+1);
@@ -906,7 +927,7 @@ classScope.fieldList // lista de fields
 			if(call.getType() != null) {
 				out.append(" as ").append(call.getType());
 			}
-			printTag(out.toString(), e);
+			//			printTag(out.toString(), e);
 
 			//			defineFunction(call);
 
@@ -915,23 +936,58 @@ classScope.fieldList // lista de fields
 				//				System.out.println("callee");
 				print(call.getExpr(), indent+2);
 			}
-			String pars = "";
-			// TERMINAR PARAMETROS	
+			// TERMINAR PARAMETROS
 			if (call.getArgs().size() > 0) {
 				// printIndent(indent+1);
 				// System.out.println("args");
+				int i = 0;
 				for(Expr arg: call.getArgs()) {
 					print(arg, indent+2);
+					if(arg.getExprType().equalsIgnoreCase("Int")){	
+						if(m == null || m.getParams() == null || m.getParams().get(i) == null || m.getParams().get(i).getType().equalsIgnoreCase("Int"))
+						{
+							pars += ", i32 %"+ getLocalInt(); 
+						}else{
+							String p = (m.getParams().get(i).getType());
+							String a = arg.getExprType();
+							String v1 = "%" + getLocalPtr();
+							String v2 = "%" + ( getNextLocalPtr() );
 
-					if(arg.getExprType().equalsIgnoreCase("Int")){								
-						pars += (" , i32 %local_int"+ (intCount) ) ;
+							/*
+							System.out.println("%_tmp_int_box" + i +" = call %Int.box* @newInt.box(i32 %var)");
+							System.out.println("%_tmp_int_box_val_ptr" + i +" = getelementptr %Int.box* %_tmp_int_box" + i +", i32 0, i32 1");
+							System.out.println("store i32 %val, i32* %tmp_int_box_val_ptr" + i +"");
+							pars += ", i32 %%_tmp_int_box" + i; 
+							 */
+
+							pars += ", i32 %"+ getLocalInt(); 
+
+						}
 					} else if(arg.getExprType().equalsIgnoreCase("Bool")){
-						pars += (" , i1 %local_bool"+ (boolCount) ) ;
+						pars += ", i1 %"+ getLocalBool(); 
 					} else if(arg.getExprType().equalsIgnoreCase("String")){
-						pars += (" , i8* %local_string"+ (stringCount) ) ;
+						pars += ", i8* %"+ getLocalString(); 
 					} else {
-						pars += (" , %"+ ( arg.getExprType() )+"* %"+ ( getLocalPtr() ) ) ;
+						String p = (m.getParams().get(i).getType());
+						String a = arg.getExprType();
+						//						System.out.println(";;; ---- p: " + p + " -- a: " + a);
+						if( p.equalsIgnoreCase(a) ){
+							pars += (" , %"+ ( a )+"* %"+ ( getLocalPtr() ) ) ;
+						}else{
+							if( a.equalsIgnoreCase("IO") && p.equalsIgnoreCase("Object") ){
+								pars += (" , %"+ ( p )+"* %"+ ( getLocalPtr() ) ) ;
+								break;
+							}
+							String v1 = "%" + getLocalPtr();
+							String v2 = "%" + ( getNextLocalPtr() );
+							// AGREGAR ESPACIO
+							// AGREGAR IDENTACION
+							System.out.println(v2+" = bitcast %"+a+"* "+( v1)+" to %"+p+"*");
+							pars += (" , %"+ ( p )+"* "+ v2 ) ;
+						}
 					}
+
+					i++;
 				}
 			}
 
@@ -973,7 +1029,7 @@ classScope.fieldList // lista de fields
 
 				}
 				else {
-//					System.out.println(";; ------------------- Dentro del else");
+					//					System.out.println(";; ------------------- Dentro del else");
 
 
 					/*
@@ -996,17 +1052,6 @@ classScope.fieldList // lista de fields
 					}
 					 */
 
-					String type = ";;; instancia de UnaryExpr";
-					Expr callExp = call.getExpr();
-					if( callExp != null ){
-						type = callExp.getExprType();
-					}else{
-						type = currentClassName;
-					}
-//					System.out.println(";;;; type: "+type);
-
-					pars = "";
-					Method m = getParamsTypes(nameMethod, type);	
 					if(call.getArgs() == null)
 					{
 						System.out.println("aaaaaaaaaaaa");
@@ -1014,6 +1059,7 @@ classScope.fieldList // lista de fields
 					{
 						System.out.println("nnnnnnnn");
 					}
+					/*
 					//					System.out.println(";; TAMAÑOS: c: "+call.getArgs().size() + " - m: " +m.getParams().size()  );
 					if (call.getArgs().size() > 0) {
 						// printIndent(indent+1);
@@ -1034,14 +1080,13 @@ classScope.fieldList // lista de fields
 							} else {
 								String p = (m.getParams().get(i).getType());
 								String a = arg.getExprType();
-								
+
 								if( p.equalsIgnoreCase(a) ){
 									pars += (" , %"+ ( a )+"* %"+ ( getLocalPtr() ) ) ;
 								}else{
-									/*
-									System.out.println(";;; a:= "+a);
-									System.out.println(";;; p:= "+p);
-									*/
+									// System.out.println(";;; a:= "+a);
+									// System.out.println(";;; p:= "+p);
+
 									if( a.equalsIgnoreCase("IO") && p.equalsIgnoreCase("Object") ){
 										pars += (" , %"+ ( p )+"* %"+ ( getLocalPtr() ) ) ;
 										break;
@@ -1061,6 +1106,7 @@ classScope.fieldList // lista de fields
 							i++;
 						}
 					}
+					 */
 					/*			
 					if(m.getParams().size() > 0 ){
 						for(int i = 0 ; i < m.getParams().size() ; i++){
@@ -1106,7 +1152,7 @@ classScope.fieldList // lista de fields
 						System.out.println("    %local_string"+ (stringCount+1) +" = call i8* @"+( type )+"_"+nameMethod+"("+pars+")");
 						stringCount++;
 					}else if(originType.equalsIgnoreCase("Object") ){
-//						System.out.println(";; AQUI2");
+						//						System.out.println(";; AQUI2");
 						System.out.println("    %"+getNextLocalPtr() +" = call "+returnType+" @"+type+"_"+nameMethod+"("+pars+")");
 					}else{
 						System.out.println(";; AQUI1");
@@ -1117,7 +1163,7 @@ classScope.fieldList // lista de fields
 					System.out.print(";;;;;;; originType <-> " + originType);
 					System.out.println(";;;;;;; returnType <-> " + returnType);
 					System.out.println(";; <------------------- FIN del else");
-*/
+					 */
 					/*
 					if(type.equalsIgnoreCase("Int")){
 						System.out.println("    %local_int"+ (intCount+1) +" = call i32 @Main_"+nameMethod+"(%Main* null, i32 %local_int"+ (intCount) +")");
@@ -1133,6 +1179,7 @@ classScope.fieldList // lista de fields
 				}
 
 			}
+			//			System.out.println(";;; <--------");
 		}
 		else if(e instanceof IfExpr) {
 			IfExpr cond = (IfExpr)e;
@@ -1436,12 +1483,21 @@ classScope.fieldList // lista de fields
 
 		}
 		else if (e instanceof CaseExpr) {
-//			System.out.println(";;; --- aqui CaseExpr");
+			//			System.out.println(";;; --- aqui CaseExpr");
 			CaseExpr caseExpr = ((CaseExpr)e);
+			String tipoRetorno = methodScope.getReturnType();
+			System.out.println("; tipoRetorno : " + tipoRetorno );
 
 			//			printTag("instanceof", e);
 			print(caseExpr.getValue(), indent+1);
-			String exType = caseExpr.getExprType();
+			String exType = caseExpr.getValue().getExprType();
+			//			System.out.println(";;;;; exType: " + exType );
+			String paramID = "m";
+			if(caseExpr.getValue() instanceof IdExpr)
+			{
+				IdExpr asdEx = (IdExpr)(caseExpr.getValue());
+				paramID = asdEx.getId();
+			}
 			String id = caseExpr.getExprType();
 			Expr o = caseExpr.getValue();
 			String paramType = "";
@@ -1452,55 +1508,199 @@ classScope.fieldList // lista de fields
 			}else{
 				paramType = o.toString();
 			}
-			
-			
-			
+
 			int auxCase = caseCount++;
 			int auxCount = 0;
-			/*
-			String id = "%local_bool" + (boolCount);
-			System.out.println("    %ptr_if"+auxCase+" = alloca i1");
-			System.out.println("    store i1 "+id+", i1* %ptr_if"+auxCase+"");
-			System.out.println("    %cond"+auxCase+" = load i1* %ptr_if"+auxCase+"");
-			if(type.equalsIgnoreCase("Int")){
-				System.out.println("    %ptr_int"+auxCase+" = alloca i32* ");
-			} else if(type.equalsIgnoreCase("Bool")){
-				System.out.println("    %ptr_bool"+auxCase+" = alloca i1* ");
-			} else if(type.equalsIgnoreCase("String")){
-				System.out.println("    %ptr_string"+auxCase+" = alloca i8*");
-			}*/
-			String ifID = "";
-					
+
+			//			System.out.println(";;;; AUN FALTA CASTEAR EL OBJETO QUE SE RECIBE AL TIPO DEL CASE");
+			String ifID = auxCase + "_" + auxCount++;
+			String n0 = "%_tmp_ptr_" + ifID;
 			
+			String type0 = "%_tmp_str_" + ifID;
+			System.out.println( n0 + " = getelementptr inbounds %Object* %"+paramID+", i32 0, i32 0");
+			System.out.println( type0 + " = load i8** " + n0);
+//			System.out.println("call %IO* @IO_out_string(%IO* null, i8* "+type0+") ;;;; BORRAME DESPUES");
+			String endCase = "EndCase" + auxCase;
 			for(Case c : caseExpr.getCases()) {
 				ifID = auxCase + "_" + auxCount++;
 				// printIndent(indent+1);
 				String caseClass = c.getType();
 				String caseId = c.getId();
 				Expr ex = caseExpr.getValue(); 
-				/*
-				System.out.println(";;;;;====== type: " + exType );
-				System.out.println(";;;; caseClass: " + caseClass + " - caseId: " + caseId);
-*/
-				
-				// CAMBIAR POR i32 @strcmp(i8*, i8*)
-				System.out.println("  %case_aux" + ifID + "  = icmp eq i32  "+auxCount+", 2 ;;;;;;;;;;;; CAMBIAME CAMBIAR POR i32 @strcmp(i8*, i8*) ;;;;;;;");
+				System.out.println(";;;;;;;;;;;;;;;");
+				System.out.println(";; Testeando para: " + caseClass);
+				if(! caseClass.equalsIgnoreCase("Object"))
+				{
+					/**********************************************************************************************************************************************/				
+					System.out.println("");
+					String n1 = "%_tmp_ptr_" + ifID;
+					String type1 = "%_tmp_str_" + ifID;				
+					System.out.println("    %local_" + caseClass + " = call %" + caseClass + "* @new" + caseClass + "()");
+					System.out.println("    %local_ptr" + caseClass + " = bitcast %" + caseClass + "* %local_" + caseClass + " to %Object*");
+					System.out.println(type1 + " = call i8* @Object_type_name(%Object* %local_ptr" + caseClass + ")");
+					System.out.println("  %case_aux_i" + ifID + "  = call i32 @strcmp(i8* " + type0 + ", i8* " + type1+ ")");
+					System.out.println("  %case_aux" + ifID + "  = icmp eq i32   %case_aux_i" + ifID + ", 0");
+					System.out.println("");
 
-				System.out.println("br i1 %case_aux" + ifID + ", label %CaseEqual" + ifID + ", label %CaseUnequal" + ifID );
-				System.out.println("CaseEqual" + ifID + ":");
-				
-				
-//				System.out.printf(";;; case type: %s , id-> %s\n", c.getType(), c.getId());
-				print(c.getValue(), indent+2);
-				System.out.println("br label %EndCase" + auxCase + "_0" );
-				System.out.println("CaseUnequal" + ifID + ":");
+					String auxClass = caseClass;
+
+
+
+					System.out.println(";;; Revisando Herencia de: " + auxClass );
+					ArrayList<ClassDef> childs = getChildClass(auxClass);
+					
+					if(childs != null){
+						String ifID2 = ifID;
+						for(int i = 0 ; i < childs.size() ; i++)
+						{
+							System.out.println(";;;;;;;;;;;;;;;;;; I: " + i + " ----------> ");
+
+							boolean exist = false;
+							for(Case c2 : caseExpr.getCases())
+							{
+								if(c2.getType().equalsIgnoreCase(childs.get(i).getType()))
+								{
+									System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
+									System.out.println(";; SI EXISTE LA CLASE Hijo: " + c2.getType());
+									System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
+									exist = true;
+									break;
+								}
+							}
+							if(!exist)
+							{
+
+								System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
+								System.out.println(";; NO EXISTE LA CLASE hijo " + childs.get(i).getType() +", y tengo que hacerla: ");
+								System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
+								String parentClass = childs.get(i).getType();
+								System.out.println("");
+								ifID += i;
+								String n2 = "%_tmp_ptr_" +auxCase + "_" + ifID;
+								String type2 = "%_tmp_str_" + auxCase + "_" + ifID;		
+//								caseClass += "_" + auxCase+i;
+								caseClass = childs.get(i).getType();
+								String classi = caseClass + i;
+								System.out.println("    %local_" + classi + " = call %" + caseClass + "* @new" + caseClass + "()");
+								System.out.println("    %local_ptr" + classi + " = bitcast %" + caseClass + "* %local_" + classi + " to %Object*");
+								System.out.println(type2 + " = call i8* @Object_type_name(%Object* %local_ptr" + classi + ")");
+								System.out.println("  %case_aux_i" + ifID + "  = call i32 @strcmp(i8* " + type0 + ", i8* " + type2+ ")");
+								System.out.println("  %case_aux" + ifID + "  = icmp eq i32   %case_aux_i" + ifID + ", 0");
+								System.out.println("");
+								String if0 = "%CaseEqual" + ifID;
+								String else0 ="%CaseUnequal" + ifID;
+								System.out.println("  br i1 %case_aux" + ifID + ", label " + if0 + ", label " +else0 );
+								System.out.println("CaseEqual" + ifID + ":");
+								////////////////////////////////////////////////////////////////////////////////////////////////////////
+								
+								System.out.println("%" + getNextLocalPtr() + "= bitcast %Object* %" + paramID + " to %" + caseClass+ "*");
+								print(c.getValue(), indent+2);	// DESCOMENTAME
+								System.out.println(";;;; [AQUI SE HARIA EL PRINT]");
+								////////////////////////////////////////////////////////////////////////////////////////////////////////
+								System.out.println("  br label %" + endCase + "_0" );
+								System.out.println();
+								System.out.println("CaseUnequal" + ifID + ":");
+
+
+								
+								System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
+							}
+							System.out.println(";;;;;;;;;;;;;;;;;; I: " + i + " <---------- ");
+
+						}
+						ifID = ifID2;
+					}
+
+					/*
+					ClassDef parent = getFatherClass(auxClass);
+					while(parent.getSuper() != null){
+						auxClass = parent.getSuper();
+						System.out.println(";;; Padre: " + auxClass );
+						parent = getFatherClass(auxClass);
+						boolean exist = false;
+						for(Case c2 : caseExpr.getCases()) {
+							if(c2.getType().equalsIgnoreCase(parent.getType()))
+							{
+								System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
+								System.out.println(";; SI EXISTE LA CLASE PADRE: " + parent.getType());
+								System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
+								exist = true;
+								break;
+							}
+						}
+						if(!exist)
+						{
+
+							System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
+							System.out.println(";; NO EXISTE LA CLASE PADRE " + parent.getType() +", y tengo que hacerla: ");
+							System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
+							String parentClass = parent.getType();
+							System.out.println("");
+							String n2 = "%_tmp_ptr_" +auxCase + "_" + ifID;
+							String type2 = "%_tmp_str_" + auxCase + "_" + ifID;		
+							caseClass += "_" + auxCase;
+							System.out.println("    %local_" + caseClass + " = call %" + caseClass + "* @new" + caseClass + "()");
+							System.out.println("    %local_ptr" + caseClass + " = bitcast %" + caseClass + "* %local_" + caseClass + " to %Object*");
+							System.out.println(type2 + " = call i8* @Object_type_name(%Object* %local_ptr" + caseClass + ")");
+							System.out.println("  %case_aux_i" + ifID + "  = call i32 @strcmp(i8* " + type0 + ", i8* " + type2+ ")");
+							System.out.println("  %case_aux" + ifID + "  = icmp eq i32   %case_aux_i" + ifID + ", 0");
+							System.out.println("");
+							String if0 = "%CaseEqual" + ifID;
+							String else0 ="%CaseUnequal" + ifID;
+							System.out.println("  br i1 %case_aux" + ifID + ", label " + if0 + ", label " +else0 );
+							System.out.println("CaseEqual" + ifID + ":");
+							////////////////////////////////////////////////////////////////////////////////////////////////////////
+							
+							System.out.println("%" + getNextLocalPtr() + "= bitcast %Object* %" + paramID + " to %" + caseClass+ "*");
+							print(c.getValue(), indent+2);	// DESCOMENTAME
+							System.out.println(";;;; [AQUI SE HARIA EL PRINT]");
+							////////////////////////////////////////////////////////////////////////////////////////////////////////
+							System.out.println("  br label %" + endCase + "_0" );
+							System.out.println();
+							System.out.println("CaseUnequal" + ifID + ":");
+
+
+							
+							System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
+						}
+					}
+					*/
+					/**********************************************************************************************************************************************/
+					String if0 = "%CaseEqual" + ifID;
+					String else0 ="%CaseUnequal" + ifID;
+					System.out.println("  br i1 %case_aux" + ifID + ", label " + if0 + ", label " +else0 );
+					System.out.println("CaseEqual" + ifID + ":");
+					////////////////////////////////////////////////////////////////////////////////////////////////////////
+					
+					System.out.println("%" + getNextLocalPtr() + "= bitcast %Object* %" + paramID + " to %" + caseClass+ "*");
+					print(c.getValue(), indent+2);	// DESCOMENTAME
+					System.out.println(";;;; [AQUI SE HARIA EL PRINT]");
+					////////////////////////////////////////////////////////////////////////////////////////////////////////
+					System.out.println("  br label %" + endCase + "_0" );
+					System.out.println();
+					System.out.println("CaseUnequal" + ifID + ":");
+				}else
+					//////////////////// caseClass = Object
+				{
+					/**********************************************************************************************************************************************/				
+
+					////////////////////////////////////////////////////////////////////////////////////////////////////////
+					System.out.println("%" + getNextLocalPtr() + "= bitcast %Object* %" + paramID + " to %Object*");
+//					print(c.getValue(), indent+2);	// DESCOMENTAME
+					System.out.println(";;;; [AQUI SE HARIA EL PRINT DE OBJECT]");
+					////////////////////////////////////////////////////////////////////////////////////////////////////////
+//					System.out.println("  br label %" + endCase + "_0" );
+					break;
+				}
+				///////////////////////////
 			}
-			System.out.println("br label %EndCase" + auxCase + "_0");
+			System.out.println("br label %" + endCase + "_0");
 			System.out.println("; Para finalizar");
-			System.out.println("EndCase" + auxCase + "_0:");
+			System.out.println(endCase + "_0:");
 
 		}
 		else if (e instanceof LetExpr) {
+			currentScope = currentScope.getScopes().get(1);
 			LetExpr let = (LetExpr)e;
 			printTag("let", e);
 
@@ -1513,6 +1713,7 @@ classScope.fieldList // lista de fields
 					print(var.getValue(), indent+3);
 				}
 			}
+			currentScope = classScope.getSuperScope();
 
 			print(let.getValue(), indent+1);
 		}
@@ -1528,7 +1729,7 @@ classScope.fieldList // lista de fields
 
 			IdExpr id = ((IdExpr)e);
 			if(id.getId().equalsIgnoreCase("iostream")){
-//				System.out.println(";--- iostream");
+				//				System.out.println(";--- iostream");
 				return;
 			}
 			if(id.getExprType() == null){       
@@ -1553,6 +1754,9 @@ classScope.fieldList // lista de fields
 						System.out.println("    %" + getNextLocalInt() + " = load i32* %" + localvar);
 						//printout(1,"%" + localvar + " = load i32* @" + globalvar);
 					}else{
+
+						Field field2 = currentScope.getField(globalvar);
+
 						System.out.println(";-- variable local: "+globalvar);
 					}
 				}
@@ -1749,15 +1953,17 @@ classScope.fieldList // lista de fields
 
 	private Method getParamsTypes(String nameMethod, String classMethod) {
 		// TODO Auto-generated method stub
+		if(classMethod == null || classMethod== null )
+			return null;
 		if(classMethod.equalsIgnoreCase("") || classMethod.equalsIgnoreCase("Object"))
 			return null;
-//		System.out.println(";.......m: " + nameMethod + " - C: "+classMethod);
+		//		System.out.println(";.......m: " + nameMethod + " - C: "+classMethod);
 
 		ClassDef methodClass = null;
 		String s2 = classMethod;
 		for(ClassDef c: _root) {  
 			String s1 = c.getType();
-//			System.out.println(";;;; s1 "+s1+ " - "+ s2 + "s2");
+			//			System.out.println(";;;; s1 "+s1+ " - "+ s2 + "s2");
 			if(s1.equalsIgnoreCase( s2 )){
 				methodClass = c;
 				break;
@@ -1770,13 +1976,14 @@ classScope.fieldList // lista de fields
 				Method m = (Method)f;
 				String m1 = m.getName();
 				String m2 = nameMethod;
-//				System.out.println(";;;; m1 "+m1+ " - "+ m2 + "m2");
+				//				System.out.println(";;;; m1 "+m1+ " - "+ m2 + "m2");
 				if(m1.equalsIgnoreCase( m2 )){
 					return m;			
 				}
 			}			
 		}
-//		System.out.println(";;; NO HUBO MATCH C:" + classMethod + " , m: " + nameMethod);
+
+		//		System.out.println(";;; NO HUBO MATCH C:" + classMethod + " , m: " + nameMethod);
 		return getParamsTypes(nameMethod, methodClass.getSuper());
 	}
 
