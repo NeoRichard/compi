@@ -51,7 +51,7 @@ clang -O1 -S -o - -emit-llvm file.c
 
 public class Coolc {
 	
-	static boolean texto = !true;
+	static boolean texto = true;
 
     public static void printInstructions() {
         System.out.println(
