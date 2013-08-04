@@ -491,7 +491,7 @@ public class ConstantPrinter {
 			if(call.getType() != null) {
 				out.append(" as ").append(call.getType());
 			}
-			printTag(out.toString(), e);
+//			printTag(out.toString(), e);
 
 //			defineFunction(call);
 
