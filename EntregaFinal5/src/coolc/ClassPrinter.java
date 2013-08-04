@@ -2075,14 +2075,16 @@ classScope.fieldList // lista de fields
 								System.out.println("    %" + getNextLocalPtr() + " = load %" + type + "** %" + nextvar + " ;;;; <- esto");
 							}
 
-						}else{			
+						}else{
+							/*
 							String currentvar = getLetPtr();
 							String nextvar = getNextLetPtr();		
 							System.out.println(";;; 2035");
 	//						Field field = classScope.getField(globalvar);
-							System.out.println("    %" + nextvar + " = load %" + type + "* %" + currentvar);
+//							System.out.println("    %" + nextvar + " = load %" + type + "* %" + currentvar);
 //							System.out.println("    %" + getNextLocalPtr() + " = load %" + type + "** %" + nextvar);
 							System.out.println(";;; fin 2035");
+							*/
 
 						}
 						/*

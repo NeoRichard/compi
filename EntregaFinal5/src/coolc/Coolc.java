@@ -51,7 +51,7 @@ clang -O1 -S -o - -emit-llvm file.c
 
 public class Coolc {
 	
-	
+	static boolean texto = true;
 
     public static void printInstructions() {
         System.out.println(
@@ -212,7 +212,7 @@ public class Coolc {
             SemanticAnalizer analizer = new SemanticAnalizer(p.getRoot());
 
 //            analizer.printErrors();
-            if( ! true)
+            if( texto )
         	try {
     			System.setOut(new PrintStream(new FileOutputStream("/home/richard/Escritorio/Entrega4/output.ll")));
     		} catch (FileNotFoundException e) {
