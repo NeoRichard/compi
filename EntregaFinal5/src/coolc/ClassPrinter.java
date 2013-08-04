@@ -1001,11 +1001,17 @@ classScope.fieldList // lista de fields
 				type = callExp.getExprType();
 			}else{
 				type = currentClassName;
-			}
-
+			};
+			
 			String pars = "";
 			Method m = getParamsTypes(nameMethod, type);	
-			//			System.out.println(";;;; llamando + " + nameMethod );			
+			if(m != null){
+				System.out.println(";;;; 1010 llamando + " + nameMethod );			
+				if(m.getParams().size() > 0)
+				{
+						System.out.println(";;;;  1012 (" + m.getParams().get(0).getId() + ", ...)" );			
+				}
+			}
 			/*
 			if (call.getArgs().size() > 0) {
 				// printIndent(indent+1);
@@ -1078,7 +1084,7 @@ classScope.fieldList // lista de fields
 					} else {
 						String p = (m.getParams().get(i).getType());
 						String a = arg.getExprType();
-						System.out.println(";;; REVISAR ---- p: " + p + " -- a: " + a);
+//						System.out.println(";;; REVISAR ---- p: " + p + " -- a: " + a);
 						if( p.equalsIgnoreCase(a) ){
 							pars += (" , %"+ ( a )+"* %"+ ( getLocalPtr() ) ) ;
 						}else
@@ -1250,6 +1256,12 @@ classScope.fieldList // lista de fields
 					}
 
 					 */
+
+					if(call.getArgs().size() > 0){
+						Expr e1 = call.getArgs().get(0);
+						String current = getLocalPtr();
+						System.out.println(";;;;;;;;;;;;;; Llamando " + nameMethod + " de tipo [" + type + "] sobre: %" +  current);
+					}
 					pars = "%"+type+"* null" + pars;
 
 
@@ -1612,7 +1624,7 @@ classScope.fieldList // lista de fields
 			String exType = caseExpr.getValue().getExprType();
 
 			String caseParam = getLocalPtr();
-			System.out.println(";;; caseParam: " + caseParam);
+//			System.out.println(";;; caseParam: " + caseParam);
 			//			System.out.println(";;;;; exType: " + exType );
 			String paramID = "m";
 			if(caseExpr.getValue() instanceof IdExpr)
@@ -1631,7 +1643,7 @@ classScope.fieldList // lista de fields
 				paramType = o.toString();
 			}
 
-			System.out.println(";;; exType_ " + exType);
+//			System.out.println(";;; exType_ " + exType);
 
 
 			int auxCase = caseCount++;
@@ -1680,16 +1692,18 @@ classScope.fieldList // lista de fields
 						String ifID2 = ifID;
 						for(int i = 0 ; i < childs.size() ; i++)
 						{
-							System.out.println(";;;;;;;;;;;;;;;;;; I: " + i + " ----------> ");
+//							System.out.println(";;;;;;;;;;;;;;;;;; I: " + i + " ----------> ");
 
 							boolean exist = false;
 							for(Case c2 : caseExpr.getCases())
 							{
 								if(c2.getType().equalsIgnoreCase(childs.get(i).getType()))
 								{
+									/*
 									System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
 									System.out.println(";; SI EXISTE LA CLASE Hijo: " + c2.getType());
 									System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
+									*/
 									exist = true;
 									break;
 								}
@@ -1697,9 +1711,11 @@ classScope.fieldList // lista de fields
 							if(!exist)
 							{
 
+								/*
 								System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
 								System.out.println(";; NO EXISTE LA CLASE hijo " + childs.get(i).getType() +", y tengo que hacerla: ");
 								System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
+								*/
 								String parentClass = childs.get(i).getType();
 								System.out.println("");
 								ifID += i;
@@ -1725,7 +1741,7 @@ classScope.fieldList // lista de fields
 								String nextvar = getNextLetPtr();
 								System.out.println("%" +  nextvar + "= bitcast %Object* %" + caseParam + " to %" + auxClass+ "*");
 								print(c.getValue(), indent+2);	// DESCOMENTAME
-								System.out.println(";;;; [AQUI SE HARIA EL PRINT]");
+//								System.out.println(";;;; [AQUI SE HARIA EL PRINT]");
 								////////////////////////////////////////////////////////////////////////////////////////////////////////
 								System.out.println("  br label %" + endCase + "_0" );
 								System.out.println();
@@ -1735,7 +1751,7 @@ classScope.fieldList // lista de fields
 
 //								System.out.println(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
 							}
-//							System.out.println(";;;;;;;;;;;;;;;;;; I: " + i + " <---------- ");
+//							System.out	.println(";;;;;;;;;;;;;;;;;; I: " + i + " <---------- ");
 
 						}
 						ifID = ifID2;
@@ -1809,7 +1825,7 @@ classScope.fieldList // lista de fields
 					currentScope = currentScope.getScopes().get(scopeIndex);
 					System.out.println("%" + nextvar+ " = bitcast %Object* %" + caseParam + " to %" + auxClass+ "*");
 					print(c.getValue(), indent+2);	// DESCOMENTAME
-					System.out.println(";;;; [AQUI SE HARIA EL PRINT]");
+//					System.out.println(";;;; [AQUI SE HARIA EL PRINT]");
 					currentScope = methodScope;
 					////////////////////////////////////////////////////////////////////////////////////////////////////////
 					System.out.println("  br label %" + endCase + "_0" );
